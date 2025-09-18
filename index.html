@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./styles.css" />
-    <!-- bcryptjs for client-side hash comparison (used by Login-Screen.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js" defer></script>
+    <!-- Simple-password mode: no bcrypt script needed -->
   </head>
   <body>
     <header class="topbar">
@@ -20,52 +19,43 @@
 
     <main id="app"></main>
 
-    <!-- SPA bootloader: preserves your current routing while wiring the Login screen -->
+    <!-- SPA bootloader: loads Login screen when not authed, loads app router when authed -->
     <script type="module">
       const SESSION_KEY = 'rpAuth';
       const navEl = document.getElementById('mainNav');
 
-      function isAuthed() {
-        return !!sessionStorage.getItem(SESSION_KEY);
-      }
+      const isAuthed = () => !!sessionStorage.getItem(SESSION_KEY);
 
-      // Decide which module to load based on auth + route
       async function boot() {
         const authed = isAuthed();
 
-        // If not authenticated, hide nav and force login route
         if (!authed) {
+          // Hide nav, force login route, and render Login screen (supports passwordPlain)
           if (navEl) navEl.style.display = 'none';
           if (location.hash !== '#/login') location.hash = '#/login';
-          await import('./screens/Login-Screen.js'); // renders into #app
+          await import('./screens/Login-Screen.js');
           return;
         }
- 
-        // Authenticated: show nav and ensure a default route
+
+        // Show nav and ensure a default route when logged in
         if (navEl) navEl.style.display = '';
         if (!location.hash || location.hash === '#/login') {
           location.hash = '#/dashboard';
         }
 
-        // Load your existing SPA/router as before
+        // Load your SPA/router (app.js handles #/dashboard, #/create, etc.)
         await import('./app.js');
       }
 
-      // Re-run boot when the hash changes (simple guard)
+      // Re-run boot on route changes so we keep auth gating tight
       window.addEventListener('hashchange', () => {
         const authed = isAuthed();
 
-        // Block any non-login route if not authed
         if (!authed && location.hash !== '#/login') {
           location.hash = '#/login';
         }
 
-        // Toggle nav visibility based on auth
         if (navEl) navEl.style.display = authed ? '' : 'none';
-
-        // Allow app.js (router) to handle route changes once authed.
-        // If we just became unauthenticated (e.g., after a logout implemented in app.js),
-        // Login-Screen will take over on the next boot call.
         boot();
       });
 
@@ -73,7 +63,6 @@
       boot();
     </script>
 
-    <!-- Important: must be served over HTTP(S), not file:// -->
-    <!-- Note: app.js is now loaded dynamically by the boot script above to preserve auth routing -->
+    <!-- Important: serve over HTTP(S), not file://, so fetch('./data/userLogins.json') works -->
   </body>
 </html>
