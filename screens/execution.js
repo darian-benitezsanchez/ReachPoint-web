@@ -1,3 +1,4 @@
+// screens/execution.js
 import { getAllStudents, applyFilters, getStudentId } from '../data/campaignsData.js';
 import { loadOrInitProgress, recordOutcome, getSummary, recordSurveyResponse, getSurveyResponse } from '../data/campaignProgress.js';
 
@@ -13,8 +14,8 @@ export async function Execute(root, campaign) {
   const idToStudent = {};
 
   let progress = null;
-  let mode = 'idle';               // 'idle' | 'running' | 'summary' | 'missed'
-  let passStrategy = 'unattempted';// 'unattempted' | 'missed'
+  let mode = 'idle';                // 'idle' | 'running' | 'summary' | 'missed'
+  let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
 
@@ -107,7 +108,7 @@ export async function Execute(root, campaign) {
     const pctNum = Math.round(pct()*100);
     return div('',
       div('progressWrap',
-        div('progressBar', div('progressFill', '', { width: pctNum + '%' })),
+        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
         ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
       )
     );
@@ -177,7 +178,8 @@ export async function Execute(root, campaign) {
     const keys = Object.keys(stu || {});
     if (!keys.length) card.append(ptext('No student fields available','muted'));
     for (const k of keys) {
-      const row = div('kv'); row.append(div('k',null,k), div('v',null,String(stu[k])));
+      const row = div('kv');
+      row.append(div('k', k), div('v', String(stu[k])));
       card.append(row);
     }
     return card;
@@ -203,16 +205,19 @@ export async function Execute(root, campaign) {
     return box;
   }
 
-  /* dom utilities */
-  function div(cls, styleOrChild, maybeStyle) {
+  /* dom utilities (SAFE VARIADIC VERSION) */
+  function div(cls, ...args) {
     const n = document.createElement('div');
     if (cls) n.className = cls;
-    if (styleOrChild && typeof styleOrChild === 'object' && !(styleOrChild instanceof Node)) {
-      Object.assign(n.style, styleOrChild);
-    } else if (styleOrChild != null) {
-      n.append(styleOrChild);
+    for (const a of args) {
+      if (a == null) continue;
+      if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
+        // treat plain objects as style objects
+        Object.assign(n.style, a);
+      } else {
+        n.append(a instanceof Node ? a : document.createTextNode(String(a)));
+      }
     }
-    if (maybeStyle) Object.assign(n.style, maybeStyle);
     return n;
   }
   function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; return n; }
@@ -227,7 +232,7 @@ export async function Execute(root, campaign) {
   function chipRow(arr){ const r=div('surveyChips'); arr.forEach(x=>r.append(x)); return r; }
   function cardKV(entries){
     const card = div('detailsCard'); card.style.width='90%';
-    for (const [k,v] of entries){ const row = div('kv'); row.append(div('k',null,k), div('v',null,String(v))); card.append(row); }
+    for (const [k,v] of entries){ const row = div('kv'); row.append(div('k', k), div('v', String(v))); card.append(row); }
     return card;
   }
 
