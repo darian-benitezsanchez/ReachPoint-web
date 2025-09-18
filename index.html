@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./styles.css" />
-    <!-- Simple-password mode: no bcrypt script needed -->
   </head>
   <body>
     <header class="topbar">
       <div class="brand">ReachPoint</div>
-      <nav class="nav" id="mainNav">
+      <nav class="nav">
         <a href="#/dashboard">Dashboard</a>
         <a href="#/create">New Campaign</a>
       </nav>
@@ -19,69 +18,12 @@
 
     <main id="app"></main>
 
-    <!-- Normalize GitHub Pages URLs: strip '/index.html' without reloading -->
+    <!-- Set a default route BEFORE the module loads -->
     <script>
-      (function normalizeUrl() {
-        var p = location.pathname;
-        if (p.endsWith('index.html')) {
-          var clean = p.slice(0, -'index.html'.length);
-          history.replaceState(null, '', clean + location.search + location.hash);
-        }
-      })();
+      if (!location.hash) location.hash = '#/dashboard';
     </script>
 
-    <!-- SPA bootloader: loads Login screen when not authed, loads app router when authed -->
-    <script type="module">
-      const SESSION_KEY = 'rpAuth';
-      const navEl = document.getElementById('mainNav');
-      const isAuthed = () => !!sessionStorage.getItem(SESSION_KEY);
-
-      async function boot() {
-        const authed = isAuthed();
-
-        if (!authed) {
-          // Hide nav, force login route, and render Login screen (supports passwordPlain)
-          if (navEl) navEl.style.display = 'none';
-          if (location.hash !== '#/login') location.hash = '#/login';
-          await import('./screens/Login-Screen.js');
-          return;
-        }
-
-        // Show nav and ensure a default route when logged in
-        if (navEl) navEl.style.display = '';
-        if (!location.hash || location.hash === '#/login') {
-          location.hash = '#/dashboard';
-        }
-
-        // Load your SPA/router (app.js handles #/dashboard, #/create, etc.)
-        const m = await import('./app.js');
-
-        // Nudge the router once in case it only renders on hashchange/initial call
-        if (m && typeof m.renderRoute === 'function') {
-          m.renderRoute();              // preferred if your app.js exports it
-        } else {
-          window.dispatchEvent(new HashChangeEvent('hashchange')); // fallback kick
-        }
-      }
-
-      // Re-run boot on route changes so we keep auth gating tight
-      window.addEventListener('hashchange', () => {
-        const authed = isAuthed();
-
-        if (!authed && location.hash !== '#/login') {
-          location.hash = '#/login';
-        }
-
-        if (navEl) navEl.style.display = authed ? '' : 'none';
-        // Only re-boot when moving between logged-in/out states or first load
-        // (It's harmless to call; boot() will early-return when appropriate.)
-        boot();
-      });
-
-      // Initial boot
-      boot();
-    </script>
-
-    <!-- Important: serve over HTTP(S), not file://, so fetch('./data/userLogins.json') works -->
+    <!-- Important: must be served over HTTP(S), not file:// -->
+    <script type="module" src="./app.js"></script>
   </body>
 </html>
