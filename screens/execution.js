@@ -25,11 +25,10 @@ export async function Execute(root, campaign) {
   let currentId = undefined;
   let selectedSurveyAnswer = null;
 
-  // Undo stack of user-facing steps
-  // { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
+  // Undo stack
   const undoStack = [];
 
-  // ======= BOOT (with error splash) =======
+  // ======= BOOT =======
   try {
     students = await getAllStudents();
     filtered = applyFilters(students, campaign.filters || []);
@@ -123,17 +122,17 @@ export async function Execute(root, campaign) {
     }
   }
 
-  // ======= Keyboard shortcuts (cleanup on re-entry) =======
+  // ======= Keyboard shortcuts =======
   const keyHandler = (e)=>{
     if (mode!=='running' && mode!=='missed') return;
     const k = (e.key || '').toLowerCase();
     if (k==='arrowleft' || k==='n') onOutcome('no_answer');
     if (k==='arrowright' || k==='a') onOutcome('answered');
-    if (k==='escape' || k==='backspace') onBack(); // quick undo
+    if (k==='escape' || k==='backspace') onBack();
   };
   window.addEventListener('keydown', keyHandler);
 
-  // ======= Swipe (pointer) with guard so buttons still work =======
+  // ======= Swipe =======
   function isNoSwipeTarget(ev){
     const t = ev.target;
     return !!(t && t.closest && t.closest('[data-noswipe="1"]'));
@@ -197,7 +196,6 @@ export async function Execute(root, campaign) {
         const stu = idToStudent[currentId] || {};
         const phone = stu['Mobile Phone*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
 
-        // Full name (bold). Pull from various fields with a safe fallback.
         const fullName = String(
           stu.full_name ??
           stu.fullName ??
@@ -209,11 +207,16 @@ export async function Execute(root, campaign) {
         const swipe = div('');
         attachSwipe(swipe);
 
-        // Phone UI: centered + green emphasis
+        // Full name
+        const nameEl = h1(fullName);
+        nameEl.style.textAlign = 'center';
+        nameEl.style.fontWeight = '800';
+
+        // Phone
         const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
         phoneEl.style.display = 'inline-block';
         phoneEl.style.fontWeight = '800';
-        phoneEl.style.color = '#16a34a';           // green
+        phoneEl.style.color = '#16a34a';
         phoneEl.style.textAlign = 'center';
         const phoneWrap = div('', { textAlign: 'center', marginTop: '8px', marginBottom:'6px' });
         phoneWrap.append(phoneEl);
@@ -226,14 +229,14 @@ export async function Execute(root, campaign) {
         if (backBtn.disabled) backBtn.style.opacity = '.6';
 
         swipe.append(
-          h1(fullName),                                     // bold name on top
+          nameEl,
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phoneWrap,                                        // centered green phone
+          phoneWrap,
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          actionRow(noBtn, yesBtn),                         // primary actions
-          center(backBtn)                                   // Back/Undo beneath
+          actionRow(noBtn, yesBtn, backBtn)   // All three side by side
         );
+
         card.append(swipe);
         wrap.append(card);
       }
@@ -252,12 +255,12 @@ export async function Execute(root, campaign) {
 
   render();
 
-  // ======= teardown on route change (optional) =======
+  // ======= teardown =======
   window.addEventListener('hashchange', () => {
     window.removeEventListener('keydown', keyHandler);
   });
 
-  /* ---- tiny view helpers ---- */
+  /* ---- helpers ---- */
   function details(stu){
     const card = div('detailsCard');
     const keys = Object.keys(stu || {});
@@ -268,7 +271,6 @@ export async function Execute(root, campaign) {
       const keyNode = div('k', k);
       const valNode = div('v');
 
-      // Heuristic: make phone-like fields clickable
       const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
       const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
 
@@ -308,7 +310,7 @@ export async function Execute(root, campaign) {
     return box;
   }
 
-  /* ===== tel: helpers (click-to-call) ===== */
+  /* ===== tel: helpers ===== */
   function cleanDigits(s) {
     return String(s || '').replace(/[^\d+]/g, '');
   }
@@ -322,7 +324,7 @@ export async function Execute(root, campaign) {
     return 'tel:' + n;
   }
   function humanPhone(raw) {
-    const d = cleanDigits(raw).replace(/^\+?1/, ''); // trim +1 for display
+    const d = cleanDigits(raw).replace(/^\+?1/, '');
     if (d.length === 10) return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
     return String(raw);
   }
@@ -342,7 +344,7 @@ export async function Execute(root, campaign) {
         const ok = confirm(`Place a call to ${label} with your device?`);
         if (!ok) { e.preventDefault(); return; }
         e.preventDefault();
-        window.location.href = href; // Safari-friendly
+        window.location.href = href;
       });
     }
     return a;
@@ -364,14 +366,13 @@ export async function Execute(root, campaign) {
     return a;
   }
 
-  /* dom utilities (SAFE VARIADIC VERSION) */
+  /* dom utilities */
   function div(cls, ...args) {
     const n = document.createElement('div');
     if (cls) n.className = cls;
     for (const a of args) {
       if (a == null) continue;
       if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
-        // treat plain objects as style objects
         Object.assign(n.style, a);
       } else {
         n.append(a instanceof Node ? a : document.createTextNode(String(a)));
@@ -379,13 +380,7 @@ export async function Execute(root, campaign) {
     }
     return n;
   }
-  function h1(t){
-    const n=document.createElement('div');
-    n.className='title';
-    n.textContent=t;
-    n.style.fontWeight = '800';  // bold title
-    return n;
-  }
+  function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; n.style.fontWeight='800'; return n; }
   function h2(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function ptext(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function center(...kids){ const n=div('center'); kids.forEach(k=>k && n.append(k)); return n; }
