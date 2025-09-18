@@ -5,7 +5,9 @@ import {
   recordOutcome,
   getSummary,
   recordSurveyResponse,
-  getSurveyResponse
+  getSurveyResponse,
+  recordNote,            // <= NEW
+  getNote                // <= NEW
 } from '../data/campaignProgress.js';
 
 export async function Execute(root, campaign) {
@@ -24,11 +26,13 @@ export async function Execute(root, campaign) {
   let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
+  let currentNotes = '';            // <= NEW: local cache of notes text
 
-  // Undo stack
+  // NEW: simple undo stack of the last user-facing steps
+  // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
   const undoStack = [];
 
-  // ======= BOOT =======
+  // ======= BOOT (with error splash) =======
   try {
     students = await getAllStudents();
     filtered = applyFilters(students, campaign.filters || []);
@@ -66,6 +70,7 @@ export async function Execute(root, campaign) {
     progress = await loadOrInitProgress(campaign.id, queueIds);
     currentId = pickNextId(progress, strategy, skipId);
     selectedSurveyAnswer = null;
+    currentNotes = ''; // reset; will be loaded lazily
     if (!currentId) mode = 'summary';
     render();
   }
@@ -75,6 +80,7 @@ export async function Execute(root, campaign) {
 
   async function onSelectSurvey(ans){
     if (!currentId) return;
+    // push undo BEFORE changing it
     const prev = await getSurveyResponse(campaign.id, currentId);
     undoStack.push({ type:'survey', campaignId: campaign.id, studentId: currentId, prev, next: ans });
 
@@ -86,6 +92,7 @@ export async function Execute(root, campaign) {
   async function onOutcome(kind){
     if (!currentId) return;
 
+    // Capture a nav-style undo so we can jump back to this contact if needed.
     undoStack.push({
       type: 'outcome',
       campaignId: campaign.id,
@@ -99,8 +106,10 @@ export async function Execute(root, campaign) {
     await advance(passStrategy, skip);
   }
 
+  // NEW: central undo handler
   async function onBack() {
     if (!undoStack.length) return;
+
     const last = undoStack.pop();
 
     if (last.type === 'survey') {
@@ -108,6 +117,8 @@ export async function Execute(root, campaign) {
       currentId = last.studentId;
       selectedSurveyAnswer = last.prev ?? null;
       if (mode!=='running' && mode!=='missed') mode = 'running';
+      // Reload notes for this contact, too
+      currentNotes = await getNote(last.campaignId, last.studentId);
       render();
       return;
     }
@@ -116,23 +127,23 @@ export async function Execute(root, campaign) {
       mode = last.prevMode || 'running';
       passStrategy = last.prevStrategy || passStrategy;
       currentId = last.studentId;
-      await ensureSurveySelected();
+      await ensureSurveyAndNotesLoaded();
       render();
       return;
     }
   }
 
-  // ======= Keyboard shortcuts =======
+  // ======= Keyboard shortcuts (cleanup on re-entry) =======
   const keyHandler = (e)=>{
     if (mode!=='running' && mode!=='missed') return;
     const k = (e.key || '').toLowerCase();
     if (k==='arrowleft' || k==='n') onOutcome('no_answer');
     if (k==='arrowright' || k==='a') onOutcome('answered');
-    if (k==='escape' || k==='backspace') onBack();
+    if (k==='escape' || k==='backspace') onBack(); // NEW: quick undo
   };
   window.addEventListener('keydown', keyHandler);
 
-  // ======= Swipe =======
+  // ======= Swipe (pointer) with guard so buttons still work =======
   function isNoSwipeTarget(ev){
     const t = ev.target;
     return !!(t && t.closest && t.closest('[data-noswipe="1"]'));
@@ -140,7 +151,7 @@ export async function Execute(root, campaign) {
   function attachSwipe(el){
     let startX = null, dx = 0;
     el.onpointerdown = (ev)=>{
-      if (isNoSwipeTarget(ev)) return;
+      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
       startX = ev.clientX; dx = 0;
       try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
     };
@@ -160,6 +171,12 @@ export async function Execute(root, campaign) {
     };
   }
 
+  // ======= Lazy-load current contact's survey & notes =======
+  async function ensureSurveyAndNotesLoaded() {
+    if (!currentId) return;
+    selectedSurveyAnswer = await getSurveyResponse(campaign.id, currentId);
+    currentNotes = await getNote(campaign.id, currentId);
+  }
   async function ensureSurveySelected() {
     if (!currentId) return;
     selectedSurveyAnswer = await getSurveyResponse(campaign.id, currentId);
@@ -168,10 +185,21 @@ export async function Execute(root, campaign) {
   function header() {
     const t = totals();
     const pctNum = Math.round(pct()*100);
+
+    // NEW: Back button in header (kept if you use it)
+    const backBtn = button('← Back', 'btn backBtn', onBack);
+    backBtn.disabled = undoStack.length === 0;
+    if (backBtn.disabled) backBtn.style.opacity = '.6';
+
+    const left = div('headerLeft', backBtn);
+
     return div('',
-      div('progressWrap',
-        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
-        ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+      div('topHeader',
+        left,
+        div('progressWrap',
+          div('progressBar', div('progressFill'), { width: pctNum + '%' }),
+          ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+        )
       )
     );
   }
@@ -192,51 +220,26 @@ export async function Execute(root, campaign) {
       }
 
       if ((mode==='running' || mode==='missed') && currentId){
-        ensureSurveySelected();
+        ensureSurveyAndNotesLoaded();
         const stu = idToStudent[currentId] || {};
         const phone = stu['Mobile Phone*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
-
-        const fullName = String(
-          stu.full_name ??
-          stu.fullName ??
-          stu['Full Name*'] ??
-          `${stu.first_name ?? ''} ${stu.last_name ?? ''}`
-        ).trim() || 'Current contact';
 
         const card = div('', { padding: '16px', paddingBottom:'36px' });
         const swipe = div('');
         attachSwipe(swipe);
 
-        // Full name
-        const nameEl = h1(fullName);
-        nameEl.style.textAlign = 'center';
-        nameEl.style.fontWeight = '800';
-
-        // Phone
-        const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
-        phoneEl.style.display = 'inline-block';
-        phoneEl.style.fontWeight = '800';
-        phoneEl.style.color = '#16a34a';
-        phoneEl.style.textAlign = 'center';
-        const phoneWrap = div('', { textAlign: 'center', marginTop: '8px', marginBottom:'6px' });
-        phoneWrap.append(phoneEl);
-
-        // Buttons
-        const noBtn  = button('No Answer','btn no', ()=>onOutcome('no_answer'));
-        const yesBtn = button('Answered','btn yes', ()=>onOutcome('answered'));
-        const backBtn = button('← Back','btn backBtn', onBack);
-        backBtn.disabled = undoStack.length === 0;
-        if (backBtn.disabled) backBtn.style.opacity = '.6';
-
         swipe.append(
-          nameEl,
+          h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phoneWrap,
+          phone ? callButton(phone) : disabledBtn('No phone number'),
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          actionRow(noBtn, yesBtn, backBtn)   // All three side by side
+          notesBlock(currentNotes, onChangeNotes),    // <= NEW: Notes UI
+          actionRow(
+            button('No Answer','btn no', ()=>onOutcome('no_answer')),
+            button('Answered','btn yes', ()=>onOutcome('answered'))
+          )
         );
-
         card.append(swipe);
         wrap.append(card);
       }
@@ -255,12 +258,59 @@ export async function Execute(root, campaign) {
 
   render();
 
-  // ======= teardown =======
+  // ======= teardown on route change (optional) =======
   window.addEventListener('hashchange', () => {
     window.removeEventListener('keydown', keyHandler);
   });
 
-  /* ---- helpers ---- */
+  /* ---------------- Notes UI & Handlers ---------------- */
+
+  // Debounce utility so we don't hammer localStorage
+  function debounce(fn, delay=400) {
+    let t = 0;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), delay);
+    };
+  }
+
+  const debouncedSaveNotes = debounce(async (cid, sid, text) => {
+    try { await recordNote(cid, sid, text); } catch{}
+  }, 400);
+
+  async function onChangeNotes(text) {
+    if (!currentId) return;
+    currentNotes = text;
+    debouncedSaveNotes(campaign.id, currentId, currentNotes);
+  }
+
+  function notesBlock(value, onChange){
+    const container = div('notesCard');
+    const title = h2('Notes from this call', 'notesTitle');
+    title.style.marginTop = '6px';
+    title.style.fontWeight = '700';
+
+    const ta = document.createElement('textarea');
+    ta.value = value || '';
+    ta.rows = 4;
+    ta.placeholder = 'Type any important notes here...';
+    ta.style.width = '100%';
+    ta.style.padding = '10px';
+    ta.style.border = '1px solid #d1d5db';
+    ta.style.borderRadius = '8px';
+    ta.style.fontFamily = 'inherit';
+    ta.style.fontSize = '14px';
+    ta.setAttribute('data-noswipe','1');
+    ta.addEventListener('pointerdown', e => e.stopPropagation());
+
+    ta.addEventListener('input', () => onChange(ta.value));
+    ta.addEventListener('blur', () => onChange(ta.value)); // ensure save on blur
+
+    container.append(title, ta);
+    return container;
+  }
+
+  /* ---- tiny view helpers ---- */
   function details(stu){
     const card = div('detailsCard');
     const keys = Object.keys(stu || {});
@@ -271,6 +321,7 @@ export async function Execute(root, campaign) {
       const keyNode = div('k', k);
       const valNode = div('v');
 
+      // Heuristic: make phone-like fields clickable
       const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
       const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
 
@@ -310,7 +361,7 @@ export async function Execute(root, campaign) {
     return box;
   }
 
-  /* ===== tel: helpers ===== */
+  /* ===== tel: helpers (click-to-call) ===== */
   function cleanDigits(s) {
     return String(s || '').replace(/[^\d+]/g, '');
   }
@@ -324,7 +375,7 @@ export async function Execute(root, campaign) {
     return 'tel:' + n;
   }
   function humanPhone(raw) {
-    const d = cleanDigits(raw).replace(/^\+?1/, '');
+    const d = cleanDigits(raw).replace(/^\+?1/, ''); // trim +1 for display
     if (d.length === 10) return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
     return String(raw);
   }
@@ -344,7 +395,7 @@ export async function Execute(root, campaign) {
         const ok = confirm(`Place a call to ${label} with your device?`);
         if (!ok) { e.preventDefault(); return; }
         e.preventDefault();
-        window.location.href = href;
+        window.location.href = href; // Safari-friendly
       });
     }
     return a;
@@ -366,13 +417,14 @@ export async function Execute(root, campaign) {
     return a;
   }
 
-  /* dom utilities */
+  /* dom utilities (SAFE VARIADIC VERSION) */
   function div(cls, ...args) {
     const n = document.createElement('div');
     if (cls) n.className = cls;
     for (const a of args) {
       if (a == null) continue;
       if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
+        // treat plain objects as style objects
         Object.assign(n.style, a);
       } else {
         n.append(a instanceof Node ? a : document.createTextNode(String(a)));
@@ -380,7 +432,7 @@ export async function Execute(root, campaign) {
     }
     return n;
   }
-  function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; n.style.fontWeight='800'; return n; }
+  function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; return n; }
   function h2(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function ptext(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function center(...kids){ const n=div('center'); kids.forEach(k=>k && n.append(k)); return n; }
