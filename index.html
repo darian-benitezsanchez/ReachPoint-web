@@ -19,11 +19,21 @@
 
     <main id="app"></main>
 
+    <!-- Normalize GitHub Pages URLs: strip '/index.html' without reloading -->
+    <script>
+      (function normalizeUrl() {
+        var p = location.pathname;
+        if (p.endsWith('index.html')) {
+          var clean = p.slice(0, -'index.html'.length);
+          history.replaceState(null, '', clean + location.search + location.hash);
+        }
+      })();
+    </script>
+
     <!-- SPA bootloader: loads Login screen when not authed, loads app router when authed -->
     <script type="module">
       const SESSION_KEY = 'rpAuth';
       const navEl = document.getElementById('mainNav');
-
       const isAuthed = () => !!sessionStorage.getItem(SESSION_KEY);
 
       async function boot() {
@@ -44,7 +54,14 @@
         }
 
         // Load your SPA/router (app.js handles #/dashboard, #/create, etc.)
-        await import('./app.js');
+        const m = await import('./app.js');
+
+        // Nudge the router once in case it only renders on hashchange/initial call
+        if (m && typeof m.renderRoute === 'function') {
+          m.renderRoute();              // preferred if your app.js exports it
+        } else {
+          window.dispatchEvent(new HashChangeEvent('hashchange')); // fallback kick
+        }
       }
 
       // Re-run boot on route changes so we keep auth gating tight
@@ -56,6 +73,8 @@
         }
 
         if (navEl) navEl.style.display = authed ? '' : 'none';
+        // Only re-boot when moving between logged-in/out states or first load
+        // (It's harmless to call; boot() will early-return when appropriate.)
         boot();
       });
 
