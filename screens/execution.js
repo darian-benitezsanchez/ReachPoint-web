@@ -1,6 +1,12 @@
 // screens/execution.js
 import { getAllStudents, applyFilters, getStudentId } from '../data/campaignsData.js';
-import { loadOrInitProgress, recordOutcome, getSummary, recordSurveyResponse, getSurveyResponse } from '../data/campaignProgress.js';
+import {
+  loadOrInitProgress,
+  recordOutcome,
+  getSummary,
+  recordSurveyResponse,
+  getSurveyResponse
+} from '../data/campaignProgress.js';
 
 export async function Execute(root, campaign) {
   if (!campaign) { location.hash = '#/dashboard'; return; }
@@ -18,6 +24,10 @@ export async function Execute(root, campaign) {
   let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
+
+  // NEW: simple undo stack of the last user-facing steps
+  // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
+  const undoStack = [];
 
   // ======= BOOT (with error splash) =======
   try {
@@ -66,15 +76,63 @@ export async function Execute(root, campaign) {
 
   async function onSelectSurvey(ans){
     if (!currentId) return;
+    // push undo BEFORE changing it
+    const prev = await getSurveyResponse(campaign.id, currentId);
+    undoStack.push({ type:'survey', campaignId: campaign.id, studentId: currentId, prev, next: ans });
+
     selectedSurveyAnswer = ans;
     await recordSurveyResponse(campaign.id, currentId, ans);
     render();
   }
+
   async function onOutcome(kind){
     if (!currentId) return;
+
+    // Capture a nav-style undo so we can jump back to this contact if needed.
+    // We don’t try to reverse internal attempt counters; instead we bring the user back
+    // so they can overwrite the outcome cleanly.
+    undoStack.push({
+      type: 'outcome',
+      campaignId: campaign.id,
+      studentId: currentId,
+      prevMode: mode,
+      prevStrategy: passStrategy
+    });
+
     progress = await recordOutcome(campaign.id, currentId, kind);
     const skip = passStrategy==='missed' ? currentId : undefined;
     await advance(passStrategy, skip);
+  }
+
+  // NEW: central undo handler
+  async function onBack() {
+    if (!undoStack.length) return;
+
+    const last = undoStack.pop();
+
+    // If last action was a survey selection, we truly restore prior selection in storage.
+    if (last.type === 'survey') {
+      // Restore previous survey answer (can be null/undefined)
+      await recordSurveyResponse(last.campaignId, last.studentId, last.prev ?? null);
+      // If we’re currently on a different student, jump back to that student
+      currentId = last.studentId;
+      selectedSurveyAnswer = last.prev ?? null;
+      // Stay in running/missed mode if we were; else default to running
+      if (mode!=='running' && mode!=='missed') mode = 'running';
+      render();
+      return;
+    }
+
+    // If last action was outcome, we navigate back to that contact so the user can immediately correct it.
+    if (last.type === 'outcome' || last.type === 'nav') {
+      mode = last.prevMode || 'running';
+      passStrategy = last.prevStrategy || passStrategy;
+      currentId = last.studentId;
+      // Preload any saved survey answer for this contact
+      await ensureSurveySelected();
+      render();
+      return;
+    }
   }
 
   // ======= Keyboard shortcuts (cleanup on re-entry) =======
@@ -83,6 +141,7 @@ export async function Execute(root, campaign) {
     const k = (e.key || '').toLowerCase();
     if (k==='arrowleft' || k==='n') onOutcome('no_answer');
     if (k==='arrowright' || k==='a') onOutcome('answered');
+    if (k==='escape' || k==='backspace') onBack(); // NEW: quick undo
   };
   window.addEventListener('keydown', keyHandler);
 
@@ -122,10 +181,21 @@ export async function Execute(root, campaign) {
   function header() {
     const t = totals();
     const pctNum = Math.round(pct()*100);
+
+    // NEW: Back button in header
+    const backBtn = button('← Back', 'btn backBtn', onBack);
+    backBtn.disabled = undoStack.length === 0;
+    if (backBtn.disabled) backBtn.style.opacity = '.6';
+
+    const left = div('headerLeft', backBtn);
+
     return div('',
-      div('progressWrap',
-        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
-        ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+      div('topHeader',
+        left,
+        div('progressWrap',
+          div('progressBar', div('progressFill'), { width: pctNum + '%' }),
+          ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+        )
       )
     );
   }
