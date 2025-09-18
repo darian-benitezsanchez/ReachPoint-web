@@ -25,8 +25,8 @@ export async function Execute(root, campaign) {
   let currentId = undefined;
   let selectedSurveyAnswer = null;
 
-  // NEW: simple undo stack of the last user-facing steps
-  // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
+  // Undo stack of user-facing steps
+  // { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
   const undoStack = [];
 
   // ======= BOOT (with error splash) =======
@@ -76,7 +76,6 @@ export async function Execute(root, campaign) {
 
   async function onSelectSurvey(ans){
     if (!currentId) return;
-    // push undo BEFORE changing it
     const prev = await getSurveyResponse(campaign.id, currentId);
     undoStack.push({ type:'survey', campaignId: campaign.id, studentId: currentId, prev, next: ans });
 
@@ -88,9 +87,6 @@ export async function Execute(root, campaign) {
   async function onOutcome(kind){
     if (!currentId) return;
 
-    // Capture a nav-style undo so we can jump back to this contact if needed.
-    // We don’t try to reverse internal attempt counters; instead we bring the user back
-    // so they can overwrite the outcome cleanly.
     undoStack.push({
       type: 'outcome',
       campaignId: campaign.id,
@@ -104,31 +100,23 @@ export async function Execute(root, campaign) {
     await advance(passStrategy, skip);
   }
 
-  // NEW: central undo handler
   async function onBack() {
     if (!undoStack.length) return;
-
     const last = undoStack.pop();
 
-    // If last action was a survey selection, we truly restore prior selection in storage.
     if (last.type === 'survey') {
-      // Restore previous survey answer (can be null/undefined)
       await recordSurveyResponse(last.campaignId, last.studentId, last.prev ?? null);
-      // If we’re currently on a different student, jump back to that student
       currentId = last.studentId;
       selectedSurveyAnswer = last.prev ?? null;
-      // Stay in running/missed mode if we were; else default to running
       if (mode!=='running' && mode!=='missed') mode = 'running';
       render();
       return;
     }
 
-    // If last action was outcome, we navigate back to that contact so the user can immediately correct it.
     if (last.type === 'outcome' || last.type === 'nav') {
       mode = last.prevMode || 'running';
       passStrategy = last.prevStrategy || passStrategy;
       currentId = last.studentId;
-      // Preload any saved survey answer for this contact
       await ensureSurveySelected();
       render();
       return;
@@ -141,7 +129,7 @@ export async function Execute(root, campaign) {
     const k = (e.key || '').toLowerCase();
     if (k==='arrowleft' || k==='n') onOutcome('no_answer');
     if (k==='arrowright' || k==='a') onOutcome('answered');
-    if (k==='escape' || k==='backspace') onBack(); // NEW: quick undo
+    if (k==='escape' || k==='backspace') onBack(); // quick undo
   };
   window.addEventListener('keydown', keyHandler);
 
@@ -153,7 +141,7 @@ export async function Execute(root, campaign) {
   function attachSwipe(el){
     let startX = null, dx = 0;
     el.onpointerdown = (ev)=>{
-      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
+      if (isNoSwipeTarget(ev)) return;
       startX = ev.clientX; dx = 0;
       try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
     };
@@ -181,21 +169,10 @@ export async function Execute(root, campaign) {
   function header() {
     const t = totals();
     const pctNum = Math.round(pct()*100);
-
-    // NEW: Back button in header
-    const backBtn = button('← Back', 'btn backBtn', onBack);
-    backBtn.disabled = undoStack.length === 0;
-    if (backBtn.disabled) backBtn.style.opacity = '.6';
-
-    const left = div('headerLeft', backBtn);
-
     return div('',
-      div('topHeader',
-        left,
-        div('progressWrap',
-          div('progressBar', div('progressFill'), { width: pctNum + '%' }),
-          ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
-        )
+      div('progressWrap',
+        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
+        ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
       )
     );
   }
@@ -220,21 +197,42 @@ export async function Execute(root, campaign) {
         const stu = idToStudent[currentId] || {};
         const phone = stu['Mobile Phone*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
 
+        // Full name (bold). Pull from various fields with a safe fallback.
+        const fullName = String(
+          stu.full_name ??
+          stu.fullName ??
+          stu['Full Name*'] ??
+          `${stu.first_name ?? ''} ${stu.last_name ?? ''}`
+        ).trim() || 'Current contact';
+
         const card = div('', { padding: '16px', paddingBottom:'36px' });
         const swipe = div('');
         attachSwipe(swipe);
 
+        // Phone UI: centered + green emphasis
+        const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
+        phoneEl.style.display = 'inline-block';
+        phoneEl.style.fontWeight = '800';
+        phoneEl.style.color = '#16a34a';           // green
+        phoneEl.style.textAlign = 'center';
+        const phoneWrap = div('', { textAlign: 'center', marginTop: '8px', marginBottom:'6px' });
+        phoneWrap.append(phoneEl);
+
+        // Buttons
+        const noBtn  = button('No Answer','btn no', ()=>onOutcome('no_answer'));
+        const yesBtn = button('Answered','btn yes', ()=>onOutcome('answered'));
+        const backBtn = button('← Back','btn backBtn', onBack);
+        backBtn.disabled = undoStack.length === 0;
+        if (backBtn.disabled) backBtn.style.opacity = '.6';
+
         swipe.append(
-          h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
+          h1(fullName),                                     // bold name on top
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phone ? callButton(phone) : disabledBtn('No phone number'),
+          phoneWrap,                                        // centered green phone
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          actionRow(
-            // mark these controls as no-swipe and stop pointerdown propagation
-            button('No Answer','btn no', ()=>onOutcome('no_answer')),
-            button('Answered','btn yes', ()=>onOutcome('answered'))
-          )
+          actionRow(noBtn, yesBtn),                         // primary actions
+          center(backBtn)                                   // Back/Undo beneath
         );
         card.append(swipe);
         wrap.append(card);
@@ -381,7 +379,13 @@ export async function Execute(root, campaign) {
     }
     return n;
   }
-  function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; return n; }
+  function h1(t){
+    const n=document.createElement('div');
+    n.className='title';
+    n.textContent=t;
+    n.style.fontWeight = '800';  // bold title
+    return n;
+  }
   function h2(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function ptext(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function center(...kids){ const n=div('center'); kids.forEach(k=>k && n.append(k)); return n; }
