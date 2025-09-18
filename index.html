@@ -40,7 +40,7 @@
           await import('./screens/Login-Screen.js'); // renders into #app
           return;
         }
-
+ 
         // Authenticated: show nav and ensure a default route
         if (navEl) navEl.style.display = '';
         if (!location.hash || location.hash === '#/login') {
