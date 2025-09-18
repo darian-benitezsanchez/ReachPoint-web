@@ -71,7 +71,7 @@ async function handleLoginSubmit(e) {
     if (typeof user.passwordPlain === 'string') {
       if (password === user.passwordPlain) {
         setSession(user);
-        window.location.href = './dashboard.html';
+        window.location.href = '#/dashboard';
         return;
       }
       errEl.textContent = 'Invalid credentials.';
@@ -88,7 +88,7 @@ async function handleLoginSubmit(e) {
       const ok = bcryptLib.compareSync(password, user.passwordHash);
       if (ok) {
         setSession(user);
-        window.location.href = './dashboard.html';
+        window.location.href = '#/dashboard';
         return;
       }
       errEl.textContent = 'Invalid credentials.';
@@ -111,7 +111,7 @@ function attachHandlers() {
 (function init() {
   // If already logged in, skip to dashboard
   if (sessionStorage.getItem(SESSION_KEY)) {
-    window.location.replace('./dashboard.html');
+    window.location.replace('#/dashboard');
     return;
   }
 
