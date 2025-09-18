@@ -34,7 +34,7 @@ function requireAuthOrRedirect() {
   const auth = getAuth();
   if (!auth) {
     // Use your SPA route for login
-    window.location.replace('./index.html#/login');
+    window.location.replace('#/login');
     return null;
   }
   return auth;
@@ -42,7 +42,7 @@ function requireAuthOrRedirect() {
 
 function logout() {
   sessionStorage.removeItem(SESSION_KEY);
-  window.location.replace('./index.html#/login');
+  window.location.replace('#/login');
 }
 
 /* --------------------------------- UI ------------------------------------ */
