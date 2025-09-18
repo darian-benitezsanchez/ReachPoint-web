@@ -2,7 +2,7 @@
 // Renders the login screen and handles sign-in for a private site.
 // Requires bcryptjs (browser) loaded by index.html.
 
-const LOGIN_JSON_URL = '../data/userLogins.json';
+const LOGIN_JSON_URL = './data/userLogins.json';
 const SESSION_KEY = 'rpAuth';
 
 function setSession(user) {
