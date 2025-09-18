@@ -86,15 +86,31 @@ export async function Execute(root, campaign) {
   };
   window.addEventListener('keydown', keyHandler);
 
-  // ======= Swipe (pointer) with fallbacks =======
+  // ======= Swipe (pointer) with guard so buttons still work =======
+  function isNoSwipeTarget(ev){
+    const t = ev.target;
+    return !!(t && t.closest && t.closest('[data-noswipe="1"]'));
+  }
   function attachSwipe(el){
     let startX = null, dx = 0;
-    el.onpointerdown = (ev)=>{ startX = ev.clientX; dx = 0; try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{} };
-    el.onpointermove = (ev)=>{ if(startX==null) return; dx = ev.clientX - startX; el.style.transform = `translateX(${dx}px) rotate(${dx/30}deg)`; };
-    el.onpointerup = ()=> {
-      if (dx > 80) onOutcome('answered');
-      else if (dx < -80) onOutcome('no_answer');
-      el.style.transform = ''; startX=null; dx=0;
+    el.onpointerdown = (ev)=>{
+      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
+      startX = ev.clientX; dx = 0;
+      try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
+    };
+    el.onpointermove = (ev)=>{
+      if (startX==null) return;
+      dx = ev.clientX - startX;
+      el.style.transform = `translateX(${dx}px) rotate(${dx/30}deg)`;
+    };
+    el.onpointerup = (ev)=> {
+      if (startX==null) return;
+      if (!isNoSwipeTarget(ev)) {
+        if (dx > 80) onOutcome('answered');
+        else if (dx < -80) onOutcome('no_answer');
+      }
+      el.style.transform = '';
+      startX=null; dx=0;
     };
   }
 
@@ -145,6 +161,7 @@ export async function Execute(root, campaign) {
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
           actionRow(
+            // mark these controls as no-swipe and stop pointerdown propagation
             button('No Answer','btn no', ()=>onOutcome('no_answer')),
             button('Answered','btn yes', ()=>onOutcome('answered'))
           )
@@ -198,9 +215,14 @@ export async function Execute(root, campaign) {
 
   function surveyBlock(survey, sel, onPick){
     if (!survey || !survey.question || !Array.isArray(survey.options) || !survey.options.length) return div('');
+    const options = survey.options.map(opt => {
+      const c = chip(opt, 'surveyChip'+(sel===opt?' sel':''), ()=>onPick(opt));
+      c.setAttribute('data-noswipe','1');
+      return c;
+    });
     const box = div('surveyCard',
       h2(survey.question,'surveyTitle'),
-      chipRow(survey.options.map(opt => chip(opt, 'surveyChip'+(sel===opt?' sel':''), ()=>onPick(opt)))),
+      chipRow(options),
       ptext(sel ? `Saved: ${sel}` : 'Tap an option to record a response', sel ? 'surveySaved' : 'surveyHint')
     );
     return box;
@@ -245,6 +267,8 @@ export async function Execute(root, campaign) {
     a.textContent = href ? `Call ${label}` : 'No phone number';
     a.style.pointerEvents = href ? 'auto' : 'none';
     a.style.opacity = href ? '1' : '.6';
+    a.setAttribute('data-noswipe','1');
+    a.addEventListener('pointerdown', e => e.stopPropagation());
     if (href) {
       a.addEventListener('click', (e) => {
         const ok = confirm(`Place a call to ${label} with your device?`);
@@ -263,6 +287,8 @@ export async function Execute(root, campaign) {
     a.textContent = humanPhone(val);
     a.style.color = 'inherit';
     a.style.textDecoration = 'underline';
+    a.setAttribute('data-noswipe','1');
+    a.addEventListener('pointerdown', e => e.stopPropagation());
     a.addEventListener('click', (e) => {
       e.preventDefault();
       window.location.href = href;
@@ -289,10 +315,26 @@ export async function Execute(root, campaign) {
   function h2(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function ptext(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function center(...kids){ const n=div('center'); kids.forEach(k=>k && n.append(k)); return n; }
-  function button(text, cls, on){ const b=document.createElement('button'); b.className=cls; b.textContent=text; b.onclick=on; return b; }
+  function button(text, cls, on){
+    const b=document.createElement('button');
+    b.className=cls;
+    b.textContent=text;
+    b.onclick=on;
+    b.setAttribute('data-noswipe','1');
+    b.addEventListener('pointerdown', e => e.stopPropagation());
+    return b;
+  }
   function actionRow(...kids){ const r=div('actions'); kids.forEach(k=>k&&r.append(k)); return r; }
-  function disabledBtn(text){ const b=document.createElement('button'); b.className='callBtn'; b.textContent=text; b.disabled=true; b.style.opacity=.6; return b; }
-  function chip(label, cls, on){ const c=document.createElement('button'); c.className=cls; c.textContent=label; c.onclick=on; return c; }
+  function disabledBtn(text){ const b=document.createElement('button'); b.className='callBtn'; b.textContent=text; b.disabled=true; b.style.opacity=.6; b.setAttribute('data-noswipe','1'); b.addEventListener('pointerdown', e => e.stopPropagation()); return b; }
+  function chip(label, cls, on){
+    const c=document.createElement('button');
+    c.className=cls;
+    c.textContent=label;
+    c.onclick=on;
+    c.setAttribute('data-noswipe','1');
+    c.addEventListener('pointerdown', e => e.stopPropagation());
+    return c;
+  }
   function chipRow(arr){ const r=div('surveyChips'); arr.forEach(x=>r.append(x)); return r; }
   function cardKV(entries){
     const card = div('detailsCard'); card.style.width='90%';
