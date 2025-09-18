@@ -1,8 +1,8 @@
 // screens/dashboard.js
-// Full Dashboard screen WITH an auth guard and a simple logout button.
-// - Blocks rendering if there is no session
-// - Redirects to the login screen if unauthenticated
-// - Shows current user in header and supports logout
+// Dashboard WITHOUT mandatory auth gating.
+// - Renders even if there's no session
+// - If logged in, shows user pill + Logout
+// - If not logged in, shows a "Sign in" button (no redirect enforced)
 
 import {
   listCampaigns,
@@ -18,7 +18,7 @@ import {
 } from '../data/campaignProgress.js';
 import { exportCsvSmart } from '../utils/exportReport.js';
 
-/* ------------------------------ Auth helpers ------------------------------ */
+/* ------------------------------ Session helpers ------------------------------ */
 const SESSION_KEY = 'rpAuth';
 
 function getAuth() {
@@ -30,43 +30,35 @@ function getAuth() {
   }
 }
 
-function requireAuthOrRedirect() {
-  const auth = getAuth();
-  if (!auth) {
-    // Use your SPA route for login
-    window.location.replace('#/login');
-    return null;
-  }
-  return auth;
-}
-
 function logout() {
   sessionStorage.removeItem(SESSION_KEY);
-  window.location.replace('#/login');
+  // Route-only navigation to avoid /index.html in URL on GitHub Pages
+  location.hash = '#/login';
 }
 
 /* --------------------------------- UI ------------------------------------ */
 export function Dashboard(root) {
-  // Auth gate
-  const auth = requireAuthOrRedirect();
-  if (!auth) return; // stop rendering if we just redirected
+  const auth = getAuth(); // may be null — that’s OK now
 
   root.innerHTML = '';
   const page = el('div');
 
-  // Top bar for the Dashboard screen (shows user + logout)
-  const screenTop = el(
-    'div',
-    'row space',
-    el('div', 'row gap',
-      el('h1', 'title', 'Your Campaigns'),
-      userPill(auth)
-    ),
-    div('row gap',
-      btn('Log out', 'btn btn-ghost', logout),
-      btn('+ New', 'btn btn-primary', () => (location.hash = '#/create'))
-    )
+  // Top bar (shows user info if present; else shows "Sign in")
+  const left = el('div', 'row gap',
+    el('h1', 'title', 'Your Campaigns'),
+    auth ? userPill(auth) : null
   );
+
+  const right = el(
+    'div',
+    'row gap',
+    auth
+      ? btn('Log out', 'btn btn-ghost', logout)
+      : btn('Sign in', 'btn btn-ghost', () => (location.hash = '#/login')),
+    btn('+ New', 'btn btn-primary', () => (location.hash = '#/create'))
+  );
+
+  const screenTop = el('div', 'row space', left, right);
   page.appendChild(screenTop);
 
   const toast = makeToast();
@@ -111,7 +103,6 @@ export function Dashboard(root) {
       const actions = div(
         'actions',
         icon('🗑️', 'icon danger', 'Delete campaign', async () => {
-          // inline confirm
           actions.replaceWith(confirmRow());
         }),
         div('spacer'),
@@ -190,7 +181,7 @@ function userPill(auth) {
     span('user-dot', '●'),
     span('user-name', String(who) + role)
   );
-  // minimal styles if not in your CSS already
+  // inline styles in case your CSS doesn't have these
   pill.style.display = 'inline-flex';
   pill.style.alignItems = 'center';
   pill.style.gap = '6px';
@@ -216,14 +207,10 @@ function remindersLabel(c) {
 async function buildSummaryCSVRows(campaign, allStudents) {
   const filtered = applyFilters(allStudents, campaign.filters);
   const idToStudent = {};
-  filtered.forEach((s, i) => {
-    idToStudent[getStudentId(s, i)] = s;
-  });
+  filtered.forEach((s, i) => { idToStudent[getStudentId(s, i)] = s; });
 
-  // Load progress to get outcomes/responses for timestamp; defer to progress store
-  const raw = JSON.parse(
-    localStorage.getItem('reachpoint.progress.' + campaign.id) || '{}'
-  );
+  // Progress data from localStorage (unchanged)
+  const raw = JSON.parse(localStorage.getItem('reachpoint.progress.' + campaign.id) || '{}');
   const contacts = raw.contacts || {};
 
   const rows = [];
@@ -239,13 +226,10 @@ async function buildSummaryCSVRows(campaign, allStudents) {
     let tResp = 0;
     if (Array.isArray(cp.surveyLogs)) {
       for (let i = cp.surveyLogs.length - 1; i >= 0; i--) {
-        if (cp.surveyLogs[i]?.answer === response) {
-          tResp = cp.surveyLogs[i].at || 0;
-          break;
-        }
+        if (cp.surveyLogs[i]?.answer === response) { tResp = cp.surveyLogs[i].at || 0; break; }
       }
     }
-    const iso = tCall || tResp ? new Date(Math.max(tCall, tResp)).toISOString() : '';
+    const iso = (tCall || tResp) ? new Date(Math.max(tCall, tResp)).toISOString() : '';
 
     rows.push({
       'Full Name': fullName,
@@ -297,7 +281,7 @@ function csvString(headers, rows) {
   const esc = (v) => {
     const s = String(v ?? '');
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-    };
+  };
   const head = headers.map(esc).join(',');
   const body = rows.map((r) => headers.map((h) => esc(r[h])).join(',')).join('\n');
   return head + '\n' + body;
