@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ReachPoint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">ReachPoint</div>
+      <nav class="nav">
+        <a href="#/dashboard">Dashboard</a>
+        <a href="#/create">New Campaign</a>
+      </nav>
+    </header>
+
+    <main id="app"></main>
+
+    <!-- Set a default route BEFORE the module loads -->
+    <script>
+      if (!location.hash) location.hash = '#/dashboard';
+    </script>
+
+    <!-- Important: must be served over HTTP(S), not file:// -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
