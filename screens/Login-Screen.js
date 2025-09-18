@@ -1,6 +1,6 @@
 // screens/Login-Screen.js
-// Renders the login screen and handles sign-in for a private site.
-// Requires bcryptjs (browser) loaded by index.html.
+// Supports EITHER plaintext ("passwordPlain") OR bcrypt ("passwordHash").
+// Keep bcryptjs loaded in index.html if you plan to use passwordHash for any user.
 
 const LOGIN_JSON_URL = './data/userLogins.json';
 const SESSION_KEY = 'rpAuth';
@@ -44,6 +44,10 @@ function renderLogin(root) {
   `;
 }
 
+function getBcrypt() {
+  return window.bcrypt || (window.dcodeIO && window.dcodeIO.bcrypt) || null;
+}
+
 async function handleLoginSubmit(e) {
   e.preventDefault();
   const errEl = document.getElementById('loginError');
@@ -63,20 +67,36 @@ async function handleLoginSubmit(e) {
       return;
     }
 
-    const bcryptLib = window.bcrypt || (window.dcodeIO && window.dcodeIO.bcrypt);
-    if (!bcryptLib) {
-      errEl.textContent = 'Auth dependency missing. Try refreshing.';
-      return;
-    }
-
-    const ok = bcryptLib.compareSync(password, user.passwordHash);
-    if (!ok) {
+    // --- SIMPLE MODE: allow a plaintext password field ---
+    if (typeof user.passwordPlain === 'string') {
+      if (password === user.passwordPlain) {
+        setSession(user);
+        window.location.href = './dashboard.html';
+        return;
+      }
       errEl.textContent = 'Invalid credentials.';
       return;
     }
 
-    setSession(user);
-    window.location.href = '../dashboard.html';
+    // --- HASH MODE: fallback to bcrypt hash if provided ---
+    if (typeof user.passwordHash === 'string') {
+      const bcryptLib = getBcrypt();
+      if (!bcryptLib) {
+        errEl.textContent = 'Auth dependency missing (bcrypt).';
+        return;
+      }
+      const ok = bcryptLib.compareSync(password, user.passwordHash);
+      if (ok) {
+        setSession(user);
+        window.location.href = './dashboard.html';
+        return;
+      }
+      errEl.textContent = 'Invalid credentials.';
+      return;
+    }
+
+    // Neither passwordPlain nor passwordHash present
+    errEl.textContent = 'Account is misconfigured. Contact admin.';
   } catch (err) {
     console.error(err);
     errEl.textContent = 'Login failed. Please try again.';
@@ -91,7 +111,7 @@ function attachHandlers() {
 (function init() {
   // If already logged in, skip to dashboard
   if (sessionStorage.getItem(SESSION_KEY)) {
-    window.location.replace('../dashboard.html');
+    window.location.replace('./dashboard.html');
     return;
   }
 
