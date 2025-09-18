@@ -1,6 +1,6 @@
 {
   "headers": [
-    "full_name",
+    "Full Name",
     "Camper Email*",
     "Camper High School/Middle School",
     "High School Graduation Year*",
@@ -22,7 +22,7 @@
   ],
   "data": [
     {
-      "full_name": "Cal Wylie",
+      "Full Name": "Cal Wylie",
       "Camper Email*": "cal.cw4434@outlook.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2025",
@@ -43,7 +43,7 @@
       "Emergency Contact Number*": "(623) 204-7978"
     },
     {
-      "full_name": "Yahaira Tizoc",
+      "Full Name": "Yahaira Tizoc",
       "Camper Email*": "yahairatizoc12@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -64,7 +64,7 @@
       "Emergency Contact Number*": "(602) 461-4267"
     },
     {
-      "full_name": "Loimatamaligi Taputu",
+      "Full Name": "Loimatamaligi Taputu",
       "Camper Email*": "loimatataputu07@gmail.com",
       "Camper High School/Middle School": "Brighton Charter",
       "High School Graduation Year*": "2025",
@@ -85,7 +85,7 @@
       "Emergency Contact Number*": "(480) 408-0942"
     },
     {
-      "full_name": "Denisse Nieto Valentin",
+      "Full Name": "Denisse Nieto Valentin",
       "Camper Email*": "dnietovalentin25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -106,7 +106,7 @@
       "Emergency Contact Number*": "602 919 8134"
     },
     {
-      "full_name": "Ahtziry Hernandez",
+      "Full Name": "Ahtziry Hernandez",
       "Camper Email*": "hernandezahtziry579@gmail.com",
       "Camper High School/Middle School": "The Orme School",
       "High School Graduation Year*": "2025",
@@ -127,7 +127,7 @@
       "Emergency Contact Number*": "(503) 839-0055"
     },
     {
-      "full_name": "Karen Mejia",
+      "Full Name": "Karen Mejia",
       "Camper Email*": "mejiakay1@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -148,7 +148,7 @@
       "Emergency Contact Number*": "623-385-5750"
     },
     {
-      "full_name": "Giavanna Hernandez",
+      "Full Name": "Giavanna Hernandez",
       "Camper Email*": "ghernandez25@bourgadecatholic.org",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -169,7 +169,7 @@
       "Emergency Contact Number*": "602-475-2621"
     },
     {
-      "full_name": "Israel Navarro",
+      "Full Name": "Israel Navarro",
       "Camper Email*": "azliz939@gmail.com",
       "Camper High School/Middle School": "Valley Lutheran High School",
       "High School Graduation Year*": "2027",
@@ -190,7 +190,7 @@
       "Emergency Contact Number*": "602-312-2998"
     },
     {
-      "full_name": "Perla Perez",
+      "Full Name": "Perla Perez",
       "Camper Email*": "pdperezv@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -211,7 +211,7 @@
       "Emergency Contact Number*": "480 658 8358"
     },
     {
-      "full_name": "Yajahira Pimentel Becerra",
+      "Full Name": "Yajahira Pimentel Becerra",
       "Camper Email*": "yajahirappimentel@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -232,7 +232,7 @@
       "Emergency Contact Number*": "+1 (602) 473-8869"
     },
     {
-      "full_name": "Abril Gutierrez",
+      "Full Name": "Abril Gutierrez",
       "Camper Email*": "agutierrez25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -253,7 +253,7 @@
       "Emergency Contact Number*": "602 626 4902"
     },
     {
-      "full_name": "Carlos Ruiz",
+      "Full Name": "Carlos Ruiz",
       "Camper Email*": "carlosruizjr6738@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2025",
@@ -274,7 +274,7 @@
       "Emergency Contact Number*": "(602)-931-8492"
     },
     {
-      "full_name": "Michelle Jardon Ocampo",
+      "Full Name": "Michelle Jardon Ocampo",
       "Camper Email*": "Jardonmichelle9@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2027",
@@ -295,7 +295,7 @@
       "Emergency Contact Number*": "623 414 8120"
     },
     {
-      "full_name": "Fernando Molina",
+      "Full Name": "Fernando Molina",
       "Camper Email*": "molinafernando0524@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -316,7 +316,7 @@
       "Emergency Contact Number*": "602-743-2385"
     },
     {
-      "full_name": "Dulce Lopez",
+      "Full Name": "Dulce Lopez",
       "Camper Email*": "melizaavarca@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -337,7 +337,7 @@
       "Emergency Contact Number*": "(602) 575-9750"
     },
     {
-      "full_name": "Luis Abrego",
+      "Full Name": "Luis Abrego",
       "Camper Email*": "luisabrego271@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2025",
@@ -358,7 +358,7 @@
       "Emergency Contact Number*": "480-341-3003"
     },
     {
-      "full_name": "Ingrid Alvarado",
+      "Full Name": "Ingrid Alvarado",
       "Camper Email*": "1213ingridalvarado@gmail.com",
       "Camper High School/Middle School": "Alhambra High School",
       "High School Graduation Year*": "2026",
@@ -379,7 +379,7 @@
       "Emergency Contact Number*": "(602) 435-8590"
     },
     {
-      "full_name": "Iaian Stack",
+      "Full Name": "Iaian Stack",
       "Camper Email*": "Iaianstacker18@gmail.com",
       "Camper High School/Middle School": "Mountain View Senior High School",
       "High School Graduation Year*": "2025",
@@ -400,7 +400,7 @@
       "Emergency Contact Number*": "(530) 487-2042"
     },
     {
-      "full_name": "Aron Pina",
+      "Full Name": "Aron Pina",
       "Camper Email*": "goyito.aron20@gmail.com",
       "Camper High School/Middle School": "West Point High School",
       "High School Graduation Year*": "2025",
@@ -421,7 +421,7 @@
       "Emergency Contact Number*": "(602) 825-6926"
     },
     {
-      "full_name": "Luis Escarrega",
+      "Full Name": "Luis Escarrega",
       "Camper Email*": "venegas0208@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2025",
@@ -442,7 +442,7 @@
       "Emergency Contact Number*": "602-434-8127"
     },
     {
-      "full_name": "Heriberto Favela",
+      "Full Name": "Heriberto Favela",
       "Camper Email*": "eddie123favela@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -463,7 +463,7 @@
       "Emergency Contact Number*": "+1 (602) 654-8778"
     },
     {
-      "full_name": "Infinity Richwine",
+      "Full Name": "Infinity Richwine",
       "Camper Email*": "infinityrichwine@gmail.com",
       "Camper High School/Middle School": "St. Mary's Catholic High School",
       "High School Graduation Year*": "2025",
@@ -484,7 +484,7 @@
       "Emergency Contact Number*": "(602) 503-8201"
     },
     {
-      "full_name": "Jazmin Ayala",
+      "Full Name": "Jazmin Ayala",
       "Camper Email*": "jazminayala385@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -505,7 +505,7 @@
       "Emergency Contact Number*": "(720)-474-4830"
     },
     {
-      "full_name": "Isabella Gonzalez",
+      "Full Name": "Isabella Gonzalez",
       "Camper Email*": "isabilly410@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2025",
@@ -526,7 +526,7 @@
       "Emergency Contact Number*": "602-502-5902"
     },
     {
-      "full_name": "Sincere Richwine",
+      "Full Name": "Sincere Richwine",
       "Camper Email*": "infinityrichwine@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2027",
@@ -547,7 +547,7 @@
       "Emergency Contact Number*": "(602) 503-8201"
     },
     {
-      "full_name": "Yelitza Zambrano",
+      "Full Name": "Yelitza Zambrano",
       "Camper Email*": "yeli.zambrano@icloud.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2025",
@@ -568,7 +568,7 @@
       "Emergency Contact Number*": "(480) 524-4440"
     },
     {
-      "full_name": "Guadalupe Pahua",
+      "Full Name": "Guadalupe Pahua",
       "Camper Email*": "guadalupep209@icloud.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -589,7 +589,7 @@
       "Emergency Contact Number*": "(602) 825-6183"
     },
     {
-      "full_name": "Arisbeth Lechuga",
+      "Full Name": "Arisbeth Lechuga",
       "Camper Email*": "azaguilan773@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -610,7 +610,7 @@
       "Emergency Contact Number*": "(480) 939-0735"
     },
     {
-      "full_name": "Perla Sanchez",
+      "Full Name": "Perla Sanchez",
       "Camper Email*": "pjudethsanchez1209@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -631,7 +631,7 @@
       "Emergency Contact Number*": "(602) 575-9750"
     },
     {
-      "full_name": "Anthony Arreola",
+      "Full Name": "Anthony Arreola",
       "Camper Email*": "arreolaanthony0899@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -652,7 +652,7 @@
       "Emergency Contact Number*": "602-825-0569"
     },
     {
-      "full_name": "Nicole Palomera",
+      "Full Name": "Nicole Palomera",
       "Camper Email*": "nikkieloteg98@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -673,7 +673,7 @@
       "Emergency Contact Number*": "(623) 986-2752"
     },
     {
-      "full_name": "Josue (Joshy) Rivera",
+      "Full Name": "Josue (Joshy) Rivera",
       "Camper Email*": "josue789rivera@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2027",
@@ -694,7 +694,7 @@
       "Emergency Contact Number*": "602-326-8590"
     },
     {
-      "full_name": "Johan Ontiveros",
+      "Full Name": "Johan Ontiveros",
       "Camper Email*": "ontiverosjohan250@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2027",
@@ -715,7 +715,7 @@
       "Emergency Contact Number*": "602-473-3670"
     },
     {
-      "full_name": "Michael Williams",
+      "Full Name": "Michael Williams",
       "Camper Email*": "mwilliams5307@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2025",
@@ -736,7 +736,7 @@
       "Emergency Contact Number*": "(480)-486-1598"
     },
     {
-      "full_name": "Yaretzi Robles",
+      "Full Name": "Yaretzi Robles",
       "Camper Email*": "yaretzirobles15@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2026",
@@ -757,7 +757,7 @@
       "Emergency Contact Number*": "(623) 703-4557"
     },
     {
-      "full_name": "Axxel Ortega",
+      "Full Name": "Axxel Ortega",
       "Camper Email*": "axxeljahel.3009@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -778,7 +778,7 @@
       "Emergency Contact Number*": "(602)-921-6417"
     },
     {
-      "full_name": "Diana Ramos-Gonzalez",
+      "Full Name": "Diana Ramos-Gonzalez",
       "Camper Email*": "dianasramosgonzalez@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2027",
@@ -799,7 +799,7 @@
       "Emergency Contact Number*": "(623) 219-0729"
     },
     {
-      "full_name": "Kevin Tostado",
+      "Full Name": "Kevin Tostado",
       "Camper Email*": "tostadokevin45@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -820,7 +820,7 @@
       "Emergency Contact Number*": "(602) 710-4153"
     },
     {
-      "full_name": "Shay Kamalvand",
+      "Full Name": "Shay Kamalvand",
       "Camper Email*": "shiva.shojaei@yahoo.com",
       "Camper High School/Middle School": "Betty Fairfax High School",
       "High School Graduation Year*": "2027",
@@ -841,7 +841,7 @@
       "Emergency Contact Number*": "480-310-7694"
     },
     {
-      "full_name": "Jayden Smith",
+      "Full Name": "Jayden Smith",
       "Camper Email*": "jdsmith2167@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -862,7 +862,7 @@
       "Emergency Contact Number*": "602-919-7072"
     },
     {
-      "full_name": "Christian Biliebre-Merida",
+      "Full Name": "Christian Biliebre-Merida",
       "Camper Email*": "christianmerida630@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2025",
@@ -883,7 +883,7 @@
       "Emergency Contact Number*": "(602) 228-8450"
     },
     {
-      "full_name": "Ryan Guerrero",
+      "Full Name": "Ryan Guerrero",
       "Camper Email*": "guerreroryan603@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -904,7 +904,7 @@
       "Emergency Contact Number*": "602-561-1038"
     },
     {
-      "full_name": "Diego Diaz",
+      "Full Name": "Diego Diaz",
       "Camper Email*": "rosalinadiaz36@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -925,7 +925,7 @@
       "Emergency Contact Number*": "602 376-2619"
     },
     {
-      "full_name": "Brianna Diaz",
+      "Full Name": "Brianna Diaz",
       "Camper Email*": "rosalinadiaz36@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2027",
@@ -946,7 +946,7 @@
       "Emergency Contact Number*": "602 376-2619"
     },
     {
-      "full_name": "Julian Bojorquez Meza",
+      "Full Name": "Julian Bojorquez Meza",
       "Camper Email*": "jbojorquezmeza25@brophybroncos.org",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2025",
@@ -967,7 +967,7 @@
       "Emergency Contact Number*": "602-500-7537"
     },
     {
-      "full_name": "Jesus Velazquez",
+      "Full Name": "Jesus Velazquez",
       "Camper Email*": "jesusvv899@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2025",
@@ -988,7 +988,7 @@
       "Emergency Contact Number*": "(480) 370-2795"
     },
     {
-      "full_name": "Raymundo Sanchez",
+      "Full Name": "Raymundo Sanchez",
       "Camper Email*": "rsanchez25@brophybroncos.org",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2025",
@@ -1009,7 +1009,7 @@
       "Emergency Contact Number*": "623-414-7712"
     },
     {
-      "full_name": "Adan Pena",
+      "Full Name": "Adan Pena",
       "Camper Email*": "adanivan1228@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2025",
@@ -1030,7 +1030,7 @@
       "Emergency Contact Number*": "623-628-9001"
     },
     {
-      "full_name": "Kyra Williams",
+      "Full Name": "Kyra Williams",
       "Camper Email*": "Kyraw626@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -1051,7 +1051,7 @@
       "Emergency Contact Number*": "(602) 360-9474"
     },
     {
-      "full_name": "Vyom Kaviyarasu",
+      "Full Name": "Vyom Kaviyarasu",
       "Camper Email*": "rohini.kunnathu@gmail.com",
       "Camper High School/Middle School": "Maricopa Institute of Technology",
       "High School Graduation Year*": "2026",
@@ -1072,7 +1072,7 @@
       "Emergency Contact Number*": "480-310-7694"
     },
     {
-      "full_name": "Celeste Trevino",
+      "Full Name": "Celeste Trevino",
       "Camper Email*": "ctr120888@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -1093,7 +1093,7 @@
       "Emergency Contact Number*": "623 313 5639"
     },
     {
-      "full_name": "Melany Ron Leon",
+      "Full Name": "Melany Ron Leon",
       "Camper Email*": "ronleonmelany@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2026",
@@ -1114,7 +1114,7 @@
       "Emergency Contact Number*": "602-400-1431"
     },
     {
-      "full_name": "Keylen Uribe",
+      "Full Name": "Keylen Uribe",
       "Camper Email*": "keylen2606@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2026",
@@ -1135,7 +1135,7 @@
       "Emergency Contact Number*": "480-319-0367"
     },
     {
-      "full_name": "Nailynn Lujan Martinez",
+      "Full Name": "Nailynn Lujan Martinez",
       "Camper Email*": "arylujan2007@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2026",
@@ -1156,7 +1156,7 @@
       "Emergency Contact Number*": "(602) 405 0999"
     },
     {
-      "full_name": "Briseyda Gonzalez",
+      "Full Name": "Briseyda Gonzalez",
       "Camper Email*": "briseydaanayeli13@icloud.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -1177,7 +1177,7 @@
       "Emergency Contact Number*": "(602) 921-6417"
     },
     {
-      "full_name": "Alexa Williams",
+      "Full Name": "Alexa Williams",
       "Camper Email*": "alexawilliams063@gmail.com",
       "Camper High School/Middle School": "Phoenix Digital",
       "High School Graduation Year*": "2025",
@@ -1198,7 +1198,7 @@
       "Emergency Contact Number*": "(602) 760-7068"
     },
     {
-      "full_name": "Brianna Flores",
+      "Full Name": "Brianna Flores",
       "Camper Email*": "myspacemallgoth@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -1219,7 +1219,7 @@
       "Emergency Contact Number*": "602-687-0972"
     },
     {
-      "full_name": "Jorge Carrillo",
+      "Full Name": "Jorge Carrillo",
       "Camper Email*": "jca086276@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2027",
@@ -1240,7 +1240,7 @@
       "Emergency Contact Number*": "602 473 2839"
     },
     {
-      "full_name": "Analise Moreno",
+      "Full Name": "Analise Moreno",
       "Camper Email*": "jetaimemoreno@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2026",
@@ -1261,7 +1261,7 @@
       "Emergency Contact Number*": "(623) 755-4178"
     },
     {
-      "full_name": "Ivan Nunez",
+      "Full Name": "Ivan Nunez",
       "Camper Email*": "nunez.ivan0107@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2025",
@@ -1282,7 +1282,7 @@
       "Emergency Contact Number*": "602-487-4443"
     },
     {
-      "full_name": "Sophia Canales",
+      "Full Name": "Sophia Canales",
       "Camper Email*": "sophiacan23@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2026",
@@ -1303,7 +1303,7 @@
       "Emergency Contact Number*": "(602)-483-7017"
     },
     {
-      "full_name": "Armando Trevino Ramirez",
+      "Full Name": "Armando Trevino Ramirez",
       "Camper Email*": "atrevino5601@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -1324,7 +1324,7 @@
       "Emergency Contact Number*": "(602) 516 2051"
     },
     {
-      "full_name": "Jilberrt Rojo",
+      "Full Name": "Jilberrt Rojo",
       "Camper Email*": "jrojo23@icloud.com",
       "Camper High School/Middle School": "Arcadia High School",
       "High School Graduation Year*": "2027",
@@ -1345,7 +1345,7 @@
       "Emergency Contact Number*": "602-475-1013"
     },
     {
-      "full_name": "Adrian Ramirez",
+      "Full Name": "Adrian Ramirez",
       "Camper Email*": "adrianram0118@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2025",
@@ -1366,7 +1366,7 @@
       "Emergency Contact Number*": "602-326-4666"
     },
     {
-      "full_name": "Erick Alvarez",
+      "Full Name": "Erick Alvarez",
       "Camper Email*": "ealvarez26@bourgadecatholic.org",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -1387,7 +1387,7 @@
       "Emergency Contact Number*": "623-297-9526"
     },
     {
-      "full_name": "Amare Martinez",
+      "Full Name": "Amare Martinez",
       "Camper Email*": "beckybella17@gmail.com",
       "Camper High School/Middle School": "La Joya Community High School",
       "High School Graduation Year*": "2027",
@@ -1408,7 +1408,7 @@
       "Emergency Contact Number*": "480-387-3989"
     },
     {
-      "full_name": "Joel Torrez",
+      "Full Name": "Joel Torrez",
       "Camper Email*": "joel.torrez09@icloud.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2027",
@@ -1429,7 +1429,7 @@
       "Emergency Contact Number*": "(602) 580-6197"
     },
     {
-      "full_name": "Marcos Cruz",
+      "Full Name": "Marcos Cruz",
       "Camper Email*": "marcoscruz123o9@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1450,7 +1450,7 @@
       "Emergency Contact Number*": "(602) 696-4960"
     },
     {
-      "full_name": "Angel Perez",
+      "Full Name": "Angel Perez",
       "Camper Email*": "crthegoat676@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1471,7 +1471,7 @@
       "Emergency Contact Number*": "(602) 434-7281"
     },
     {
-      "full_name": "Luis Rivera",
+      "Full Name": "Luis Rivera",
       "Camper Email*": "luisrivera4390@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1492,7 +1492,7 @@
       "Emergency Contact Number*": "(602) 775-0803"
     },
     {
-      "full_name": "Adelina Botello",
+      "Full Name": "Adelina Botello",
       "Camper Email*": "adelina.botello@icloud.com",
       "Camper High School/Middle School": "Glenview College Preparatory High School",
       "High School Graduation Year*": "2027",
@@ -1513,7 +1513,7 @@
       "Emergency Contact Number*": "(602) 405-3082"
     },
     {
-      "full_name": "Scarlett Villanueva",
+      "Full Name": "Scarlett Villanueva",
       "Camper Email*": "mc4328318@gmail.clm",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -1534,7 +1534,7 @@
       "Emergency Contact Number*": "(602) 465-4056"
     },
     {
-      "full_name": "Amari Allen",
+      "Full Name": "Amari Allen",
       "Camper Email*": "ghoulxhide94@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -1555,7 +1555,7 @@
       "Emergency Contact Number*": "602-809-2492"
     },
     {
-      "full_name": "Saddie Sanchez",
+      "Full Name": "Saddie Sanchez",
       "Camper Email*": "nickytuu@gmail.com",
       "Camper High School/Middle School": "Verrado High School",
       "High School Graduation Year*": "2025",
@@ -1576,7 +1576,7 @@
       "Emergency Contact Number*": "(602) 653-7305"
     },
     {
-      "full_name": "Blaise Nyandwi",
+      "Full Name": "Blaise Nyandwi",
       "Camper Email*": "blaisenyandwi@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -1597,7 +1597,7 @@
       "Emergency Contact Number*": "(602)-587-4501"
     },
     {
-      "full_name": "Jeremiah Cook",
+      "Full Name": "Jeremiah Cook",
       "Camper Email*": "jeremiahc450@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -1618,7 +1618,7 @@
       "Emergency Contact Number*": "(480) 665-2155"
     },
     {
-      "full_name": "Christella Nyandwi",
+      "Full Name": "Christella Nyandwi",
       "Camper Email*": "christellanyandwi07@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2025",
@@ -1639,7 +1639,7 @@
       "Emergency Contact Number*": "(602)-587-4501"
     },
     {
-      "full_name": "Maijae Larkin",
+      "Full Name": "Maijae Larkin",
       "Camper Email*": "maijaelarkin@gmail.com",
       "Camper High School/Middle School": "Cesar Chavez High School",
       "High School Graduation Year*": "2026",
@@ -1660,7 +1660,7 @@
       "Emergency Contact Number*": "(520)-472-0724"
     },
     {
-      "full_name": "Ester Nyandwi",
+      "Full Name": "Ester Nyandwi",
       "Camper Email*": "esternyandwi1@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1681,7 +1681,7 @@
       "Emergency Contact Number*": "(602) 587-4501"
     },
     {
-      "full_name": "Dominique Gamez",
+      "Full Name": "Dominique Gamez",
       "Camper Email*": "taisharoman2007@gmail.com",
       "Camper High School/Middle School": "PXU City high school",
       "High School Graduation Year*": "2025",
@@ -1702,7 +1702,7 @@
       "Emergency Contact Number*": "(602) 465-9811"
     },
     {
-      "full_name": "Leah Higuera",
+      "Full Name": "Leah Higuera",
       "Camper Email*": "lhiguera4240@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2025",
@@ -1723,7 +1723,7 @@
       "Emergency Contact Number*": "(602)-427-7114"
     },
     {
-      "full_name": "Mishka Sharma",
+      "Full Name": "Mishka Sharma",
       "Camper Email*": "sharma.mishka1911@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1744,7 +1744,7 @@
       "Emergency Contact Number*": "602-638-7185"
     },
     {
-      "full_name": "Isaac Chan-Atienzo",
+      "Full Name": "Isaac Chan-Atienzo",
       "Camper Email*": "isaacchanatienzo@gmail.com",
       "Camper High School/Middle School": "Trevor Browne High School",
       "High School Graduation Year*": "2025",
@@ -1765,7 +1765,7 @@
       "Emergency Contact Number*": "602-488-2955"
     },
     {
-      "full_name": "Suri Hernandez",
+      "Full Name": "Suri Hernandez",
       "Camper Email*": "s.hernandezchavez2008@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1786,7 +1786,7 @@
       "Emergency Contact Number*": "(602) 403-8388"
     },
     {
-      "full_name": "Trang Tran",
+      "Full Name": "Trang Tran",
       "Camper Email*": "trang01132008@gmail.com",
       "Camper High School/Middle School": "Bioscience highschool",
       "High School Graduation Year*": "2026",
@@ -1807,7 +1807,7 @@
       "Emergency Contact Number*": "(602) 831-9854"
     },
     {
-      "full_name": "Jocelyn Haro Sanchez",
+      "Full Name": "Jocelyn Haro Sanchez",
       "Camper Email*": "jocelynharosanchez@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1828,7 +1828,7 @@
       "Emergency Contact Number*": "(602) 783-9587"
     },
     {
-      "full_name": "Hallie Munoz",
+      "Full Name": "Hallie Munoz",
       "Camper Email*": "halliealt2@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1849,7 +1849,7 @@
       "Emergency Contact Number*": "(405) 532-2143"
     },
     {
-      "full_name": "Hailey Aguilar",
+      "Full Name": "Hailey Aguilar",
       "Camper Email*": "aguilarhailey343@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1870,7 +1870,7 @@
       "Emergency Contact Number*": "(623) 451-2940"
     },
     {
-      "full_name": "Kelly Ortiz Valdez",
+      "Full Name": "Kelly Ortiz Valdez",
       "Camper Email*": "kelly.ortizvaldez@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2025",
@@ -1891,7 +1891,7 @@
       "Emergency Contact Number*": "602-777-0430"
     },
     {
-      "full_name": "Aaliyah Montoya",
+      "Full Name": "Aaliyah Montoya",
       "Camper Email*": "aaliyah.montoya26@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1912,7 +1912,7 @@
       "Emergency Contact Number*": "602-705-4132"
     },
     {
-      "full_name": "Arturo Avila Ochoa",
+      "Full Name": "Arturo Avila Ochoa",
       "Camper Email*": "arturoavila8642@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1933,7 +1933,7 @@
       "Emergency Contact Number*": "(623) 329-6440"
     },
     {
-      "full_name": "Mariana Campos Zepeda",
+      "Full Name": "Mariana Campos Zepeda",
       "Camper Email*": "marianacamposzepeda@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -1954,7 +1954,7 @@
       "Emergency Contact Number*": "(623) 226-9586"
     },
     {
-      "full_name": "Merelin Flores",
+      "Full Name": "Merelin Flores",
       "Camper Email*": "marilynfloresp@icloud.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1975,7 +1975,7 @@
       "Emergency Contact Number*": "602 697 5692"
     },
     {
-      "full_name": "Katya Arreola",
+      "Full Name": "Katya Arreola",
       "Camper Email*": "gonzalezjocelyn671@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -1996,7 +1996,7 @@
       "Emergency Contact Number*": "(602) 384-1575"
     },
     {
-      "full_name": "Emmanuel Estrada",
+      "Full Name": "Emmanuel Estrada",
       "Camper Email*": "emmanuelestrada663@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -2017,7 +2017,7 @@
       "Emergency Contact Number*": "(602) 541-2842"
     },
     {
-      "full_name": "Ryan Acosta",
+      "Full Name": "Ryan Acosta",
       "Camper Email*": "ryanacosta7845@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -2038,7 +2038,7 @@
       "Emergency Contact Number*": "602-662-6360"
     },
     {
-      "full_name": "Amy Flores",
+      "Full Name": "Amy Flores",
       "Camper Email*": "amyflorescantu@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -2059,7 +2059,7 @@
       "Emergency Contact Number*": "(602) 772-2634"
     },
     {
-      "full_name": "Angel Montelongo",
+      "Full Name": "Angel Montelongo",
       "Camper Email*": "javierymaria2003@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2025",
@@ -2080,7 +2080,7 @@
       "Emergency Contact Number*": "(602) 301-3656"
     },
     {
-      "full_name": "Nathan Guerrero",
+      "Full Name": "Nathan Guerrero",
       "Camper Email*": "gonzalo.guerrero90@yahoo.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -2101,7 +2101,7 @@
       "Emergency Contact Number*": "(602) 451-1366"
     },
     {
-      "full_name": "Jacqueline Rojas",
+      "Full Name": "Jacqueline Rojas",
       "Camper Email*": "jeckierojas@icloud.com",
       "Camper High School/Middle School": "Maricopa High School",
       "High School Graduation Year*": "2026",
@@ -2122,7 +2122,7 @@
       "Emergency Contact Number*": "602-918-3229"
     },
     {
-      "full_name": "Robert Conneway",
+      "Full Name": "Robert Conneway",
       "Camper Email*": "sonnyrigotti9@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2025",
@@ -2143,7 +2143,7 @@
       "Emergency Contact Number*": "480-436-0452"
     },
     {
-      "full_name": "Lesira Kpea",
+      "Full Name": "Lesira Kpea",
       "Camper Email*": "Lesira77@gmail.com",
       "Camper High School/Middle School": "Buckeye Union High School",
       "High School Graduation Year*": "2026",
@@ -2164,7 +2164,7 @@
       "Emergency Contact Number*": "602 423 0245"
     },
     {
-      "full_name": "Tatiana Caldera",
+      "Full Name": "Tatiana Caldera",
       "Camper Email*": "tatianacaldera94@gmail.com",
       "Camper High School/Middle School": "Buckeye Union High School",
       "High School Graduation Year*": "2025",
@@ -2185,7 +2185,7 @@
       "Emergency Contact Number*": "951-660-9065"
     },
     {
-      "full_name": "Tatum Hansotia",
+      "Full Name": "Tatum Hansotia",
       "Camper Email*": "tatumhansotia@gmail.com",
       "Camper High School/Middle School": "Arcadia High School",
       "High School Graduation Year*": "2027",
@@ -2206,7 +2206,7 @@
       "Emergency Contact Number*": "(480) 612-7771"
     },
     {
-      "full_name": "Emily Salgado",
+      "Full Name": "Emily Salgado",
       "Camper Email*": "emilysalgadobhs@gmail.com",
       "Camper High School/Middle School": "Phoenix Union Bioscience High School",
       "High School Graduation Year*": "2025",
@@ -2227,7 +2227,7 @@
       "Emergency Contact Number*": "(480) 845-3408"
     },
     {
-      "full_name": "Issac Felix",
+      "Full Name": "Issac Felix",
       "Camper Email*": "businessissuc211@gmail.com",
       "Camper High School/Middle School": "Glendale Union High School District Online Learning Academy",
       "High School Graduation Year*": "2025",
@@ -2248,7 +2248,7 @@
       "Emergency Contact Number*": "(623) 419-9852"
     },
     {
-      "full_name": "Marco Weigant",
+      "Full Name": "Marco Weigant",
       "Camper Email*": "marcoweigant@gmail.com",
       "Camper High School/Middle School": "Arcadia High School",
       "High School Graduation Year*": "2027",
@@ -2269,7 +2269,7 @@
       "Emergency Contact Number*": "(619) 405-3433"
     },
     {
-      "full_name": "David Perez",
+      "Full Name": "David Perez",
       "Camper Email*": "sperez920@gmail.com",
       "Camper High School/Middle School": "Greenway High School",
       "High School Graduation Year*": "2026",
@@ -2290,7 +2290,7 @@
       "Emergency Contact Number*": "602-570-2214"
     },
     {
-      "full_name": "Alexander Sanchez Escobar",
+      "Full Name": "Alexander Sanchez Escobar",
       "Camper Email*": "alexande.sanchez106@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -2311,7 +2311,7 @@
       "Emergency Contact Number*": "602-875-1556"
     },
     {
-      "full_name": "Anelisse Salcido Valverde",
+      "Full Name": "Anelisse Salcido Valverde",
       "Camper Email*": "anesalcidovalverde@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2332,7 +2332,7 @@
       "Emergency Contact Number*": "623-764-9750"
     },
     {
-      "full_name": "Said Miranda Vizcarra",
+      "Full Name": "Said Miranda Vizcarra",
       "Camper Email*": "saidjrmiranda1112@icloud.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -2353,7 +2353,7 @@
       "Emergency Contact Number*": "(602) 696-1677"
     },
     {
-      "full_name": "Jimena Gonzalez Rodriguez",
+      "Full Name": "Jimena Gonzalez Rodriguez",
       "Camper Email*": "jimenagonzalez4692@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2374,7 +2374,7 @@
       "Emergency Contact Number*": "602-284-2103"
     },
     {
-      "full_name": "Hailey Martinez",
+      "Full Name": "Hailey Martinez",
       "Camper Email*": "martinezhailey0117@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2395,7 +2395,7 @@
       "Emergency Contact Number*": "602 330 5712"
     },
     {
-      "full_name": "Xavier Ruiz Quiroz",
+      "Full Name": "Xavier Ruiz Quiroz",
       "Camper Email*": "xrq.topia08@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2416,7 +2416,7 @@
       "Emergency Contact Number*": "(602) 550-1989"
     },
     {
-      "full_name": "Alan Casas",
+      "Full Name": "Alan Casas",
       "Camper Email*": "casas.alan.08@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2437,7 +2437,7 @@
       "Emergency Contact Number*": "623-213-4087"
     },
     {
-      "full_name": "Aldo Moreno",
+      "Full Name": "Aldo Moreno",
       "Camper Email*": "aldomoreno80302@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2458,7 +2458,7 @@
       "Emergency Contact Number*": "(602) 904-2803"
     },
     {
-      "full_name": "Lesly Cortes Gutierrez",
+      "Full Name": "Lesly Cortes Gutierrez",
       "Camper Email*": "leslycortesgutierrez915@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2479,7 +2479,7 @@
       "Emergency Contact Number*": "(602) 672-4836"
     },
     {
-      "full_name": "Jonathan Lopez",
+      "Full Name": "Jonathan Lopez",
       "Camper Email*": "jonathanl821@icloud.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2500,7 +2500,7 @@
       "Emergency Contact Number*": "(602) 931-3480"
     },
     {
-      "full_name": "Yandel Solorio Rangel",
+      "Full Name": "Yandel Solorio Rangel",
       "Camper Email*": "karensolorio87@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -2521,7 +2521,7 @@
       "Emergency Contact Number*": "(623) 692-4227"
     },
     {
-      "full_name": "Sherlyn Barron Hernandez",
+      "Full Name": "Sherlyn Barron Hernandez",
       "Camper Email*": "sherlynba04@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2542,7 +2542,7 @@
       "Emergency Contact Number*": "(602)-416-4576"
     },
     {
-      "full_name": "Jesus Rosas",
+      "Full Name": "Jesus Rosas",
       "Camper Email*": "rosasfriasjf12@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -2563,7 +2563,7 @@
       "Emergency Contact Number*": "(623) 518-8108"
     },
     {
-      "full_name": "Juno Romo",
+      "Full Name": "Juno Romo",
       "Camper Email*": "jun010v3@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -2584,7 +2584,7 @@
       "Emergency Contact Number*": "(602) 718-0542"
     },
     {
-      "full_name": "Bryan Garcia",
+      "Full Name": "Bryan Garcia",
       "Camper Email*": "bryangarcia042508@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2605,7 +2605,7 @@
       "Emergency Contact Number*": "(602) 446-7002"
     },
     {
-      "full_name": "Brandon Ortiz",
+      "Full Name": "Brandon Ortiz",
       "Camper Email*": "brandon.ortiz.06@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2026",
@@ -2626,7 +2626,7 @@
       "Emergency Contact Number*": "(602) 500-3875"
     },
     {
-      "full_name": "Lindsey Lorenzo",
+      "Full Name": "Lindsey Lorenzo",
       "Camper Email*": "lorenzolindsey649@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -2647,7 +2647,7 @@
       "Emergency Contact Number*": "(602) 570-6051"
     },
     {
-      "full_name": "Gabriella Jackson",
+      "Full Name": "Gabriella Jackson",
       "Camper Email*": "gabriellajackson1313@icloud.com",
       "Camper High School/Middle School": "Raymond S Kellis High School",
       "High School Graduation Year*": "2026",
@@ -2668,7 +2668,7 @@
       "Emergency Contact Number*": "602-790-3234"
     },
     {
-      "full_name": "Jaylon Corley",
+      "Full Name": "Jaylon Corley",
       "Camper Email*": "jcorleyd@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -2689,7 +2689,7 @@
       "Emergency Contact Number*": "(602)-466-8693"
     },
     {
-      "full_name": "Angel Escareno",
+      "Full Name": "Angel Escareno",
       "Camper Email*": "angel.pokemon.master.red@gmail.com",
       "Camper High School/Middle School": "Phoenix Union Bioscience High School",
       "High School Graduation Year*": "2027",
@@ -2710,7 +2710,7 @@
       "Emergency Contact Number*": "480 261-4418"
     },
     {
-      "full_name": "Rebecca Ontiveros",
+      "Full Name": "Rebecca Ontiveros",
       "Camper Email*": "radicalradical1122@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -2731,7 +2731,7 @@
       "Emergency Contact Number*": "623-666-0374"
     },
     {
-      "full_name": "Damian Avalos",
+      "Full Name": "Damian Avalos",
       "Camper Email*": "damianavalos602@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -2752,7 +2752,7 @@
       "Emergency Contact Number*": "(602) 783-3361"
     },
     {
-      "full_name": "Marcos Cruz Peralta",
+      "Full Name": "Marcos Cruz Peralta",
       "Camper Email*": "marcoscruz123o9@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -2773,7 +2773,7 @@
       "Emergency Contact Number*": "602-696-4960"
     },
     {
-      "full_name": "Jose Baltazar",
+      "Full Name": "Jose Baltazar",
       "Camper Email*": "josesilvas7764@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -2794,7 +2794,7 @@
       "Emergency Contact Number*": "(602) 796-7200"
     },
     {
-      "full_name": "Nelly Candia",
+      "Full Name": "Nelly Candia",
       "Camper Email*": "candian864@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -2815,7 +2815,7 @@
       "Emergency Contact Number*": "+1 (602) 486-9191"
     },
     {
-      "full_name": "David Valencia",
+      "Full Name": "David Valencia",
       "Camper Email*": "Davidval538@gmail.com",
       "Camper High School/Middle School": "Sierra Linda High School",
       "High School Graduation Year*": "2027",
@@ -2836,7 +2836,7 @@
       "Emergency Contact Number*": "602-812-9618"
     },
     {
-      "full_name": "Casey Acosta",
+      "Full Name": "Casey Acosta",
       "Camper Email*": "dulcemezameza@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -2857,7 +2857,7 @@
       "Emergency Contact Number*": "6026626360"
     },
     {
-      "full_name": "Angel Acosta Tarin",
+      "Full Name": "Angel Acosta Tarin",
       "Camper Email*": "angelacostatarin24@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2028",
@@ -2878,7 +2878,7 @@
       "Emergency Contact Number*": "6023679587"
     },
     {
-      "full_name": "Azaeal Afework",
+      "Full Name": "Azaeal Afework",
       "Camper Email*": "azaealafework1@gmail.com",
       "Camper High School/Middle School": "All Saints' Episcopal Day School",
       "High School Graduation Year*": "2029",
@@ -2899,7 +2899,7 @@
       "Emergency Contact Number*": "4802491653"
     },
     {
-      "full_name": "Zoe Agramon",
+      "Full Name": "Zoe Agramon",
       "Camper Email*": "valdezzoe10@icloud.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2027",
@@ -2920,7 +2920,7 @@
       "Emergency Contact Number*": "602-423-4775"
     },
     {
-      "full_name": "Santos Aguilera",
+      "Full Name": "Santos Aguilera",
       "Camper Email*": "meroman2002@icloud.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -2941,7 +2941,7 @@
       "Emergency Contact Number*": "602-545-4045"
     },
     {
-      "full_name": "Mia Alba",
+      "Full Name": "Mia Alba",
       "Camper Email*": "Jaguilera32584@yahoo.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2028",
@@ -2962,7 +2962,7 @@
       "Emergency Contact Number*": "602-903-9292"
     },
     {
-      "full_name": "Maleny Alcoser",
+      "Full Name": "Maleny Alcoser",
       "Camper Email*": "malenycruz910@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2028",
@@ -2983,7 +2983,7 @@
       "Emergency Contact Number*": "(602) 908-9694"
     },
     {
-      "full_name": "Yeira Alcoser",
+      "Full Name": "Yeira Alcoser",
       "Camper Email*": "Dallana1590@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -3004,7 +3004,7 @@
       "Emergency Contact Number*": "(602) 908-9694"
     },
     {
-      "full_name": "Heidy Alcoser",
+      "Full Name": "Heidy Alcoser",
       "Camper Email*": "Dallana1590@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -3025,7 +3025,7 @@
       "Emergency Contact Number*": "(602) 908-9694"
     },
     {
-      "full_name": "Dannielle Aldava",
+      "Full Name": "Dannielle Aldava",
       "Camper Email*": "jasminaldava95@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -3046,7 +3046,7 @@
       "Emergency Contact Number*": "4806701078"
     },
     {
-      "full_name": "Jamayra Alvarez",
+      "Full Name": "Jamayra Alvarez",
       "Camper Email*": "alvarezjamayra5@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -3067,7 +3067,7 @@
       "Emergency Contact Number*": "602-776-8271"
     },
     {
-      "full_name": "Jared Alvarez",
+      "Full Name": "Jared Alvarez",
       "Camper Email*": "lucy-mlve@live.com",
       "Camper High School/Middle School": "St. Louis the king catholic school",
       "High School Graduation Year*": "2030",
@@ -3088,7 +3088,7 @@
       "Emergency Contact Number*": "623-297-9526"
     },
     {
-      "full_name": "Lorenzo Alvarez",
+      "Full Name": "Lorenzo Alvarez",
       "Camper Email*": "angel1siah@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -3109,7 +3109,7 @@
       "Emergency Contact Number*": "6023191647"
     },
     {
-      "full_name": "Adrian Alvarez",
+      "Full Name": "Adrian Alvarez",
       "Camper Email*": "adrianalvarezz1210@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -3130,7 +3130,7 @@
       "Emergency Contact Number*": "6024873174"
     },
     {
-      "full_name": "Chelsea Amaro Rubio",
+      "Full Name": "Chelsea Amaro Rubio",
       "Camper Email*": "judithrubio0806@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -3151,7 +3151,7 @@
       "Emergency Contact Number*": "6026872740"
     },
     {
-      "full_name": "Ricardo Ambriz",
+      "Full Name": "Ricardo Ambriz",
       "Camper Email*": "ricardoambriz604@gmail.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2026",
@@ -3172,7 +3172,7 @@
       "Emergency Contact Number*": "602 989 4506"
     },
     {
-      "full_name": "Katya Andrade Gomez",
+      "Full Name": "Katya Andrade Gomez",
       "Camper Email*": "katyaaag865@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2028",
@@ -3193,7 +3193,7 @@
       "Emergency Contact Number*": "(602) 465-3515"
     },
     {
-      "full_name": "Rodrigo Apodaca",
+      "Full Name": "Rodrigo Apodaca",
       "Camper Email*": "dg8353608@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2025",
@@ -3214,7 +3214,7 @@
       "Emergency Contact Number*": "6232191281"
     },
     {
-      "full_name": "Joseph Aragon",
+      "Full Name": "Joseph Aragon",
       "Camper Email*": "josea154@icloud.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -3235,7 +3235,7 @@
       "Emergency Contact Number*": "6247033716"
     },
     {
-      "full_name": "Joshua Aragon",
+      "Full Name": "Joshua Aragon",
       "Camper Email*": "m.aguirre3617@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2025",
@@ -3256,7 +3256,7 @@
       "Emergency Contact Number*": "6233834276"
     },
     {
-      "full_name": "Desteny Arenivar",
+      "Full Name": "Desteny Arenivar",
       "Camper Email*": "destenyarenivarr79@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -3277,7 +3277,7 @@
       "Emergency Contact Number*": "7027735021"
     },
     {
-      "full_name": "Emma Argueta-Giudice",
+      "Full Name": "Emma Argueta-Giudice",
       "Camper Email*": "lbeebegiudice@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -3298,7 +3298,7 @@
       "Emergency Contact Number*": "602.486.5681"
     },
     {
-      "full_name": "Renata Armenta",
+      "Full Name": "Renata Armenta",
       "Camper Email*": "gladysarmenta635@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -3319,7 +3319,7 @@
       "Emergency Contact Number*": "602-513-9240"
     },
     {
-      "full_name": "Angus Armenta",
+      "Full Name": "Angus Armenta",
       "Camper Email*": "monamabel@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -3340,7 +3340,7 @@
       "Emergency Contact Number*": "602-332-2968"
     },
     {
-      "full_name": "Rogelio Armenta",
+      "Full Name": "Rogelio Armenta",
       "Camper Email*": "gladysarmenta635@gmail.com",
       "Camper High School/Middle School": "St. Francis Xavier",
       "High School Graduation Year*": "2030",
@@ -3361,7 +3361,7 @@
       "Emergency Contact Number*": "(602)513-9240"
     },
     {
-      "full_name": "Jayden Armenta",
+      "Full Name": "Jayden Armenta",
       "Camper Email*": "gperla92@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2028",
@@ -3382,7 +3382,7 @@
       "Emergency Contact Number*": "602-290-6708"
     },
     {
-      "full_name": "Francisco Armenta",
+      "Full Name": "Francisco Armenta",
       "Camper Email*": "fa8990@icloud.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2026",
@@ -3403,7 +3403,7 @@
       "Emergency Contact Number*": "602 425 2954"
     },
     {
-      "full_name": "Ángel Arvizo",
+      "Full Name": "Ángel Arvizo",
       "Camper Email*": "nancycarlon13@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2027",
@@ -3424,7 +3424,7 @@
       "Emergency Contact Number*": "6022902260"
     },
     {
-      "full_name": "Lona Asse",
+      "Full Name": "Lona Asse",
       "Camper Email*": "lonaasse2011@gmail.com",
       "Camper High School/Middle School": "All Saints' Episcopal Day School",
       "High School Graduation Year*": "2029",
@@ -3445,7 +3445,7 @@
       "Emergency Contact Number*": "602-626-0449"
     },
     {
-      "full_name": "Maya Avalos",
+      "Full Name": "Maya Avalos",
       "Camper Email*": "mayaavalos26@gmail.com",
       "Camper High School/Middle School": "Alhambra High School",
       "High School Graduation Year*": "2028",
@@ -3466,7 +3466,7 @@
       "Emergency Contact Number*": "602 900 2540"
     },
     {
-      "full_name": "Genesis Avalos",
+      "Full Name": "Genesis Avalos",
       "Camper Email*": "genesisavalos28@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -3487,7 +3487,7 @@
       "Emergency Contact Number*": "6029002540"
     },
     {
-      "full_name": "Kaylee Aviles",
+      "Full Name": "Kaylee Aviles",
       "Camper Email*": "ynr.pinkdrip@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -3508,7 +3508,7 @@
       "Emergency Contact Number*": "602-487-7422"
     },
     {
-      "full_name": "Alejandro Bahena Betanos",
+      "Full Name": "Alejandro Bahena Betanos",
       "Camper Email*": "Nashely.b.27@gmail.com",
       "Camper High School/Middle School": "St. Mary's Catholic High School",
       "High School Graduation Year*": "2028",
@@ -3529,7 +3529,7 @@
       "Emergency Contact Number*": "602-546-8236"
     },
     {
-      "full_name": "Andrew Baker",
+      "Full Name": "Andrew Baker",
       "Camper Email*": "andrewc214@icloud.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2027",
@@ -3550,7 +3550,7 @@
       "Emergency Contact Number*": "602-451-6575"
     },
     {
-      "full_name": "Miguel Ballesteros",
+      "Full Name": "Miguel Ballesteros",
       "Camper Email*": "Monchiyzulema@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2029",
@@ -3571,7 +3571,7 @@
       "Emergency Contact Number*": "(602)743-2477"
     },
     {
-      "full_name": "Adilene Balmaceda Corrales",
+      "Full Name": "Adilene Balmaceda Corrales",
       "Camper Email*": "adilenebalmaceda@icloud.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2026",
@@ -3592,7 +3592,7 @@
       "Emergency Contact Number*": "6235221916"
     },
     {
-      "full_name": "Jose Baltazar Silvas",
+      "Full Name": "Jose Baltazar Silvas",
       "Camper Email*": "josesilvas7764@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -3613,7 +3613,7 @@
       "Emergency Contact Number*": "6027967200"
     },
     {
-      "full_name": "Jennifer Barcelo Ortega",
+      "Full Name": "Jennifer Barcelo Ortega",
       "Camper Email*": "jenniferbarceloortega@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -3634,7 +3634,7 @@
       "Emergency Contact Number*": "6024132505"
     },
     {
-      "full_name": "Zi’Ariah Barker",
+      "Full Name": "Zi’Ariah Barker",
       "Camper Email*": "blkgodlywmn1@gmail.com",
       "Camper High School/Middle School": "All Saints",
       "High School Graduation Year*": "2029",
@@ -3655,7 +3655,7 @@
       "Emergency Contact Number*": "480-277-2764"
     },
     {
-      "full_name": "Joselyn Barraza Rodríguez",
+      "Full Name": "Joselyn Barraza Rodríguez",
       "Camper Email*": "jbarrazarodriguez25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -3676,7 +3676,7 @@
       "Emergency Contact Number*": "6025746866"
     },
     {
-      "full_name": "Daisy Barreras",
+      "Full Name": "Daisy Barreras",
       "Camper Email*": "ana7170@icloud.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2026",
@@ -3697,7 +3697,7 @@
       "Emergency Contact Number*": "6025753291"
     },
     {
-      "full_name": "Stephon Beasley",
+      "Full Name": "Stephon Beasley",
       "Camper Email*": "tamikaroberts89@gmail.com",
       "Camper High School/Middle School": "Vista college prep, metro north ",
       "High School Graduation Year*": "2030",
@@ -3718,7 +3718,7 @@
       "Emergency Contact Number*": "602-529-0545"
     },
     {
-      "full_name": "Giovanni Benavidez",
+      "Full Name": "Giovanni Benavidez",
       "Camper Email*": "mariap2329@icloud.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -3739,7 +3739,7 @@
       "Emergency Contact Number*": "6026169067"
     },
     {
-      "full_name": "Rosie Berber",
+      "Full Name": "Rosie Berber",
       "Camper Email*": "jazminolivar@gmail.com",
       "Camper High School/Middle School": "Phoenix Country Day School",
       "High School Graduation Year*": "2028",
@@ -3760,7 +3760,7 @@
       "Emergency Contact Number*": "6024132699"
     },
     {
-      "full_name": "Aislinn Bernal Curiel",
+      "Full Name": "Aislinn Bernal Curiel",
       "Camper Email*": "Aislinnbernal16@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -3781,7 +3781,7 @@
       "Emergency Contact Number*": "(623)383-1723"
     },
     {
-      "full_name": "Jesus Bonilla Horta",
+      "Full Name": "Jesus Bonilla Horta",
       "Camper Email*": "bhortamorales@gmail.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2026",
@@ -3802,7 +3802,7 @@
       "Emergency Contact Number*": "6027753082"
     },
     {
-      "full_name": "Adilene Borruel Sanchez",
+      "Full Name": "Adilene Borruel Sanchez",
       "Camper Email*": "adileneb.07106@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -3823,7 +3823,7 @@
       "Emergency Contact Number*": "+1 (602) 813-3877"
     },
     {
-      "full_name": "Isabel Botello",
+      "Full Name": "Isabel Botello",
       "Camper Email*": "Botello606@gmail.com",
       "Camper High School/Middle School": "Glenview College Preparatory High School",
       "High School Graduation Year*": "2028",
@@ -3844,7 +3844,7 @@
       "Emergency Contact Number*": "(602) 405-3082"
     },
     {
-      "full_name": "Brian Botello",
+      "Full Name": "Brian Botello",
       "Camper Email*": "botello606@gmail.com",
       "Camper High School/Middle School": "Glenview College Preparatory High School",
       "High School Graduation Year*": "2027",
@@ -3865,7 +3865,7 @@
       "Emergency Contact Number*": "602-405-3082"
     },
     {
-      "full_name": "Lydia Bran-Delgado",
+      "Full Name": "Lydia Bran-Delgado",
       "Camper Email*": "brandelgadolydia@gmail.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2025",
@@ -3886,7 +3886,7 @@
       "Emergency Contact Number*": "602-860-4439"
     },
     {
-      "full_name": "Alesandra Briceño Paredes",
+      "Full Name": "Alesandra Briceño Paredes",
       "Camper Email*": "Sbriseno863@gmail.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2030",
@@ -3907,7 +3907,7 @@
       "Emergency Contact Number*": "6024006243"
     },
     {
-      "full_name": "Gabriel Buelna",
+      "Full Name": "Gabriel Buelna",
       "Camper Email*": "arreola.judith@yahoo.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2030",
@@ -3928,7 +3928,7 @@
       "Emergency Contact Number*": "6028250569"
     },
     {
-      "full_name": "Melanie Calderon",
+      "Full Name": "Melanie Calderon",
       "Camper Email*": "christyposada@gmail.com",
       "Camper High School/Middle School": "Vista College Prep Metro North",
       "High School Graduation Year*": "2029",
@@ -3949,7 +3949,7 @@
       "Emergency Contact Number*": "8186311360"
     },
     {
-      "full_name": "Czhesca Calma",
+      "Full Name": "Czhesca Calma",
       "Camper Email*": "khendumlao@gmail.com",
       "Camper High School/Middle School": "All Saints’ Episcopal Day School",
       "High School Graduation Year*": "2029",
@@ -3970,7 +3970,7 @@
       "Emergency Contact Number*": "4808436907"
     },
     {
-      "full_name": "Angel Camacho",
+      "Full Name": "Angel Camacho",
       "Camper Email*": "angel81952@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2026",
@@ -3991,7 +3991,7 @@
       "Emergency Contact Number*": "602-904-9542"
     },
     {
-      "full_name": "Aliyah Canales",
+      "Full Name": "Aliyah Canales",
       "Camper Email*": "wrensladyoli@aol.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4012,7 +4012,7 @@
       "Emergency Contact Number*": "6024837017"
     },
     {
-      "full_name": "Carlos Candia",
+      "Full Name": "Carlos Candia",
       "Camper Email*": "jcandia247@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2028",
@@ -4033,7 +4033,7 @@
       "Emergency Contact Number*": "4803477714"
     },
     {
-      "full_name": "David Carey",
+      "Full Name": "David Carey",
       "Camper Email*": "Mormarylin17@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2027",
@@ -4054,7 +4054,7 @@
       "Emergency Contact Number*": "480-468-2721"
     },
     {
-      "full_name": "Evelyn Carrasco",
+      "Full Name": "Evelyn Carrasco",
       "Camper Email*": "evelyncarrosco@icloud.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -4075,7 +4075,7 @@
       "Emergency Contact Number*": "+1 (928) 600-4484"
     },
     {
-      "full_name": "Crystal Carrasco Jimenez",
+      "Full Name": "Crystal Carrasco Jimenez",
       "Camper Email*": "gabrielaajimenezz24@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4096,7 +4096,7 @@
       "Emergency Contact Number*": "602-422-6809"
     },
     {
-      "full_name": "Dynaris Casas",
+      "Full Name": "Dynaris Casas",
       "Camper Email*": "dynaris1@outlook.com",
       "Camper High School/Middle School": "Bioscience High School",
       "High School Graduation Year*": "2028",
@@ -4117,7 +4117,7 @@
       "Emergency Contact Number*": "6024038397"
     },
     {
-      "full_name": "Lizbeth Casimiro",
+      "Full Name": "Lizbeth Casimiro",
       "Camper Email*": "angelicacash10@icloud.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2027",
@@ -4138,7 +4138,7 @@
       "Emergency Contact Number*": "6024234775"
     },
     {
-      "full_name": "Angelica Casimiro Palemonte",
+      "Full Name": "Angelica Casimiro Palemonte",
       "Camper Email*": "Lizzycash12@icloud.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4159,7 +4159,7 @@
       "Emergency Contact Number*": "6024234775"
     },
     {
-      "full_name": "Victor Castillo",
+      "Full Name": "Victor Castillo",
       "Camper Email*": "Arreola.judith@yahoo.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2029",
@@ -4180,7 +4180,7 @@
       "Emergency Contact Number*": "602 825 0569"
     },
     {
-      "full_name": "Edwin Castro Beltran",
+      "Full Name": "Edwin Castro Beltran",
       "Camper Email*": "deannaschaffner@yahoo.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2025",
@@ -4201,7 +4201,7 @@
       "Emergency Contact Number*": "480-227-4136"
     },
     {
-      "full_name": "Leslie Cereceres",
+      "Full Name": "Leslie Cereceres",
       "Camper Email*": "nayeliarvizu23@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4222,7 +4222,7 @@
       "Emergency Contact Number*": "602-717-8403"
     },
     {
-      "full_name": "Mpawenayo Chance",
+      "Full Name": "Mpawenayo Chance",
       "Camper Email*": "chancempawenayo@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2026",
@@ -4243,7 +4243,7 @@
       "Emergency Contact Number*": "6023660913"
     },
     {
-      "full_name": "Jesus Chavez Vega",
+      "Full Name": "Jesus Chavez Vega",
       "Camper Email*": "ericchavez4567@gmail.com",
       "Camper High School/Middle School": "Trevor Browne High School",
       "High School Graduation Year*": "2029",
@@ -4264,7 +4264,7 @@
       "Emergency Contact Number*": "(602) 691-8089"
     },
     {
-      "full_name": "Robert Corrales",
+      "Full Name": "Robert Corrales",
       "Camper Email*": "rojastiznado@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2028",
@@ -4285,7 +4285,7 @@
       "Emergency Contact Number*": "692-218-0721"
     },
     {
-      "full_name": "Lensley Cortes",
+      "Full Name": "Lensley Cortes",
       "Camper Email*": "Marybombon19@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2028",
@@ -4306,7 +4306,7 @@
       "Emergency Contact Number*": "6025139240"
     },
     {
-      "full_name": "Ever Octavio Cortes Mendoza",
+      "Full Name": "Ever Octavio Cortes Mendoza",
       "Camper Email*": "Marybombon19@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2026",
@@ -4327,7 +4327,7 @@
       "Emergency Contact Number*": "6025139240"
     },
     {
-      "full_name": "Alvaro Cortez Chino",
+      "Full Name": "Alvaro Cortez Chino",
       "Camper Email*": "veronicachino1972@gmial.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2025",
@@ -4348,7 +4348,7 @@
       "Emergency Contact Number*": "(602) 367-3375  &  (480) 296-3436"
     },
     {
-      "full_name": "Michelle Cota Duarte",
+      "Full Name": "Michelle Cota Duarte",
       "Camper Email*": "michellecota-2019@outlook.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -4369,7 +4369,7 @@
       "Emergency Contact Number*": "6028841927"
     },
     {
-      "full_name": "Karla Cruz",
+      "Full Name": "Karla Cruz",
       "Camper Email*": "tbrosy4@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -4390,7 +4390,7 @@
       "Emergency Contact Number*": "6025736974"
     },
     {
-      "full_name": "Jahir Cruz",
+      "Full Name": "Jahir Cruz",
       "Camper Email*": "tbrosy4@gmail.com",
       "Camper High School/Middle School": "Magnet Traditional school",
       "High School Graduation Year*": "2026",
@@ -4411,7 +4411,7 @@
       "Emergency Contact Number*": "6025736974"
     },
     {
-      "full_name": "Jorge Cruz Chacon",
+      "Full Name": "Jorge Cruz Chacon",
       "Camper Email*": "santachaconsch@gmail.com",
       "Camper High School/Middle School": "Morris K Udall",
       "High School Graduation Year*": "2030",
@@ -4432,7 +4432,7 @@
       "Emergency Contact Number*": "602 649 9196"
     },
     {
-      "full_name": "Juliyionna Davis",
+      "Full Name": "Juliyionna Davis",
       "Camper Email*": "dickerson.danesha@yahoo.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2025",
@@ -4453,7 +4453,7 @@
       "Emergency Contact Number*": "754-367-8063"
     },
     {
-      "full_name": "Roberto De La Rosa Rubio",
+      "Full Name": "Roberto De La Rosa Rubio",
       "Camper Email*": "rdelarosarubio26@bourgadecatholic.org",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -4474,7 +4474,7 @@
       "Emergency Contact Number*": "623-249-1762"
     },
     {
-      "full_name": "Jessica De La Torre",
+      "Full Name": "Jessica De La Torre",
       "Camper Email*": "lucero88garcia@gmail.com",
       "Camper High School/Middle School": "Morris K Udall",
       "High School Graduation Year*": "2025",
@@ -4495,7 +4495,7 @@
       "Emergency Contact Number*": "6029039768"
     },
     {
-      "full_name": "Lorenzo De Luna",
+      "Full Name": "Lorenzo De Luna",
       "Camper Email*": "ymendez99@gmail.com",
       "Camper High School/Middle School": "Poston Butte High School",
       "High School Graduation Year*": "2025",
@@ -4516,7 +4516,7 @@
       "Emergency Contact Number*": "4803020224"
     },
     {
-      "full_name": "Riley Delagarza",
+      "Full Name": "Riley Delagarza",
       "Camper Email*": "beltran.riley5@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -4537,7 +4537,7 @@
       "Emergency Contact Number*": "6026151017"
     },
     {
-      "full_name": "Pedro J. Delgado Diaz",
+      "Full Name": "Pedro J. Delgado Diaz",
       "Camper Email*": "blancadiaz73586@gmail.com",
       "Camper High School/Middle School": "Morris K. Udall",
       "High School Graduation Year*": "2026",
@@ -4558,7 +4558,7 @@
       "Emergency Contact Number*": "6022925223"
     },
     {
-      "full_name": "Brandon Diaz",
+      "Full Name": "Brandon Diaz",
       "Camper Email*": "gurulehome40@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2028",
@@ -4579,7 +4579,7 @@
       "Emergency Contact Number*": "602 600-1603"
     },
     {
-      "full_name": "Madelyne Diaz",
+      "Full Name": "Madelyne Diaz",
       "Camper Email*": "dsmadelyne@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -4600,7 +4600,7 @@
       "Emergency Contact Number*": "6026182957"
     },
     {
-      "full_name": "Maverick Diaz Celaya",
+      "Full Name": "Maverick Diaz Celaya",
       "Camper Email*": "maverickdiaz06@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -4621,7 +4621,7 @@
       "Emergency Contact Number*": "480-823-2531"
     },
     {
-      "full_name": "Marion Dickson",
+      "Full Name": "Marion Dickson",
       "Camper Email*": "Swester89@yahoo.com",
       "Camper High School/Middle School": "Vista college metro",
       "High School Graduation Year*": "2030",
@@ -4642,7 +4642,7 @@
       "Emergency Contact Number*": "6232164178"
     },
     {
-      "full_name": "Paul Dodson Iii",
+      "Full Name": "Paul Dodson Iii",
       "Camper Email*": "pdodson102@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -4663,7 +4663,7 @@
       "Emergency Contact Number*": "6027697485"
     },
     {
-      "full_name": "Zain Dulei",
+      "Full Name": "Zain Dulei",
       "Camper Email*": "zaindulei@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2027",
@@ -4684,7 +4684,7 @@
       "Emergency Contact Number*": "480-862-4414"
     },
     {
-      "full_name": "Brissa Duran",
+      "Full Name": "Brissa Duran",
       "Camper Email*": "adrianaduran91171@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4705,7 +4705,7 @@
       "Emergency Contact Number*": "623 241 2049"
     },
     {
-      "full_name": "Lezly Escarrega",
+      "Full Name": "Lezly Escarrega",
       "Camper Email*": "venegas0208@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2027",
@@ -4726,7 +4726,7 @@
       "Emergency Contact Number*": "6026840416"
     },
     {
-      "full_name": "Wilber Escobar",
+      "Full Name": "Wilber Escobar",
       "Camper Email*": "fernandolu82@gmail.com",
       "Camper High School/Middle School": "Academic of Math and Science Camelback",
       "High School Graduation Year*": "2029",
@@ -4747,7 +4747,7 @@
       "Emergency Contact Number*": "6024197882"
     },
     {
-      "full_name": "Sebastian Estrada",
+      "Full Name": "Sebastian Estrada",
       "Camper Email*": "estradascalendar9@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2028",
@@ -4768,7 +4768,7 @@
       "Emergency Contact Number*": "602-541-2842"
     },
     {
-      "full_name": "Xavier Estrada",
+      "Full Name": "Xavier Estrada",
       "Camper Email*": "moni89moreno@gmail.com",
       "Camper High School/Middle School": "Cesar Chavez High School",
       "High School Graduation Year*": "2027",
@@ -4789,7 +4789,7 @@
       "Emergency Contact Number*": "480-408-5981"
     },
     {
-      "full_name": "Jorandy Estrada",
+      "Full Name": "Jorandy Estrada",
       "Camper Email*": "estradajorandy@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -4810,7 +4810,7 @@
       "Emergency Contact Number*": "(480) 843-9736"
     },
     {
-      "full_name": "Krum Fabre",
+      "Full Name": "Krum Fabre",
       "Camper Email*": "azfabre@hotmail.com",
       "Camper High School/Middle School": "Vista College Prep- metro north",
       "High School Graduation Year*": "2029",
@@ -4831,7 +4831,7 @@
       "Emergency Contact Number*": "602 686 4163"
     },
     {
-      "full_name": "Ramon Felix",
+      "Full Name": "Ramon Felix",
       "Camper Email*": "ceciliaaa.mairaa29@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -4852,7 +4852,7 @@
       "Emergency Contact Number*": "6026147965"
     },
     {
-      "full_name": "Jesús Flores",
+      "Full Name": "Jesús Flores",
       "Camper Email*": "davidflores835@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2028",
@@ -4873,7 +4873,7 @@
       "Emergency Contact Number*": "6023321855"
     },
     {
-      "full_name": "Jose Flores",
+      "Full Name": "Jose Flores",
       "Camper Email*": "davidflores835@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -4894,7 +4894,7 @@
       "Emergency Contact Number*": "602-802-2665"
     },
     {
-      "full_name": "Oscar Flores",
+      "Full Name": "Oscar Flores",
       "Camper Email*": "iris_y_miranda@hotmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4915,7 +4915,7 @@
       "Emergency Contact Number*": "4808496374"
     },
     {
-      "full_name": "Martin Fernando Flores Yepiz",
+      "Full Name": "Martin Fernando Flores Yepiz",
       "Camper Email*": "luciayepiz4@gmail.com",
       "Camper High School/Middle School": "South Mountain High School",
       "High School Graduation Year*": "2028",
@@ -4936,7 +4936,7 @@
       "Emergency Contact Number*": "4808195754"
     },
     {
-      "full_name": "Yareli Fonseca",
+      "Full Name": "Yareli Fonseca",
       "Camper Email*": "fonsecayareli03@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -4957,7 +4957,7 @@
       "Emergency Contact Number*": "(480)707-9768"
     },
     {
-      "full_name": "Ernesto Fonseca",
+      "Full Name": "Ernesto Fonseca",
       "Camper Email*": "marquezperla1990@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -4978,7 +4978,7 @@
       "Emergency Contact Number*": "4805225785"
     },
     {
-      "full_name": "Melanie Fowlkes",
+      "Full Name": "Melanie Fowlkes",
       "Camper Email*": "fowlkes@hotmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -4999,7 +4999,7 @@
       "Emergency Contact Number*": "6028263384"
     },
     {
-      "full_name": "Dulce Gamboa",
+      "Full Name": "Dulce Gamboa",
       "Camper Email*": "gamboadulce346@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -5020,7 +5020,7 @@
       "Emergency Contact Number*": "623 313 1285"
     },
     {
-      "full_name": "Iris Garcia",
+      "Full Name": "Iris Garcia",
       "Camper Email*": "sirilovessyou@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2028",
@@ -5041,7 +5041,7 @@
       "Emergency Contact Number*": "6026019089"
     },
     {
-      "full_name": "Carlos Garcia",
+      "Full Name": "Carlos Garcia",
       "Camper Email*": "cg2502lu@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -5062,7 +5062,7 @@
       "Emergency Contact Number*": "6023359611"
     },
     {
-      "full_name": "Xenia Garcia",
+      "Full Name": "Xenia Garcia",
       "Camper Email*": "gloriaestrada90@yahoo.com",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "2030",
@@ -5083,7 +5083,7 @@
       "Emergency Contact Number*": "6028256440"
     },
     {
-      "full_name": "Ataliya Garcia",
+      "Full Name": "Ataliya Garcia",
       "Camper Email*": "tomaneshareese@yahoo.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -5104,7 +5104,7 @@
       "Emergency Contact Number*": "6027837519"
     },
     {
-      "full_name": "Leslie Garcia Rendon",
+      "Full Name": "Leslie Garcia Rendon",
       "Camper Email*": "leslie041207@gmail.com",
       "Camper High School/Middle School": "Paradise Valley High School",
       "High School Graduation Year*": "2026",
@@ -5125,7 +5125,7 @@
       "Emergency Contact Number*": "+1 (520) 483-9499"
     },
     {
-      "full_name": "Adrian Garcia-Lessa",
+      "Full Name": "Adrian Garcia-Lessa",
       "Camper Email*": "adriangarcialessa@gmail.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2030",
@@ -5146,7 +5146,7 @@
       "Emergency Contact Number*": "602-413-7093"
     },
     {
-      "full_name": "Erick Gaspar",
+      "Full Name": "Erick Gaspar",
       "Camper Email*": "erickkroos21@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2026",
@@ -5167,7 +5167,7 @@
       "Emergency Contact Number*": "(602) 812-9368"
     },
     {
-      "full_name": "Joseph Gomez",
+      "Full Name": "Joseph Gomez",
       "Camper Email*": "laura.y71870@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -5188,7 +5188,7 @@
       "Emergency Contact Number*": "4805274978"
     },
     {
-      "full_name": "Andrea Gómez",
+      "Full Name": "Andrea Gómez",
       "Camper Email*": "rocioguerrero36@yahoo.com",
       "Camper High School/Middle School": "All Saints’ Episcopal Day School",
       "High School Graduation Year*": "2029",
@@ -5209,7 +5209,7 @@
       "Emergency Contact Number*": "602 875 1697"
     },
     {
-      "full_name": "Azhael Gonzalez",
+      "Full Name": "Azhael Gonzalez",
       "Camper Email*": "azhael.gonzalez2012@gmail.com",
       "Camper High School/Middle School": "N/a",
       "High School Graduation Year*": "2026",
@@ -5230,7 +5230,7 @@
       "Emergency Contact Number*": "6924342437"
     },
     {
-      "full_name": "Jasmine Gonzalez",
+      "Full Name": "Jasmine Gonzalez",
       "Camper Email*": "marugonzalez2487@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2029",
@@ -5251,7 +5251,7 @@
       "Emergency Contact Number*": "+1 (602) 921-6417"
     },
     {
-      "full_name": "Denise Guerrero Loza",
+      "Full Name": "Denise Guerrero Loza",
       "Camper Email*": "David_g_r@yahoo.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2025",
@@ -5272,7 +5272,7 @@
       "Emergency Contact Number*": "602 363 7752"
     },
     {
-      "full_name": "Yulissa Gutierrez",
+      "Full Name": "Yulissa Gutierrez",
       "Camper Email*": "Chairez329@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -5293,7 +5293,7 @@
       "Emergency Contact Number*": "(602)-760-9351"
     },
     {
-      "full_name": "Roberta Gutierrez",
+      "Full Name": "Roberta Gutierrez",
       "Camper Email*": "christina.calderilla@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -5314,7 +5314,7 @@
       "Emergency Contact Number*": "480.708.8645"
     },
     {
-      "full_name": "Aurora Gutiérrez",
+      "Full Name": "Aurora Gutiérrez",
       "Camper Email*": "gonzalezalicia1993@icloud.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2029",
@@ -5335,7 +5335,7 @@
       "Emergency Contact Number*": "4803167804"
     },
     {
-      "full_name": "Adan Guzman",
+      "Full Name": "Adan Guzman",
       "Camper Email*": "cintiaro.driguez.693@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2027",
@@ -5356,7 +5356,7 @@
       "Emergency Contact Number*": "6238537111"
     },
     {
-      "full_name": "Kingston Harmon",
+      "Full Name": "Kingston Harmon",
       "Camper Email*": "my3kids2015@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2028",
@@ -5377,7 +5377,7 @@
       "Emergency Contact Number*": "602-784-6357"
     },
     {
-      "full_name": "Jocelyn Haro Sánchez",
+      "Full Name": "Jocelyn Haro Sánchez",
       "Camper Email*": "jocelynharosanchez@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2026",
@@ -5398,7 +5398,7 @@
       "Emergency Contact Number*": "602 718 8846"
     },
     {
-      "full_name": "Ricardo Hernandez",
+      "Full Name": "Ricardo Hernandez",
       "Camper Email*": "rh429991@icloud.clm",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -5419,7 +5419,7 @@
       "Emergency Contact Number*": "6024463670"
     },
     {
-      "full_name": "Lizeth Hernandez",
+      "Full Name": "Lizeth Hernandez",
       "Camper Email*": "lizethhern.137@icloud.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -5440,7 +5440,7 @@
       "Emergency Contact Number*": "6029303578"
     },
     {
-      "full_name": "Luis Hernandez",
+      "Full Name": "Luis Hernandez",
       "Camper Email*": "briceno233@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -5461,7 +5461,7 @@
       "Emergency Contact Number*": "(623)428-3908"
     },
     {
-      "full_name": "John Hernandez",
+      "Full Name": "John Hernandez",
       "Camper Email*": "johnhdz602@icloud.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -5482,7 +5482,7 @@
       "Emergency Contact Number*": "4806627500"
     },
     {
-      "full_name": "Ahtziry Hernandez Garcia",
+      "Full Name": "Ahtziry Hernandez Garcia",
       "Camper Email*": "hernandezahtziry579@gmail.com",
       "Camper High School/Middle School": "The Orme School",
       "High School Graduation Year*": "2025",
@@ -5503,7 +5503,7 @@
       "Emergency Contact Number*": "5038390055"
     },
     {
-      "full_name": "Talia Hernandez Gutierrez",
+      "Full Name": "Talia Hernandez Gutierrez",
       "Camper Email*": "Richardhp82@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2026",
@@ -5524,7 +5524,7 @@
       "Emergency Contact Number*": "6025453912"
     },
     {
-      "full_name": "Josette Hernández-Nunez",
+      "Full Name": "Josette Hernández-Nunez",
       "Camper Email*": "anunez@csd83.org",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -5545,7 +5545,7 @@
       "Emergency Contact Number*": "692-503-5040"
     },
     {
-      "full_name": "Litany Marlene Herrera Perez",
+      "Full Name": "Litany Marlene Herrera Perez",
       "Camper Email*": "yehimyperez81896@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2026",
@@ -5566,7 +5566,7 @@
       "Emergency Contact Number*": "6233054258"
     },
     {
-      "full_name": "Isabel Hinojosa Rafael",
+      "Full Name": "Isabel Hinojosa Rafael",
       "Camper Email*": "emyli2423@gmail.com",
       "Camper High School/Middle School": "Morris k. Udall",
       "High School Graduation Year*": "2029",
@@ -5587,7 +5587,7 @@
       "Emergency Contact Number*": "4806827177"
     },
     {
-      "full_name": "Evelyn Holcomb",
+      "Full Name": "Evelyn Holcomb",
       "Camper Email*": "ml61604@gmail.com",
       "Camper High School/Middle School": "Morris K Udall Middle School",
       "High School Graduation Year*": "2030",
@@ -5608,7 +5608,7 @@
       "Emergency Contact Number*": "623050799"
     },
     {
-      "full_name": "Chanell Hoskins",
+      "Full Name": "Chanell Hoskins",
       "Camper Email*": "evanscarolyn28@gmail.com",
       "Camper High School/Middle School": "Vista prep metro",
       "High School Graduation Year*": "2030",
@@ -5629,7 +5629,7 @@
       "Emergency Contact Number*": "3235356619"
     },
     {
-      "full_name": "Brayan Huerta",
+      "Full Name": "Brayan Huerta",
       "Camper Email*": "brayanvaldez0413@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -5650,7 +5650,7 @@
       "Emergency Contact Number*": "6023006781"
     },
     {
-      "full_name": "Tayla Huggins",
+      "Full Name": "Tayla Huggins",
       "Camper Email*": "lataviamecole@gmail.com",
       "Camper High School/Middle School": "Vista college prep - metro north",
       "High School Graduation Year*": "2030",
@@ -5671,7 +5671,7 @@
       "Emergency Contact Number*": "5204509627"
     },
     {
-      "full_name": "America Ibarra",
+      "Full Name": "America Ibarra",
       "Camper Email*": "j2590jesusibarra90@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2026",
@@ -5692,7 +5692,7 @@
       "Emergency Contact Number*": "4804925526"
     },
     {
-      "full_name": "Joshier James",
+      "Full Name": "Joshier James",
       "Camper Email*": "majorlee.8282@gmail.com",
       "Camper High School/Middle School": "Shadow Ridge High School",
       "High School Graduation Year*": "2025",
@@ -5713,7 +5713,7 @@
       "Emergency Contact Number*": "6022522549"
     },
     {
-      "full_name": "Emily Jardon Ocampo",
+      "Full Name": "Emily Jardon Ocampo",
       "Camper Email*": "Jardonmichelle9@gmail.com",
       "Camper High School/Middle School": "Alhambra elementary",
       "High School Graduation Year*": "2029",
@@ -5734,7 +5734,7 @@
       "Emergency Contact Number*": "602-702-7979"
     },
     {
-      "full_name": "Michelle Jardon-Ocampo",
+      "Full Name": "Michelle Jardon-Ocampo",
       "Camper Email*": "Jardonmichelle9@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2027",
@@ -5755,7 +5755,7 @@
       "Emergency Contact Number*": "602-702-7979"
     },
     {
-      "full_name": "Varney Kamara",
+      "Full Name": "Varney Kamara",
       "Camper Email*": "varneykamara567@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2025",
@@ -5776,7 +5776,7 @@
       "Emergency Contact Number*": "6232991398"
     },
     {
-      "full_name": "Alonso Landeros",
+      "Full Name": "Alonso Landeros",
       "Camper Email*": "alonsolander6666@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -5797,7 +5797,7 @@
       "Emergency Contact Number*": "6026681048"
     },
     {
-      "full_name": "Victor Larios",
+      "Full Name": "Victor Larios",
       "Camper Email*": "viclarios424@gmail.com",
       "Camper High School/Middle School": "Maricopa Institute of Technology",
       "High School Graduation Year*": "2026",
@@ -5818,7 +5818,7 @@
       "Emergency Contact Number*": "(602)349-5872"
     },
     {
-      "full_name": "Matthew Larios",
+      "Full Name": "Matthew Larios",
       "Camper Email*": "mrsramirezmichelle@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2028",
@@ -5839,7 +5839,7 @@
       "Emergency Contact Number*": "6029038581"
     },
     {
-      "full_name": "Shaila Lechuga",
+      "Full Name": "Shaila Lechuga",
       "Camper Email*": "slechuga25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -5860,7 +5860,7 @@
       "Emergency Contact Number*": "(602) 518-2716"
     },
     {
-      "full_name": "Andrew Lizama",
+      "Full Name": "Andrew Lizama",
       "Camper Email*": "jackie_m1985@yahoo.com",
       "Camper High School/Middle School": "Franklin Police and Fire High School",
       "High School Graduation Year*": "2027",
@@ -5881,7 +5881,7 @@
       "Emergency Contact Number*": "480-696-0769"
     },
     {
-      "full_name": "Yanelli Lopez",
+      "Full Name": "Yanelli Lopez",
       "Camper Email*": "yanellilopez087@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -5902,7 +5902,7 @@
       "Emergency Contact Number*": "6028845212"
     },
     {
-      "full_name": "Maria Lopez",
+      "Full Name": "Maria Lopez",
       "Camper Email*": "lopezsarahi952@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -5923,7 +5923,7 @@
       "Emergency Contact Number*": "+1 (623) 206-9903"
     },
     {
-      "full_name": "Naevia Lucero Gomez",
+      "Full Name": "Naevia Lucero Gomez",
       "Camper Email*": "yeppislandscapeservices@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -5944,7 +5944,7 @@
       "Emergency Contact Number*": "6023359966"
     },
     {
-      "full_name": "Aydan M. Luna Rios",
+      "Full Name": "Aydan M. Luna Rios",
       "Camper Email*": "beyluna@gmail.com",
       "Camper High School/Middle School": "Morris K udall",
       "High School Graduation Year*": "2030",
@@ -5965,7 +5965,7 @@
       "Emergency Contact Number*": "602-348-7733"
     },
     {
-      "full_name": "Adam Mada",
+      "Full Name": "Adam Mada",
       "Camper Email*": "vianeymada@yahoo.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -5986,7 +5986,7 @@
       "Emergency Contact Number*": "602-410-3966"
     },
     {
-      "full_name": "Mia Madrid",
+      "Full Name": "Mia Madrid",
       "Camper Email*": "ribheartang@hotmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -6007,7 +6007,7 @@
       "Emergency Contact Number*": "6026721245"
     },
     {
-      "full_name": "Jaziel Magdaleno",
+      "Full Name": "Jaziel Magdaleno",
       "Camper Email*": "magman_4@live.com",
       "Camper High School/Middle School": "N/a",
       "High School Graduation Year*": "2030",
@@ -6028,7 +6028,7 @@
       "Emergency Contact Number*": "6236946241"
     },
     {
-      "full_name": "Malakai Marquez",
+      "Full Name": "Malakai Marquez",
       "Camper Email*": "rdmarquez1387@yahoo.com",
       "Camper High School/Middle School": "Loyola Academy",
       "High School Graduation Year*": "2030",
@@ -6049,7 +6049,7 @@
       "Emergency Contact Number*": "6026881060"
     },
     {
-      "full_name": "Yasarith Marquez",
+      "Full Name": "Yasarith Marquez",
       "Camper Email*": "Yasarith11@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6070,7 +6070,7 @@
       "Emergency Contact Number*": "602-754-6304"
     },
     {
-      "full_name": "Yael Ivan Marquina Nava",
+      "Full Name": "Yael Ivan Marquina Nava",
       "Camper Email*": "ancelma15@icloud.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2030",
@@ -6091,7 +6091,7 @@
       "Emergency Contact Number*": "6025162436"
     },
     {
-      "full_name": "Fernando Martinez",
+      "Full Name": "Fernando Martinez",
       "Camper Email*": "martinez89200@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -6112,7 +6112,7 @@
       "Emergency Contact Number*": "+1 (602) 330-2736"
     },
     {
-      "full_name": "Princess Martinez",
+      "Full Name": "Princess Martinez",
       "Camper Email*": "Hayme.ortega.95@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6133,7 +6133,7 @@
       "Emergency Contact Number*": "480 514 0649"
     },
     {
-      "full_name": "Julio Martínez",
+      "Full Name": "Julio Martínez",
       "Camper Email*": "jm071043@gmail.com",
       "Camper High School/Middle School": "Alhambra High School",
       "High School Graduation Year*": "2026",
@@ -6154,7 +6154,7 @@
       "Emergency Contact Number*": "+1 (602) 696-4960"
     },
     {
-      "full_name": "Juan Martinez Cruz",
+      "Full Name": "Juan Martinez Cruz",
       "Camper Email*": "leinad198887@yahoo.com.mx",
       "Camper High School/Middle School": "PCDS",
       "High School Graduation Year*": "2026",
@@ -6175,7 +6175,7 @@
       "Emergency Contact Number*": "6232243374"
     },
     {
-      "full_name": "Ana Matuz",
+      "Full Name": "Ana Matuz",
       "Camper Email*": "a.c.matuz.14@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2026",
@@ -6196,7 +6196,7 @@
       "Emergency Contact Number*": "6024469784"
     },
     {
-      "full_name": "Ashley Mendez Niz",
+      "Full Name": "Ashley Mendez Niz",
       "Camper Email*": "Catal1809@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -6217,7 +6217,7 @@
       "Emergency Contact Number*": "602 614 6384"
     },
     {
-      "full_name": "Patricia Mendoza",
+      "Full Name": "Patricia Mendoza",
       "Camper Email*": "irmasanchez7878@gmail.com",
       "Camper High School/Middle School": "Morris K Udall Middle School",
       "High School Graduation Year*": "2030",
@@ -6238,7 +6238,7 @@
       "Emergency Contact Number*": "6023497255"
     },
     {
-      "full_name": "Kallee Mendoza",
+      "Full Name": "Kallee Mendoza",
       "Camper Email*": "mixsen84@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6259,7 +6259,7 @@
       "Emergency Contact Number*": "4803168888"
     },
     {
-      "full_name": "Ileane Meza",
+      "Full Name": "Ileane Meza",
       "Camper Email*": "hernandez.clarita73@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6280,7 +6280,7 @@
       "Emergency Contact Number*": "602 473 8601"
     },
     {
-      "full_name": "Tiany Miranda",
+      "Full Name": "Tiany Miranda",
       "Camper Email*": "oscar61987@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2026",
@@ -6301,7 +6301,7 @@
       "Emergency Contact Number*": "4802650089"
     },
     {
-      "full_name": "Oscar Miranda",
+      "Full Name": "Oscar Miranda",
       "Camper Email*": "dulc3urquijo@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6322,7 +6322,7 @@
       "Emergency Contact Number*": "4802650089"
     },
     {
-      "full_name": "Kevin Miranda Suazo",
+      "Full Name": "Kevin Miranda Suazo",
       "Camper Email*": "suazoseleene823@gmail.com",
       "Camper High School/Middle School": "Na",
       "High School Graduation Year*": "2030",
@@ -6343,7 +6343,7 @@
       "Emergency Contact Number*": "6026209315"
     },
     {
-      "full_name": "Yanai Monjaraz",
+      "Full Name": "Yanai Monjaraz",
       "Camper Email*": "lizbethibarra027@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2029",
@@ -6364,7 +6364,7 @@
       "Emergency Contact Number*": "4805449928"
     },
     {
-      "full_name": "Ashley Monreal",
+      "Full Name": "Ashley Monreal",
       "Camper Email*": "ashleymonreal124@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -6385,7 +6385,7 @@
       "Emergency Contact Number*": "480-989-7332"
     },
     {
-      "full_name": "Emily Morales",
+      "Full Name": "Emily Morales",
       "Camper Email*": "em631038@gmail.com",
       "Camper High School/Middle School": "Alhambra High School",
       "High School Graduation Year*": "2028",
@@ -6406,7 +6406,7 @@
       "Emergency Contact Number*": "(623) 336-0661"
     },
     {
-      "full_name": "Leyber Morales",
+      "Full Name": "Leyber Morales",
       "Camper Email*": "neymamorales162@icloud.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2028",
@@ -6427,7 +6427,7 @@
       "Emergency Contact Number*": "480 781 1254"
     },
     {
-      "full_name": "Roycelyn Morales",
+      "Full Name": "Roycelyn Morales",
       "Camper Email*": "karenporras67@gmail.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2028",
@@ -6448,7 +6448,7 @@
       "Emergency Contact Number*": "6028137069"
     },
     {
-      "full_name": "Samantha Morales",
+      "Full Name": "Samantha Morales",
       "Camper Email*": "sm9651210@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2028",
@@ -6469,7 +6469,7 @@
       "Emergency Contact Number*": "4804690428"
     },
     {
-      "full_name": "Isaac Moran",
+      "Full Name": "Isaac Moran",
       "Camper Email*": "sr.davidm@gmail.com",
       "Camper High School/Middle School": "Morris K. Udall",
       "High School Graduation Year*": "2030",
@@ -6490,7 +6490,7 @@
       "Emergency Contact Number*": "602 284 4691"
     },
     {
-      "full_name": "Caleb Moreno",
+      "Full Name": "Caleb Moreno",
       "Camper Email*": "calecale2938@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2028",
@@ -6511,7 +6511,7 @@
       "Emergency Contact Number*": "623-755-4178"
     },
     {
-      "full_name": "Jetaime Moreno",
+      "Full Name": "Jetaime Moreno",
       "Camper Email*": "jetaimemoreno@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2026",
@@ -6532,7 +6532,7 @@
       "Emergency Contact Number*": "6237554178"
     },
     {
-      "full_name": "Sebastian Moreno",
+      "Full Name": "Sebastian Moreno",
       "Camper Email*": "gabylugo11@gmail.com",
       "Camper High School/Middle School": "Pueblo del sol",
       "High School Graduation Year*": "2025",
@@ -6553,7 +6553,7 @@
       "Emergency Contact Number*": "6028852285"
     },
     {
-      "full_name": "Allison Moreno Martinez",
+      "Full Name": "Allison Moreno Martinez",
       "Camper Email*": "allysonmorenom890@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -6574,7 +6574,7 @@
       "Emergency Contact Number*": "(602)334-9266"
     },
     {
-      "full_name": "Uriel Moreno Martinez",
+      "Full Name": "Uriel Moreno Martinez",
       "Camper Email*": "urielmoreno2023@gmail.com",
       "Camper High School/Middle School": "Arcadia High School",
       "High School Graduation Year*": "2028",
@@ -6595,7 +6595,7 @@
       "Emergency Contact Number*": "6023349266"
     },
     {
-      "full_name": "Jorge Moreno Martinez",
+      "Full Name": "Jorge Moreno Martinez",
       "Camper Email*": "Jorgemorenomartinez223@gmail.com",
       "Camper High School/Middle School": "Ingleside middle school",
       "High School Graduation Year*": "2030",
@@ -6616,7 +6616,7 @@
       "Emergency Contact Number*": "602 334 9266"
     },
     {
-      "full_name": "Derek Moreno Verdugo",
+      "Full Name": "Derek Moreno Verdugo",
       "Camper Email*": "gilaverdugo3@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -6637,7 +6637,7 @@
       "Emergency Contact Number*": "602 369 3410"
     },
     {
-      "full_name": "Joseph Kyle Muñoz Madrid",
+      "Full Name": "Joseph Kyle Muñoz Madrid",
       "Camper Email*": "madridsandrapatricia@gmail.com",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "2025",
@@ -6658,7 +6658,7 @@
       "Emergency Contact Number*": "2093128638"
     },
     {
-      "full_name": "Alyson Munoz-Orozco",
+      "Full Name": "Alyson Munoz-Orozco",
       "Camper Email*": "jmaybely@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -6679,7 +6679,7 @@
       "Emergency Contact Number*": "623-213-2061 / 623-523-4395"
     },
     {
-      "full_name": "Erick Munoz-Orozco",
+      "Full Name": "Erick Munoz-Orozco",
       "Camper Email*": "jmaybely@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -6700,7 +6700,7 @@
       "Emergency Contact Number*": "623-213-2061"
     },
     {
-      "full_name": "Jhonny Najera",
+      "Full Name": "Jhonny Najera",
       "Camper Email*": "barbajhonny78@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -6721,7 +6721,7 @@
       "Emergency Contact Number*": "6025519643"
     },
     {
-      "full_name": "Linzey Nieblas Galaviz",
+      "Full Name": "Linzey Nieblas Galaviz",
       "Camper Email*": "galavizmarisela@yahoo.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2027",
@@ -6742,7 +6742,7 @@
       "Emergency Contact Number*": "6027338747"
     },
     {
-      "full_name": "Denisse Nieto Valentín",
+      "Full Name": "Denisse Nieto Valentín",
       "Camper Email*": "dnietovalentin25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -6763,7 +6763,7 @@
       "Emergency Contact Number*": "6029109835"
     },
     {
-      "full_name": "Maria Niz Lopez",
+      "Full Name": "Maria Niz Lopez",
       "Camper Email*": "lnmari28@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -6784,7 +6784,7 @@
       "Emergency Contact Number*": "602-313-9577 or 602-295-8289"
     },
     {
-      "full_name": "Delphine Nkundwakazi",
+      "Full Name": "Delphine Nkundwakazi",
       "Camper Email*": "david.ishimwe45@gmail.com",
       "Camper High School/Middle School": "Hurley Ranch Elementary School",
       "High School Graduation Year*": "2029",
@@ -6805,7 +6805,7 @@
       "Emergency Contact Number*": "(480) 853-8687"
     },
     {
-      "full_name": "Cristal Norman",
+      "Full Name": "Cristal Norman",
       "Camper Email*": "marimari8252@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2026",
@@ -6826,7 +6826,7 @@
       "Emergency Contact Number*": "480 742 0755"
     },
     {
-      "full_name": "Amaya Nungaray Barreda Arias",
+      "Full Name": "Amaya Nungaray Barreda Arias",
       "Camper Email*": "amayarias20@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -6847,7 +6847,7 @@
       "Emergency Contact Number*": "6026210389"
     },
     {
-      "full_name": "Jesus Olague",
+      "Full Name": "Jesus Olague",
       "Camper Email*": "Molinaitzel2025@gmail.com",
       "Camper High School/Middle School": "N/a",
       "High School Graduation Year*": "2030",
@@ -6868,7 +6868,7 @@
       "Emergency Contact Number*": "6232858368"
     },
     {
-      "full_name": "Maya Olguin",
+      "Full Name": "Maya Olguin",
       "Camper Email*": "mayaolguin9@gmail.com",
       "Camper High School/Middle School": "Glendale Union High School District Online Learning Academy",
       "High School Graduation Year*": "2025",
@@ -6889,7 +6889,7 @@
       "Emergency Contact Number*": "6027502953"
     },
     {
-      "full_name": "Adan Olguin",
+      "Full Name": "Adan Olguin",
       "Camper Email*": "virginiaolguin@cox.net",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -6910,7 +6910,7 @@
       "Emergency Contact Number*": "6025700375"
     },
     {
-      "full_name": "Jonathan A. Olmos Ortiz",
+      "Full Name": "Jonathan A. Olmos Ortiz",
       "Camper Email*": "ab28751@yahoo.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -6931,7 +6931,7 @@
       "Emergency Contact Number*": "6026186224"
     },
     {
-      "full_name": "Adrian Ortiz",
+      "Full Name": "Adrian Ortiz",
       "Camper Email*": "xmolivas420x@gmail.com",
       "Camper High School/Middle School": "Loyola Academy",
       "High School Graduation Year*": "2030",
@@ -6952,7 +6952,7 @@
       "Emergency Contact Number*": "(602)391-0284"
     },
     {
-      "full_name": "Mia Ortiz Carlos",
+      "Full Name": "Mia Ortiz Carlos",
       "Camper Email*": "glendacarlos88@gmail.com",
       "Camper High School/Middle School": "Morris K Udall",
       "High School Graduation Year*": "2029",
@@ -6973,7 +6973,7 @@
       "Emergency Contact Number*": "623-888-9470"
     },
     {
-      "full_name": "Leila Ortiz Valdez",
+      "Full Name": "Leila Ortiz Valdez",
       "Camper Email*": "leilaortiz0509@gmail.com",
       "Camper High School/Middle School": "Copper Canyon High School",
       "High School Graduation Year*": "2028",
@@ -6994,7 +6994,7 @@
       "Emergency Contact Number*": "623- 205-8538"
     },
     {
-      "full_name": "Felipe Isaias Osoria De La Torre",
+      "Full Name": "Felipe Isaias Osoria De La Torre",
       "Camper Email*": "jesosoria08@gmail.com",
       "Camper High School/Middle School": "Morris K Udall",
       "High School Graduation Year*": "2026",
@@ -7015,7 +7015,7 @@
       "Emergency Contact Number*": "Lucero Garcia"
     },
     {
-      "full_name": "Jasmine Osuna Leyva",
+      "Full Name": "Jasmine Osuna Leyva",
       "Camper Email*": "osuna.jasmine@icloud.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -7036,7 +7036,7 @@
       "Emergency Contact Number*": "6026008214"
     },
     {
-      "full_name": "Guadalupe Pahua Ramirez",
+      "Full Name": "Guadalupe Pahua Ramirez",
       "Camper Email*": "mariapahua21@icloud.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -7057,7 +7057,7 @@
       "Emergency Contact Number*": "6028256183"
     },
     {
-      "full_name": "Marisol Pahua Ramirez",
+      "Full Name": "Marisol Pahua Ramirez",
       "Camper Email*": "mariapahua21@icloud.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -7078,7 +7078,7 @@
       "Emergency Contact Number*": "6028256183"
     },
     {
-      "full_name": "Fernando Palacios",
+      "Full Name": "Fernando Palacios",
       "Camper Email*": "fernandopalacios1026@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2028",
@@ -7099,7 +7099,7 @@
       "Emergency Contact Number*": "6025003980"
     },
     {
-      "full_name": "Rolando Palencia",
+      "Full Name": "Rolando Palencia",
       "Camper Email*": "teampalencia539@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -7120,7 +7120,7 @@
       "Emergency Contact Number*": "623-764-7571"
     },
     {
-      "full_name": "Gabriela Parra",
+      "Full Name": "Gabriela Parra",
       "Camper Email*": "gaviota-46@hotmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2026",
@@ -7141,7 +7141,7 @@
       "Emergency Contact Number*": "623 231 1771"
     },
     {
-      "full_name": "Daniela Parra",
+      "Full Name": "Daniela Parra",
       "Camper Email*": "gaviota-46@hotmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2026",
@@ -7162,7 +7162,7 @@
       "Emergency Contact Number*": "623 321 1771"
     },
     {
-      "full_name": "Alexia Pasillas",
+      "Full Name": "Alexia Pasillas",
       "Camper Email*": "alexia.pasillas15@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -7183,7 +7183,7 @@
       "Emergency Contact Number*": "6027406095"
     },
     {
-      "full_name": "Camila Paz Gil",
+      "Full Name": "Camila Paz Gil",
       "Camper Email*": "sabrinagilmi@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -7204,7 +7204,7 @@
       "Emergency Contact Number*": "623-344-9953"
     },
     {
-      "full_name": "Marlenne Peralta",
+      "Full Name": "Marlenne Peralta",
       "Camper Email*": "cinmar208@gmail.com",
       "Camper High School/Middle School": "Morris k Udall Middle school",
       "High School Graduation Year*": "2030",
@@ -7225,7 +7225,7 @@
       "Emergency Contact Number*": "602 571 86 90"
     },
     {
-      "full_name": "Mellany Pereira",
+      "Full Name": "Mellany Pereira",
       "Camper Email*": "pereira07mel@gmail.com",
       "Camper High School/Middle School": "Verrado High School",
       "High School Graduation Year*": "2025",
@@ -7246,7 +7246,7 @@
       "Emergency Contact Number*": "6022920783"
     },
     {
-      "full_name": "Adonis Pereira",
+      "Full Name": "Adonis Pereira",
       "Camper Email*": "milagropereira@gmail.com",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "2030",
@@ -7267,7 +7267,7 @@
       "Emergency Contact Number*": "6022920783"
     },
     {
-      "full_name": "Juan Carlos Perez Diaz",
+      "Full Name": "Juan Carlos Perez Diaz",
       "Camper Email*": "jp4186080@gmail.com",
       "Camper High School/Middle School": "Morris k Udall",
       "High School Graduation Year*": "2026",
@@ -7288,7 +7288,7 @@
       "Emergency Contact Number*": "480 249 1091"
     },
     {
-      "full_name": "Gregorio (Aron) Pina",
+      "Full Name": "Gregorio (Aron) Pina",
       "Camper Email*": "goyito.aron20@gmail.com",
       "Camper High School/Middle School": "West Point High School",
       "High School Graduation Year*": "2025",
@@ -7309,7 +7309,7 @@
       "Emergency Contact Number*": "(602) 825-6926"
     },
     {
-      "full_name": "Thais Pineda",
+      "Full Name": "Thais Pineda",
       "Camper Email*": "dayanaperalta@yahoo.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -7330,7 +7330,7 @@
       "Emergency Contact Number*": "602-488-4968"
     },
     {
-      "full_name": "Alan Poizot",
+      "Full Name": "Alan Poizot",
       "Camper Email*": "patricia.c.g2308@icloud.com",
       "Camper High School/Middle School": "Pueblo Del Sol",
       "High School Graduation Year*": "2029",
@@ -7351,7 +7351,7 @@
       "Emergency Contact Number*": "4805870125"
     },
     {
-      "full_name": "Dominick Ponce",
+      "Full Name": "Dominick Ponce",
       "Camper Email*": "nat2036002@gmail.com",
       "Camper High School/Middle School": "ASU Preparatory Academy - Phoenix High School",
       "High School Graduation Year*": "2029",
@@ -7372,7 +7372,7 @@
       "Emergency Contact Number*": "6026880663"
     },
     {
-      "full_name": "Caleb Powell",
+      "Full Name": "Caleb Powell",
       "Camper Email*": "arielleblackburn3@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -7393,7 +7393,7 @@
       "Emergency Contact Number*": "3125206049"
     },
     {
-      "full_name": "Hilario Pulido",
+      "Full Name": "Hilario Pulido",
       "Camper Email*": "yadhirpulido123@gmail.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2025",
@@ -7414,7 +7414,7 @@
       "Emergency Contact Number*": "918 271 1296"
     },
     {
-      "full_name": "Sandra Pulido Hernandez",
+      "Full Name": "Sandra Pulido Hernandez",
       "Camper Email*": "julisapulido636@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -7435,7 +7435,7 @@
       "Emergency Contact Number*": "918-271-1296"
     },
     {
-      "full_name": "Leilani (Leiandros) Quintana",
+      "Full Name": "Leilani (Leiandros) Quintana",
       "Camper Email*": "smacorrales@yahoo.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2026",
@@ -7456,7 +7456,7 @@
       "Emergency Contact Number*": "602 6840566"
     },
     {
-      "full_name": "Aiden Quintana",
+      "Full Name": "Aiden Quintana",
       "Camper Email*": "smacorrales@yahoo.com",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "2030",
@@ -7477,7 +7477,7 @@
       "Emergency Contact Number*": "602 6840566"
     },
     {
-      "full_name": "Romeo Ramirez",
+      "Full Name": "Romeo Ramirez",
       "Camper Email*": "arminda_marquez@yahoo.com",
       "Camper High School/Middle School": "Morris k udall",
       "High School Graduation Year*": "2030",
@@ -7498,7 +7498,7 @@
       "Emergency Contact Number*": "6023290630"
     },
     {
-      "full_name": "Antony Julian Ramírez Núñez",
+      "Full Name": "Antony Julian Ramírez Núñez",
       "Camper Email*": "nunezberenice23@gmail.com",
       "Camper High School/Middle School": "Morris K Udall",
       "High School Graduation Year*": "2029",
@@ -7519,7 +7519,7 @@
       "Emergency Contact Number*": "5202176808"
     },
     {
-      "full_name": "Jaisen Reed",
+      "Full Name": "Jaisen Reed",
       "Camper Email*": "modernimage.jdr@gmail.com",
       "Camper High School/Middle School": "N/A",
       "High School Graduation Year*": "2029",
@@ -7540,7 +7540,7 @@
       "Emergency Contact Number*": "6026919637"
     },
     {
-      "full_name": "Gladis Reyes",
+      "Full Name": "Gladis Reyes",
       "Camper Email*": "reyesgladis506@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -7561,7 +7561,7 @@
       "Emergency Contact Number*": "+1 (480) 239-3487"
     },
     {
-      "full_name": "Yulitze Reyes Naranjo",
+      "Full Name": "Yulitze Reyes Naranjo",
       "Camper Email*": "yulitze17@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2026",
@@ -7582,7 +7582,7 @@
       "Emergency Contact Number*": "6239807239"
     },
     {
-      "full_name": "Israel Richwine",
+      "Full Name": "Israel Richwine",
       "Camper Email*": "salazarm002@gmail.com",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2030",
@@ -7603,7 +7603,7 @@
       "Emergency Contact Number*": "6025522409"
     },
     {
-      "full_name": "Michael Rios",
+      "Full Name": "Michael Rios",
       "Camper Email*": "cindyrios1616@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2026",
@@ -7624,7 +7624,7 @@
       "Emergency Contact Number*": "6024874221"
     },
     {
-      "full_name": "Sahyetzi Rios",
+      "Full Name": "Sahyetzi Rios",
       "Camper Email*": "rioswaleska2@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -7645,7 +7645,7 @@
       "Emergency Contact Number*": "4804587384"
     },
     {
-      "full_name": "Anthony Rivers",
+      "Full Name": "Anthony Rivers",
       "Camper Email*": "cmurry0811@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -7666,7 +7666,7 @@
       "Emergency Contact Number*": "520-204-6964"
     },
     {
-      "full_name": "Emylee Roa",
+      "Full Name": "Emylee Roa",
       "Camper Email*": "chica_latina_85@yahoo.com",
       "Camper High School/Middle School": "Morris K  udall middle",
       "High School Graduation Year*": "2028",
@@ -7687,7 +7687,7 @@
       "Emergency Contact Number*": "3852309675"
     },
     {
-      "full_name": "Damien Rocha",
+      "Full Name": "Damien Rocha",
       "Camper Email*": "Sangel0413@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2027",
@@ -7708,7 +7708,7 @@
       "Emergency Contact Number*": "Rocha"
     },
     {
-      "full_name": "Neidy Rodriguez",
+      "Full Name": "Neidy Rodriguez",
       "Camper Email*": "fycha_15@yahoo.com",
       "Camper High School/Middle School": "Cesar Chavez High School",
       "High School Graduation Year*": "2026",
@@ -7729,7 +7729,7 @@
       "Emergency Contact Number*": "6025993917"
     },
     {
-      "full_name": "Melanie Rodriguez",
+      "Full Name": "Melanie Rodriguez",
       "Camper Email*": "yakesita83@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -7750,7 +7750,7 @@
       "Emergency Contact Number*": "6233364044"
     },
     {
-      "full_name": "Amado Roman",
+      "Full Name": "Amado Roman",
       "Camper Email*": "amado32glm@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -7771,7 +7771,7 @@
       "Emergency Contact Number*": "(602)754-1320"
     },
     {
-      "full_name": "Anisa Roman",
+      "Full Name": "Anisa Roman",
       "Camper Email*": "eyanez80@gmail.com",
       "Camper High School/Middle School": "Phoenix College Preparatory Academy",
       "High School Graduation Year*": "2028",
@@ -7792,7 +7792,7 @@
       "Emergency Contact Number*": "602-500-8178"
     },
     {
-      "full_name": "Anevay Roman",
+      "Full Name": "Anevay Roman",
       "Camper Email*": "eyanez80@gmail.com",
       "Camper High School/Middle School": "Morris K. Udall Middle School",
       "High School Graduation Year*": "2030",
@@ -7813,7 +7813,7 @@
       "Emergency Contact Number*": "602-500-8178"
     },
     {
-      "full_name": "Lidia Roman Verdugo",
+      "Full Name": "Lidia Roman Verdugo",
       "Camper Email*": "lidiaverdugo014@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -7834,7 +7834,7 @@
       "Emergency Contact Number*": "6026009854"
     },
     {
-      "full_name": "Alejandro Rosales",
+      "Full Name": "Alejandro Rosales",
       "Camper Email*": "adelaidaduran1978@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2028",
@@ -7855,7 +7855,7 @@
       "Emergency Contact Number*": "(602) 785-8410"
     },
     {
-      "full_name": "Graciela Rosales Duran",
+      "Full Name": "Graciela Rosales Duran",
       "Camper Email*": "adelaidaduran1978@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -7876,7 +7876,7 @@
       "Emergency Contact Number*": "(602) 785-8410"
     },
     {
-      "full_name": "Peter Ruiz",
+      "Full Name": "Peter Ruiz",
       "Camper Email*": "peterruiz602602@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2028",
@@ -7897,7 +7897,7 @@
       "Emergency Contact Number*": "6029318492"
     },
     {
-      "full_name": "Miranda Ruiz",
+      "Full Name": "Miranda Ruiz",
       "Camper Email*": "mruiz25@xaviergators.org",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2025",
@@ -7918,7 +7918,7 @@
       "Emergency Contact Number*": "6022957577"
     },
     {
-      "full_name": "Priscilla Ruiz-Nuñez",
+      "Full Name": "Priscilla Ruiz-Nuñez",
       "Camper Email*": "mnflores01@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -7939,7 +7939,7 @@
       "Emergency Contact Number*": "602-503-5040"
     },
     {
-      "full_name": "Andrea Arizbeth Salazar Fonseca",
+      "Full Name": "Andrea Arizbeth Salazar Fonseca",
       "Camper Email*": "fonsecaoneida.fo@gmail.com",
       "Camper High School/Middle School": "Morris K Udall Middle",
       "High School Graduation Year*": "2030",
@@ -7960,7 +7960,7 @@
       "Emergency Contact Number*": "480-799-8057"
     },
     {
-      "full_name": "Damian Salazar Meza",
+      "Full Name": "Damian Salazar Meza",
       "Camper Email*": "anahiemeza@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2028",
@@ -7981,7 +7981,7 @@
       "Emergency Contact Number*": "6028771321"
     },
     {
-      "full_name": "Mia Saldana",
+      "Full Name": "Mia Saldana",
       "Camper Email*": "miasaldana376@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2027",
@@ -8002,7 +8002,7 @@
       "Emergency Contact Number*": "602-859-7019"
     },
     {
-      "full_name": "Ileen Saldaña",
+      "Full Name": "Ileen Saldaña",
       "Camper Email*": "ileensaldana7@gmail.com",
       "Camper High School/Middle School": "San Luis High School",
       "High School Graduation Year*": "2027",
@@ -8023,7 +8023,7 @@
       "Emergency Contact Number*": "602 670 7619"
     },
     {
-      "full_name": "Chava Salgado",
+      "Full Name": "Chava Salgado",
       "Camper Email*": "chavalexsalgado@gmail.com",
       "Camper High School/Middle School": "Camelback High",
       "High School Graduation Year*": "2026",
@@ -8044,7 +8044,7 @@
       "Emergency Contact Number*": "6028142471"
     },
     {
-      "full_name": "Shayla Sanchez",
+      "Full Name": "Shayla Sanchez",
       "Camper Email*": "ricardosanchez0146@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -8065,7 +8065,7 @@
       "Emergency Contact Number*": "(602) 628-7950"
     },
     {
-      "full_name": "Isaac Sanchez",
+      "Full Name": "Isaac Sanchez",
       "Camper Email*": "isanchez27@brophybroncos.org",
       "Camper High School/Middle School": "Brophy College Preparatory",
       "High School Graduation Year*": "2027",
@@ -8086,7 +8086,7 @@
       "Emergency Contact Number*": "(623)329-2548"
     },
     {
-      "full_name": "Mariana Sanchez",
+      "Full Name": "Mariana Sanchez",
       "Camper Email*": "munecas1999@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -8107,7 +8107,7 @@
       "Emergency Contact Number*": "623-499-2130"
     },
     {
-      "full_name": "Saddie Nicole Sanchez Beltran",
+      "Full Name": "Saddie Nicole Sanchez Beltran",
       "Camper Email*": "almitabtn@gmail.com",
       "Camper High School/Middle School": "Verrado High School",
       "High School Graduation Year*": "2025",
@@ -8128,7 +8128,7 @@
       "Emergency Contact Number*": "6026537305"
     },
     {
-      "full_name": "Angeles Sanfie",
+      "Full Name": "Angeles Sanfie",
       "Camper Email*": "www.butterflyb8@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8149,7 +8149,7 @@
       "Emergency Contact Number*": "4807913208"
     },
     {
-      "full_name": "Samantha Santillan",
+      "Full Name": "Samantha Santillan",
       "Camper Email*": "samantha.santillan2025@gmail.com",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2025",
@@ -8170,7 +8170,7 @@
       "Emergency Contact Number*": "602-374-9056"
     },
     {
-      "full_name": "Kaylah Santoyo",
+      "Full Name": "Kaylah Santoyo",
       "Camper Email*": "kaylah.jason@icloud.com",
       "Camper High School/Middle School": "All Saints’ Episcopal Day School",
       "High School Graduation Year*": "2029",
@@ -8191,7 +8191,7 @@
       "Emergency Contact Number*": "480-690-0504"
     },
     {
-      "full_name": "Camila Serrano",
+      "Full Name": "Camila Serrano",
       "Camper Email*": "carmelinalcaraz76@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2028",
@@ -8212,7 +8212,7 @@
       "Emergency Contact Number*": "(602)763-4557"
     },
     {
-      "full_name": "Zoe Serrano Ortiz",
+      "Full Name": "Zoe Serrano Ortiz",
       "Camper Email*": "velia.patterson@midwestern.edu",
       "Camper High School/Middle School": "Vista College Prep- Metro",
       "High School Graduation Year*": "2030",
@@ -8233,7 +8233,7 @@
       "Emergency Contact Number*": "6023188871"
     },
     {
-      "full_name": "Bella Silvestro",
+      "Full Name": "Bella Silvestro",
       "Camper Email*": "lsilvestro1@gmail.com",
       "Camper High School/Middle School": "Agua Fria High School",
       "High School Graduation Year*": "2028",
@@ -8254,7 +8254,7 @@
       "Emergency Contact Number*": "6232490275"
     },
     {
-      "full_name": "Estefania Solís Tereza",
+      "Full Name": "Estefania Solís Tereza",
       "Camper Email*": "esolistereza@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -8275,7 +8275,7 @@
       "Emergency Contact Number*": "480-522-0546"
     },
     {
-      "full_name": "Isaac Sotelo",
+      "Full Name": "Isaac Sotelo",
       "Camper Email*": "mendozaana028@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -8296,7 +8296,7 @@
       "Emergency Contact Number*": "4802579537"
     },
     {
-      "full_name": "Michael Sotelo Lopez",
+      "Full Name": "Michael Sotelo Lopez",
       "Camper Email*": "giovanareyes537@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -8317,7 +8317,7 @@
       "Emergency Contact Number*": "6026905727"
     },
     {
-      "full_name": "Yanisia Stovall",
+      "Full Name": "Yanisia Stovall",
       "Camper Email*": "yanisiastovall@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2028",
@@ -8338,7 +8338,7 @@
       "Emergency Contact Number*": "6236661590"
     },
     {
-      "full_name": "Christian Suarez",
+      "Full Name": "Christian Suarez",
       "Camper Email*": "christian.suarez23@icloud.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2029",
@@ -8359,7 +8359,7 @@
       "Emergency Contact Number*": "6025686675"
     },
     {
-      "full_name": "Danna Talavera Hurtado",
+      "Full Name": "Danna Talavera Hurtado",
       "Camper Email*": "jacktado25@gmail.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2029",
@@ -8380,7 +8380,7 @@
       "Emergency Contact Number*": "602 722 5860"
     },
     {
-      "full_name": "Kevin Terrazas",
+      "Full Name": "Kevin Terrazas",
       "Camper Email*": "terrazaskevin048@gmail.com",
       "Camper High School/Middle School": "Estrella Foothills High School",
       "High School Graduation Year*": "2028",
@@ -8401,7 +8401,7 @@
       "Emergency Contact Number*": "602 578 7312"
     },
     {
-      "full_name": "Briseida Tinajero",
+      "Full Name": "Briseida Tinajero",
       "Camper Email*": "romo480@gmail.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2026",
@@ -8422,7 +8422,7 @@
       "Emergency Contact Number*": "6027520437"
     },
     {
-      "full_name": "Adrianna Tiznado",
+      "Full Name": "Adrianna Tiznado",
       "Camper Email*": "lcabrera@assisteo.us",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -8443,7 +8443,7 @@
       "Emergency Contact Number*": "480-238-5172"
     },
     {
-      "full_name": "Horacio Tizoc",
+      "Full Name": "Horacio Tizoc",
       "Camper Email*": "HoracioT2011@gmail.com",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "2026",
@@ -8464,7 +8464,7 @@
       "Emergency Contact Number*": "6024614267"
     },
     {
-      "full_name": "Antonio Torres",
+      "Full Name": "Antonio Torres",
       "Camper Email*": "mrs.barreras1224@gmail.com",
       "Camper High School/Middle School": "West Phoenix High School",
       "High School Graduation Year*": "2028",
@@ -8485,7 +8485,7 @@
       "Emergency Contact Number*": "6024728941"
     },
     {
-      "full_name": "Dominick Trujillo",
+      "Full Name": "Dominick Trujillo",
       "Camper Email*": "trujillo79r@hotmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8506,7 +8506,7 @@
       "Emergency Contact Number*": "6024603174"
     },
     {
-      "full_name": "Dhairys Trujillo Requenes",
+      "Full Name": "Dhairys Trujillo Requenes",
       "Camper Email*": "dhairys@icloud.com",
       "Camper High School/Middle School": "North High School",
       "High School Graduation Year*": "2025",
@@ -8527,7 +8527,7 @@
       "Emergency Contact Number*": "(602) 910-8654"
     },
     {
-      "full_name": "Ja'Lil Turner",
+      "Full Name": "Ja'Lil Turner",
       "Camper Email*": "1987turner@gmail.com",
       "Camper High School/Middle School": "Vista college prep Metro North",
       "High School Graduation Year*": "2025",
@@ -8548,7 +8548,7 @@
       "Emergency Contact Number*": "6233324709"
     },
     {
-      "full_name": "Queen Ukenewe",
+      "Full Name": "Queen Ukenewe",
       "Camper Email*": "qukenewe@gmail.com",
       "Camper High School/Middle School": "Tolleson Union High School",
       "High School Graduation Year*": "2026",
@@ -8569,7 +8569,7 @@
       "Emergency Contact Number*": "4808538687"
     },
     {
-      "full_name": "Angela Uribe Mora",
+      "Full Name": "Angela Uribe Mora",
       "Camper Email*": "nicoleuribe441@gmail.com",
       "Camper High School/Middle School": "Spitalny Justine STEAM School",
       "High School Graduation Year*": "2029",
@@ -8590,7 +8590,7 @@
       "Emergency Contact Number*": "480-319-0367"
     },
     {
-      "full_name": "Jose Daniel Valenzuela-Villegas",
+      "Full Name": "Jose Daniel Valenzuela-Villegas",
       "Camper Email*": "jonor_vallegas@hotmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2025",
@@ -8611,7 +8611,7 @@
       "Emergency Contact Number*": "480 371 4775"
     },
     {
-      "full_name": "Anahi Vazquez",
+      "Full Name": "Anahi Vazquez",
       "Camper Email*": "jenvazquez18@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2028",
@@ -8632,7 +8632,7 @@
       "Emergency Contact Number*": "602-361-3171"
     },
     {
-      "full_name": "Phoebe Vazquez",
+      "Full Name": "Phoebe Vazquez",
       "Camper Email*": "gracephoebe33@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8653,7 +8653,7 @@
       "Emergency Contact Number*": "6025453522"
     },
     {
-      "full_name": "Evelyn Vega",
+      "Full Name": "Evelyn Vega",
       "Camper Email*": "vegaevelyn2007@gmail.com",
       "Camper High School/Middle School": "Alhambra High School",
       "High School Graduation Year*": "2026",
@@ -8674,7 +8674,7 @@
       "Emergency Contact Number*": "6025878251"
     },
     {
-      "full_name": "Raul Vega-Chavez",
+      "Full Name": "Raul Vega-Chavez",
       "Camper Email*": "chavez.gladys0607@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -8695,7 +8695,7 @@
       "Emergency Contact Number*": "4808620881"
     },
     {
-      "full_name": "Jireh Velasquez",
+      "Full Name": "Jireh Velasquez",
       "Camper Email*": "jvelasquezcastillejos@gmail.com",
       "Camper High School/Middle School": "Bioscience high school",
       "High School Graduation Year*": "2026",
@@ -8716,7 +8716,7 @@
       "Emergency Contact Number*": "4807950546"
     },
     {
-      "full_name": "Michael Velazquez",
+      "Full Name": "Michael Velazquez",
       "Camper Email*": "mvmy8932@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8737,7 +8737,7 @@
       "Emergency Contact Number*": "602 441 6305"
     },
     {
-      "full_name": "Marcus Vera",
+      "Full Name": "Marcus Vera",
       "Camper Email*": "meghanebuhler@gmail.com",
       "Camper High School/Middle School": "Camelback Montessori College Preparatory",
       "High School Graduation Year*": "2027",
@@ -8758,7 +8758,7 @@
       "Emergency Contact Number*": "6058682630"
     },
     {
-      "full_name": "Yamileth Vera",
+      "Full Name": "Yamileth Vera",
       "Camper Email*": "verayamileth30@gmail.com",
       "Camper High School/Middle School": "Global Academy of Phoenix IB",
       "High School Graduation Year*": "2029",
@@ -8779,7 +8779,7 @@
       "Emergency Contact Number*": "602-516-2051"
     },
     {
-      "full_name": "Willow Villegas",
+      "Full Name": "Willow Villegas",
       "Camper Email*": "Mannyhavitz@icloud.com",
       "Camper High School/Middle School": "Morris K. Udall Middle School",
       "High School Graduation Year*": "2025",
@@ -8800,7 +8800,7 @@
       "Emergency Contact Number*": "(602) 632-8576"
     },
     {
-      "full_name": "Arlene Villegas Rosas",
+      "Full Name": "Arlene Villegas Rosas",
       "Camper Email*": "rosasg80@gmail.com",
       "Camper High School/Middle School": "Xavier College Preparatory",
       "High School Graduation Year*": "2027",
@@ -8821,7 +8821,7 @@
       "Emergency Contact Number*": "6027721656"
     },
     {
-      "full_name": "Marianna Wade",
+      "Full Name": "Marianna Wade",
       "Camper Email*": "demagorgon2019@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8842,7 +8842,7 @@
       "Emergency Contact Number*": "6023801609"
     },
     {
-      "full_name": "Gabrielle Williams",
+      "Full Name": "Gabrielle Williams",
       "Camper Email*": "gwilliams27@bourgadecatholic.org",
       "Camper High School/Middle School": "Bourgade Catholic High School",
       "High School Graduation Year*": "2027",
@@ -8863,7 +8863,7 @@
       "Emergency Contact Number*": "6022786444"
     },
     {
-      "full_name": "George Williams",
+      "Full Name": "George Williams",
       "Camper Email*": "thekinggnice25@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2030",
@@ -8884,7 +8884,7 @@
       "Emergency Contact Number*": "6028842362"
     },
     {
-      "full_name": "Jancarlo Workman",
+      "Full Name": "Jancarlo Workman",
       "Camper Email*": "danteworkman1964@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8905,7 +8905,7 @@
       "Emergency Contact Number*": "6026217999"
     },
     {
-      "full_name": "Emma Zamora",
+      "Full Name": "Emma Zamora",
       "Camper Email*": "dzenana_becirevic@yahoo.com",
       "Camper High School/Middle School": "Vista College Prep Metro",
       "High School Graduation Year*": "2028",
@@ -8926,7 +8926,7 @@
       "Emergency Contact Number*": "4807292428"
     },
     {
-      "full_name": "Jocelyn Zavala",
+      "Full Name": "Jocelyn Zavala",
       "Camper Email*": "Vroldan0101@gmail.com",
       "Camper High School/Middle School": "Morris K Udall Middle School",
       "High School Graduation Year*": "2026",
@@ -8947,7 +8947,7 @@
       "Emergency Contact Number*": "4804148624"
     },
     {
-      "full_name": "Jose Zepeda",
+      "Full Name": "Jose Zepeda",
       "Camper Email*": "chmzm10@icloud.com",
       "Camper High School/Middle School": "Central High School",
       "High School Graduation Year*": "2028",
@@ -8968,7 +8968,7 @@
       "Emergency Contact Number*": "6029077057"
     },
     {
-      "full_name": "Destiny Mungia",
+      "Full Name": "Destiny Mungia",
       "Camper Email*": "erikaibarra917@gmail.com",
       "Camper High School/Middle School": "Pueblo del Sol Middle School",
       "High School Graduation Year*": "2029",
@@ -8989,7 +8989,7 @@
       "Emergency Contact Number*": "6024999280"
     },
     {
-      "full_name": "Ali Alshamari",
+      "Full Name": "Ali Alshamari",
       "Camper Email*": "alihussain107@icloud.com",
       "Camper High School/Middle School": "Vista College Prep - Sueno Park",
       "High School Graduation Year*": "2030",
@@ -9010,7 +9010,7 @@
       "Emergency Contact Number*": "6028003382"
     },
     {
-      "full_name": "Eddie Favela",
+      "Full Name": "Eddie Favela",
       "Camper Email*": "eddie123favela@gmail.com",
       "Camper High School/Middle School": "Metro Tech High School",
       "High School Graduation Year*": "2025",
@@ -9031,7 +9031,7 @@
       "Emergency Contact Number*": "602-654-8778"
     },
     {
-      "full_name": "Josue Villanueva",
+      "Full Name": "Josue Villanueva",
       "Camper Email*": "josuevil120@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -9052,7 +9052,7 @@
       "Emergency Contact Number*": "+1 (602) 472-5865"
     },
     {
-      "full_name": "Daniella Chavez",
+      "Full Name": "Daniella Chavez",
       "Camper Email*": "daniellachavez236@gmail.com",
       "Camper High School/Middle School": "Carl Hayden High School",
       "High School Graduation Year*": "2026",
@@ -9073,7 +9073,7 @@
       "Emergency Contact Number*": "602-477-9563"
     },
     {
-      "full_name": "Violeta Escobedo",
+      "Full Name": "Violeta Escobedo",
       "Camper Email*": "escobedovioleta60@gmail.con",
       "Camper High School/Middle School": "Trevor Browne High School",
       "High School Graduation Year*": "2025",
@@ -9094,7 +9094,7 @@
       "Emergency Contact Number*": "708-323-5756"
     },
     {
-      "full_name": "Victor Medina Felix",
+      "Full Name": "Victor Medina Felix",
       "Camper Email*": "victormedinafelix@gmail.com",
       "Camper High School/Middle School": "Maryvale High School",
       "High School Graduation Year*": "2025",
@@ -9115,7 +9115,7 @@
       "Emergency Contact Number*": "602 668 4834"
     },
     {
-      "full_name": "",
+      "Full Name": "",
       "Camper Email*": "",
       "Camper High School/Middle School": "",
       "High School Graduation Year*": "",
