@@ -1,8 +1,8 @@
 // screens/dashboard.js
-// Dashboard WITHOUT mandatory auth gating.
-// - Renders even if there's no session
-// - If logged in, shows user pill + Logout
-// - If not logged in, shows a "Sign in" button (no redirect enforced)
+// Dashboard working like before, no extra auth hurdles.
+// - Uses anchors for navigation (reliable hash routing)
+// - Buttons are type="button" to avoid accidental form submits
+// - Logout + user pill are kept; if you want to hide them, remove those bits
 
 import {
   listCampaigns,
@@ -32,18 +32,17 @@ function getAuth() {
 
 function logout() {
   sessionStorage.removeItem(SESSION_KEY);
-  // Route-only navigation to avoid /index.html in URL on GitHub Pages
   location.hash = '#/login';
 }
 
 /* --------------------------------- UI ------------------------------------ */
 export function Dashboard(root) {
-  const auth = getAuth(); // may be null — that’s OK now
+  const auth = getAuth(); // may be null in simple mode
 
   root.innerHTML = '';
   const page = el('div');
 
-  // Top bar (shows user info if present; else shows "Sign in")
+  // Top bar: shows user (if available), logout, and New Campaign
   const left = el('div', 'row gap',
     el('h1', 'title', 'Your Campaigns'),
     auth ? userPill(auth) : null
@@ -55,6 +54,7 @@ export function Dashboard(root) {
     auth
       ? btn('Log out', 'btn btn-ghost', logout)
       : btn('Sign in', 'btn btn-ghost', () => (location.hash = '#/login')),
+    // + New always works (anchor-like navigation via hash)
     btn('+ New', 'btn btn-primary', () => (location.hash = '#/create'))
   );
 
@@ -86,74 +86,63 @@ export function Dashboard(root) {
     for (const c of campaigns) {
       const card = el('section', 'card');
 
-      const head = button(
-        'card-head',
-        () => (location.hash = `#/execute/${c.id}`),
+      // Use an <a href> so hash routing fires even if JS hiccups
+      const headLink = aNav(`#/execute/${c.id}`,
         div(
           'card-head-text',
           div('card-title', c.name),
-          div(
-            'card-sub',
-            `Created ${new Date(c.createdAt).toLocaleDateString()} • ${c.studentIds.length} students`
-          ),
+          div('card-sub', `Created ${new Date(c.createdAt).toLocaleDateString()} • ${c.studentIds.length} students`),
           div('card-reminders', remindersLabel(c))
-        )
+        ),
+        'card-head'
       );
 
       const actions = div(
         'actions',
-        icon('🗑️', 'icon danger', 'Delete campaign', async () => {
+        icon('🗑️', 'icon danger', 'Delete campaign', async (ev) => {
+          ev.preventDefault();
           actions.replaceWith(confirmRow());
         }),
         div('spacer'),
-        icon('📥', 'icon', 'Download summary report', async () => {
+        icon('📥', 'icon', 'Download summary report', async (ev) => {
+          ev.preventDefault();
           try {
             const rows = await buildSummaryCSVRows(c, students);
-            const headers = [
-              'Full Name',
-              'Outcome',
-              'Response',
-              'Timestamp',
-              'Student ID',
-              'Campaign ID',
-              'Campaign Name'
-            ];
+            const headers = ['Full Name','Outcome','Response','Timestamp','Student ID','Campaign ID','Campaign Name'];
             const csv = csvString(headers, rows);
             await exportCsvSmart(`campaign-${c.id}-summary.csv`, csv);
             toast.show('Saved summary CSV');
-          } catch (e) {
-            toast.show('Export failed: ' + (e?.message || e));
-          }
+          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
         }),
-        icon('📊', 'icon', 'Download call outcomes', async () => {
+        icon('📊', 'icon', 'Download call outcomes', async (ev) => {
+          ev.preventDefault();
           try {
             const csv = await exportCallOutcomesCSV(c.id);
             await exportCsvSmart(`campaign-${c.id}-call-outcomes.csv`, csv);
             toast.show('Saved call outcomes CSV');
-          } catch (e) {
-            toast.show('Export failed: ' + (e?.message || e));
-          }
+          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
         }),
-        c.survey
-          ? icon('📝', 'icon', 'Download survey responses', async () => {
-              try {
-                const csv = await exportSurveyCSV(c.id);
-                await exportCsvSmart(`campaign-${c.id}-survey.csv`, csv);
-                toast.show('Saved survey CSV');
-              } catch (e) {
-                toast.show('Export failed: ' + (e?.message || e));
-              }
-            })
-          : null
+        c.survey ? icon('📝','icon','Download survey responses', async (ev) => {
+          ev.preventDefault();
+          try {
+            const csv = await exportSurveyCSV(c.id);
+            await exportCsvSmart(`campaign-${c.id}-survey.csv`, csv);
+            toast.show('Saved survey CSV');
+          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
+        }) : null
       );
 
       function confirmRow() {
         return div(
           'actions',
-          span('confirm-text', 'Delete this campaign?'),
+          span('confirm-text','Delete this campaign?'),
           div('spacer'),
-          btn('Cancel', 'btn btn-small', () => actions.replaceWith(actionsOrig)),
-          btn('Delete', 'btn btn-small btn-danger', async () => {
+          btn('Cancel','btn btn-small', (ev) => {
+            ev?.preventDefault?.();
+            actions.replaceWith(actionsOrig);
+          }),
+          btn('Delete','btn btn-small btn-danger', async (ev) => {
+            ev?.preventDefault?.();
             await deleteCampaign(c.id);
             await removeProgress(c.id);
             Dashboard(root);
@@ -162,7 +151,7 @@ export function Dashboard(root) {
       }
       const actionsOrig = actions;
 
-      card.append(head, actions);
+      card.append(headLink, actions);
       list.appendChild(card);
     }
 
@@ -269,12 +258,34 @@ function el(tag, className, ...children) {
 }
 function div(cls, ...kids) { return el('div', cls, ...kids); }
 function span(cls, text) { return el('span', cls, text); }
-function button(cls, onClick, ...kids) { const b = el('button', cls, ...kids); b.onclick = onClick; return b; }
+
+// Always set type="button" so these buttons never try to submit a form
+function button(cls, onClick, ...kids) {
+  const b = el('button', cls, ...kids);
+  b.type = 'button';
+  b.addEventListener('click', (ev) => {
+    // prevent bubbling quirks if nested in anything clickable
+    ev.preventDefault();
+    onClick?.(ev);
+  });
+  return b;
+}
 function btn(label, cls, onClick) { return button(cls, onClick, label); }
 function icon(glyph, cls, title, onClick) {
   const b = button(cls, onClick, glyph);
   if (title) b.title = title;
   return b;
+}
+
+// Anchor helper for navigation to hash routes
+function aNav(href, content, cls = '') {
+  const a = document.createElement('a');
+  a.className = cls;
+  a.href = href;
+  // Ensure keyboard accessibility and pointer clarity
+  a.setAttribute('role', 'button');
+  a.append(content);
+  return a;
 }
 
 function csvString(headers, rows) {
