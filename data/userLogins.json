@@ -1,6 +1,6 @@
 [
   {
-    "userId": "karla",
+    "userId": "karla", 
     "passwordHash": "$2a$10$7l7p9cGwa5Jm0xq7rLhGnuVz5mJ4Y1s1KxU3o8Dvyjv8vQ6O0Fqmy",
     "role": "admin",
     "active": true,
