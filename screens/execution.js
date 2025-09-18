@@ -141,7 +141,7 @@ export async function Execute(root, campaign) {
         swipe.append(
           h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phone ? anchorBtn(`Call ${phone}`, `tel:${String(phone)}`) : disabledBtn('No phone number'),
+          phone ? callButton(phone) : disabledBtn('No phone number'),
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
           actionRow(
@@ -178,12 +178,24 @@ export async function Execute(root, campaign) {
     const keys = Object.keys(stu || {});
     if (!keys.length) card.append(ptext('No student fields available','muted'));
     for (const k of keys) {
+      const vRaw = stu[k];
       const row = div('kv');
-      row.append(div('k', k), div('v', String(stu[k])));
+      const keyNode = div('k', k);
+      const valNode = div('v');
+
+      // Heuristic: make phone-like fields clickable
+      const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
+      const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
+
+      if (looksPhoneKey || looksPhoneVal) valNode.append(phoneLinkOrText(vRaw));
+      else valNode.append(document.createTextNode(String(vRaw)));
+
+      row.append(keyNode, valNode);
       card.append(row);
     }
     return card;
   }
+
   function surveyBlock(survey, sel, onPick){
     if (!survey || !survey.question || !Array.isArray(survey.options) || !survey.options.length) return div('');
     const box = div('surveyCard',
@@ -193,6 +205,7 @@ export async function Execute(root, campaign) {
     );
     return box;
   }
+
   async function summaryBlock(campaignId, onMissed, onFinish){
     const t = await getSummary(campaignId);
     const allDone = t.missed===0 && t.made===t.total && t.total>0;
@@ -203,6 +216,58 @@ export async function Execute(root, campaign) {
       button(allDone ? 'Done' : 'Finish for now','btn btn-primary', onFinish)
     );
     return box;
+  }
+
+  /* ===== tel: helpers (click-to-call) ===== */
+  function cleanDigits(s) {
+    return String(s || '').replace(/[^\d+]/g, '');
+  }
+  function toTelHref(raw, defaultCountry = '+1') {
+    let n = cleanDigits(raw);
+    if (!n) return null;
+    if (!n.startsWith('+')) {
+      if (n.length === 10) n = defaultCountry + n;
+      else if (defaultCountry && !n.startsWith(defaultCountry)) n = defaultCountry + n;
+    }
+    return 'tel:' + n;
+  }
+  function humanPhone(raw) {
+    const d = cleanDigits(raw).replace(/^\+?1/, ''); // trim +1 for display
+    if (d.length === 10) return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+    return String(raw);
+  }
+  function callButton(rawPhone) {
+    const href = toTelHref(rawPhone);
+    const label = humanPhone(rawPhone);
+    const a = document.createElement('a');
+    a.className = 'callBtn';
+    a.href = href || '#';
+    a.textContent = href ? `Call ${label}` : 'No phone number';
+    a.style.pointerEvents = href ? 'auto' : 'none';
+    a.style.opacity = href ? '1' : '.6';
+    if (href) {
+      a.addEventListener('click', (e) => {
+        const ok = confirm(`Place a call to ${label} with your device?`);
+        if (!ok) { e.preventDefault(); return; }
+        e.preventDefault();
+        window.location.href = href; // Safari-friendly
+      });
+    }
+    return a;
+  }
+  function phoneLinkOrText(val) {
+    const href = toTelHref(val);
+    if (!href) return document.createTextNode(String(val));
+    const a = document.createElement('a');
+    a.href = href;
+    a.textContent = humanPhone(val);
+    a.style.color = 'inherit';
+    a.style.textDecoration = 'underline';
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = href;
+    });
+    return a;
   }
 
   /* dom utilities (SAFE VARIADIC VERSION) */
@@ -226,7 +291,6 @@ export async function Execute(root, campaign) {
   function center(...kids){ const n=div('center'); kids.forEach(k=>k && n.append(k)); return n; }
   function button(text, cls, on){ const b=document.createElement('button'); b.className=cls; b.textContent=text; b.onclick=on; return b; }
   function actionRow(...kids){ const r=div('actions'); kids.forEach(k=>k&&r.append(k)); return r; }
-  function anchorBtn(text, href){ const a=document.createElement('a'); a.href=href; a.className='callBtn'; a.textContent=text; return a; }
   function disabledBtn(text){ const b=document.createElement('button'); b.className='callBtn'; b.textContent=text; b.disabled=true; b.style.opacity=.6; return b; }
   function chip(label, cls, on){ const c=document.createElement('button'); c.className=cls; c.textContent=label; c.onclick=on; return c; }
   function chipRow(arr){ const r=div('surveyChips'); arr.forEach(x=>r.append(x)); return r; }
