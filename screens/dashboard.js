@@ -1,18 +1,17 @@
 // screens/dashboard.js
-// Original-style Dashboard with no auth logic.
+// Dashboard with exactly two export buttons per campaign.
 
 import {
   listCampaigns,
-  deleteCampaign,
   applyFilters,
   getStudentId,
   getAllStudents
 } from '../data/campaignsData.js';
+
 import {
-  removeProgress,
-  exportSurveyCSV,
-  exportCallOutcomesCSV
+  exportNotCalledCSV
 } from '../data/campaignProgress.js';
+
 import { exportCsvSmart } from '../utils/exportReport.js';
 
 export function Dashboard(root) {
@@ -46,6 +45,7 @@ export function Dashboard(root) {
     const list = el('div','list');
     for (const c of campaigns) {
       const card = el('section','card');
+
       const head = button('card-head', () => location.hash = `#/execute/${c.id}`,
         div('card-head-text',
           div('card-title', c.name),
@@ -54,49 +54,36 @@ export function Dashboard(root) {
         )
       );
 
+      // Build queueIds and idToStudent for exports
+      const filtered = applyFilters(students, c.filters || []);
+      const queueIds = filtered.map((s,i)=>getStudentId(s,i));
+      const idToStudent = {};
+      filtered.forEach((s,i)=>{ idToStudent[getStudentId(s,i)] = s; });
+
+      // Actions: ONLY TWO BUTTONS
       const actions = div('actions',
-        icon('🗑️','icon danger','Delete campaign', async () => {
-          actions.replaceWith(confirmRow());
-        }),
-        div('spacer'),
-        icon('📥','icon','Download summary report', async () => {
+        btn('Export Full CSV','btn btn-small', async () => {
           try {
             const rows = await buildSummaryCSVRows(c, students);
             const headers = ['Full Name','Outcome','Response','Timestamp','Student ID','Campaign ID','Campaign Name'];
             const csv = csvString(headers, rows);
-            await exportCsvSmart(`campaign-${c.id}-summary.csv`, csv);
-            toast.show('Saved summary CSV');
-          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
+            await exportCsvSmart(`campaign-${c.id}-full.csv`, csv);
+            toast.show('Saved full CSV');
+          } catch (e) {
+            toast.show('Export failed: ' + (e?.message||e));
+          }
         }),
-        icon('📊','icon','Download call outcomes', async () => {
+        btn('Export Not Called','btn btn-small', async () => {
           try {
-            const csv = await exportCallOutcomesCSV(c.id);
-            await exportCsvSmart(`campaign-${c.id}-call-outcomes.csv`, csv);
-            toast.show('Saved call outcomes CSV');
-          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
-        }),
-        c.survey ? icon('📝','icon','Download survey responses', async () => {
-          try {
-            const csv = await exportSurveyCSV(c.id);
-            await exportCsvSmart(`campaign-${c.id}-survey.csv`, csv);
-            toast.show('Saved survey CSV');
-          } catch (e) { toast.show('Export failed: ' + (e?.message||e)); }
-        }) : null
+            // Use helper that builds the CSV from progress + resolver for names
+            const csv = await exportNotCalledCSV(c.id, queueIds, idToStudent);
+            await exportCsvSmart(`campaign-${c.id}-not-called.csv`, csv);
+            toast.show('Saved Not Called CSV');
+          } catch (e) {
+            toast.show('Export failed: ' + (e?.message||e));
+          }
+        })
       );
-
-      function confirmRow() {
-        return div('actions',
-          span('confirm-text','Delete this campaign?'),
-          div('spacer'),
-          btn('Cancel','btn btn-small', () => actions.replaceWith(actionsOrig)),
-          btn('Delete','btn btn-small btn-danger', async () => {
-            await deleteCampaign(c.id);
-            await removeProgress(c.id);
-            Dashboard(root);
-          })
-        );
-      }
-      const actionsOrig = actions;
 
       card.append(head, actions);
       list.appendChild(card);
@@ -119,11 +106,11 @@ function remindersLabel(c) {
 }
 
 async function buildSummaryCSVRows(campaign, allStudents) {
-  const filtered = applyFilters(allStudents, campaign.filters);
+  const filtered = applyFilters(allStudents, campaign.filters || []);
   const idToStudent = {};
   filtered.forEach((s,i)=>{ idToStudent[getStudentId(s,i)] = s; });
 
-  // Load progress to get outcomes/responses for timestamp; defer to progress store
+  // Pull from progress store for outcomes/responses/timestamps
   const raw = JSON.parse(localStorage.getItem('reachpoint.progress.'+campaign.id) || '{}');
   const contacts = raw.contacts || {};
 
@@ -139,7 +126,9 @@ async function buildSummaryCSVRows(campaign, allStudents) {
     const tCall = cp.lastCalledAt || 0;
     let tResp = 0;
     if (Array.isArray(cp.surveyLogs)) {
-      for (let i = cp.surveyLogs.length-1; i>=0; i--) if (cp.surveyLogs[i]?.answer === response) { tResp = cp.surveyLogs[i].at||0; break; }
+      for (let i = cp.surveyLogs.length-1; i>=0; i--) {
+        if (cp.surveyLogs[i]?.answer === response) { tResp = cp.surveyLogs[i].at||0; break; }
+      }
     }
     const iso = (tCall || tResp) ? new Date(Math.max(tCall, tResp)).toISOString() : '';
 
@@ -159,6 +148,9 @@ async function buildSummaryCSVRows(campaign, allStudents) {
 
 function deriveFullName(stu) {
   const cands = [
+    String(stu?.full_name || '').trim(),
+    String(stu?.fullName || '').trim(),
+    String(stu?.['Full Name*'] || '').trim(),
     `${(stu?.first_name||'').trim()} ${(stu?.last_name||'').trim()}`.trim(),
     `${(stu?.FirstName||'').trim()} ${(stu?.LastName||'').trim()}`.trim(),
     `${(stu?.['First Name']||'').trim()} ${(stu?.['Last Name']||'').trim()}`.trim(),
@@ -177,14 +169,12 @@ function el(tag, className, ...children) {
   return n;
 }
 function div(cls,...kids){ return el('div',cls,...kids); }
-function span(cls,text){ return el('span',cls,text); }
 function button(cls, onClick, ...kids){
   const b = el('button',cls,...kids);
   b.onclick = (e) => { e?.preventDefault?.(); onClick?.(e); };
   return b;
 }
-function btn(label, cls, onClick){ const b = button(cls, onClick, label); return b; }
-function icon(glyph, cls, title, onClick){ const b = button(cls, onClick, glyph); if (title) b.title = title; return b; }
+function btn(label, cls, onClick){ return button(cls, onClick, label); }
 
 function csvString(headers, rows) {
   const esc = (v)=> {
