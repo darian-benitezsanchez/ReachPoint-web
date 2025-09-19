@@ -2,6 +2,7 @@
 import { Dashboard } from './screens/dashboard.js';
 import { CreateCampaign } from './screens/createCampaigns.js';
 import { Execute } from './screens/execution.js';
+import { Call } from './screens/Call.js';          // <= NEW
 import { getCampaignById } from './data/campaignsData.js';
 
 const app = document.getElementById('app');
@@ -27,7 +28,7 @@ function normalizeHash() {
 async function render() {
   try {
     normalizeHash();
-    const path = location.hash.slice(1);      // "/dashboard" | "/create" | "/execute/123"
+    const path = location.hash.slice(1);      // "/dashboard" | "/create" | "/execute/123" | "/call"
     const parts = path.split('/').filter(Boolean);
     const route = parts[0] || 'dashboard';
     const id = parts[1];
@@ -45,6 +46,8 @@ async function render() {
         if (!campaign) throw new Error('Campaign not found: ' + id);
         return Execute(app, campaign);
       }
+      case 'call':                                // <= NEW ROUTE
+        return Call(app);
       default:
         app.innerHTML = `<div class="center">
           <h1 class="title">Not found</h1>
