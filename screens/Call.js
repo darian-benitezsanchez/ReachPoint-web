@@ -1,109 +1,109 @@
 // screens/Call.js
-
 import { getAllStudents, getStudentId } from '../data/campaignsData.js';
 import { recordSingleCall } from '../data/singleCallProgress.js';
 
 export async function Call(root) {
   root.innerHTML = '';
-  const wrap = div('');
+  const page = div('');
 
-  // --- load students once ---
+  // ---------- state ----------
   let students = [];
+  let index = [];         // [{ id, full_name, ref }]
+  let selected = null;    // { id, full_name, ref }
+  let caller = '';        // 'Karla' | 'Aracely' | 'Darian'
+  let notes = '';
+  let query = '';
+
+  const toast = makeToast();
+
+  // ---------- boot ----------
   try {
     students = await getAllStudents();
+    index = students.map((s, i) => {
+      const id = getStudentId(s, i);
+      return { id, full_name: deriveFullName(s), ref: s };
+    });
   } catch (e) {
-    wrap.append(errorBox(e));
-    root.append(wrap);
+    page.append(errorBox(e));
+    root.append(page);
     return;
   }
 
-  // Build an index: [{ id, full_name, ref }]
-  const index = students.map((s, i) => {
-    const id = getStudentId(s, i);
-    return { id, full_name: deriveFullName(s), ref: s };
-  });
-
-  // State
-  let selected = null; // { id, full_name, ref }
-  let caller = '';     // Karla | Aracely | Darian
-  let notes = '';
-
-  // --- UI: search box with suggestions ---
+  // ---------- UI ----------
   const header = div('callHeader',
-    h1('Make a Call'),
-    ptext('Search for a student by full name. Click a result to open the call details.', 'muted')
+    h1('Call Anyone'),
+    ptext('Search students by full name, then log your call.', 'muted')
   );
 
-  const searchInput = input('searchInput', 'Search by full name...');
-  const resultsBox = div('resultsBox'); // suggestion list
-  const callPane = div('callPane');     // where we render call UI
-
-  searchInput.addEventListener('input', () => {
-    const q = normalize(searchInput.value);
-    renderSuggestions(q);
+  // CreateCampaign-style suggest host
+  const searchHost = div('suggest-host');
+  const searchRow = div('row');
+  const searchInput = input({
+    placeholder: 'Search by full name…',
+    oninput: (e) => { query = e.target.value; showSuggest(); },
+    onfocus: () => showSuggest(),
+    onblur: () => setTimeout(hideSuggest, 120),
   });
-  searchInput.addEventListener('keydown', (e) => {
-    // enter to select first visible suggestion
-    if (e.key === 'Enter') {
-      const first = resultsBox.querySelector('.resultItem');
-      if (first) first.click();
+  searchInput.className = 'input';
+  searchInput.autocomplete = 'off';
+  searchInput.spellcheck = false;
+  searchInput.style.flex = '1';
+  searchRow.append(searchInput);
+
+  const suggestWrap = div('suggestWrap');  // container for suggestion card
+  searchHost.append(searchRow, suggestWrap);
+
+  // call pane appears once a student is selected
+  const callPane = div('callPane');
+
+  // initial paint
+  page.append(header, searchHost, callPane);
+  root.append(page);
+  root.append(toast.node);
+
+  // ---------- suggestion logic (CreateCampaign-like) ----------
+  function showSuggest() {
+    const items = filterByName(index, query).slice(0, 50);
+    suggestWrap.innerHTML = '';
+    suggestWrap.append(suggestCard(items));
+  }
+  function hideSuggest() {
+    suggestWrap.innerHTML = '';
+  }
+  function suggestCard(items = []) {
+    const card = div('suggestCard');
+    const scroller = div('');
+    scroller.style.maxHeight = '240px';
+    scroller.style.overflow = 'auto';
+
+    if (!query) {
+      scroller.append(div('suggestEmpty', 'Start typing to search by name'));
+    } else if (!items.length) {
+      scroller.append(div('suggestEmpty', 'No matches'));
+    } else {
+      for (const m of items) {
+        const it = div('suggestItem', highlight(m.full_name, query));
+        it.onclick = () => {
+          pickStudent(m);
+          hideSuggest();
+          searchInput.value = m.full_name;
+        };
+        scroller.append(it);
+      }
     }
-  });
 
-  function renderSuggestions(q) {
-    resultsBox.innerHTML = '';
-    if (!q) return;
-
-    const MAX = 12;
-    const matches = index
-      .filter(x => normalize(x.full_name).includes(q))
-      .slice(0, MAX);
-
-    if (!matches.length) {
-      resultsBox.append(div('muted', 'No matches'));
-      return;
-    }
-
-    for (const m of matches) {
-      const row = div('resultItem', m.full_name);
-      row.tabIndex = 0;
-      row.onclick = () => { onPickStudent(m); };
-      row.onkeydown = (e)=>{ if (e.key==='Enter' || e.key===' ') onPickStudent(m); };
-      resultsBox.append(row);
-    }
+    card.append(scroller);
+    return card;
   }
 
-  function onPickStudent(m) {
+  function pickStudent(m) {
     selected = m;
-    caller = ''; // reset
+    caller = '';
     notes = '';
     renderCallPane();
-    // collapse suggestions
-    resultsBox.innerHTML = '';
-    searchInput.value = m.full_name;
   }
 
-  async function onSave() {
-    if (!selected) return;
-    if (!caller) {
-      alert('Please select your name before saving.');
-      return;
-    }
-    try {
-      await recordSingleCall({
-        studentId: selected.id,
-        full_name: selected.full_name,
-        caller,
-        notes,
-        at: Date.now()
-      });
-      alert('Call saved.');
-      // keep the selected pane visible; user may add more notes if needed
-    } catch (e) {
-      alert('Save failed: ' + (e?.message || e));
-    }
-  }
-
+  // ---------- call pane ----------
   function renderCallPane() {
     callPane.innerHTML = '';
     if (!selected) return;
@@ -117,39 +117,44 @@ export async function Call(root) {
       stu.phone ??
       '';
 
-    // Name centered + bold
+    // centered + bold full name
     const nameEl = h1(selected.full_name);
     nameEl.style.textAlign = 'center';
     nameEl.style.fontWeight = '800';
 
-    // Phone centered + green & clickable (if available)
+    // centered + green phone button
     const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
     phoneEl.style.display = 'inline-block';
     phoneEl.style.fontWeight = '800';
     phoneEl.style.color = '#16a34a';
     phoneEl.style.textAlign = 'center';
-    const phoneWrap = div('', { textAlign: 'center', marginTop: '6px', marginBottom:'10px' });
+    const phoneWrap = div('', { textAlign: 'center', marginTop: '6px', marginBottom: '10px' });
     phoneWrap.append(phoneEl);
 
-    // Caller dropdown
-    const callerLabel = div('kv', div('k', 'Your name'), div('v'));
+    // optional: student details like execution page
+    const detailsCard = details(stu);
+
+    // caller dropdown
+    const whoRow = div('kv');
+    whoRow.append(div('k', 'Your name'));
+    const whoV = div('v');
     const sel = document.createElement('select');
-    sel.className = 'select';
+    sel.className = 'input';
     ['', 'Karla', 'Aracely', 'Darian'].forEach(opt => {
       const o = document.createElement('option');
       o.value = opt;
-      o.textContent = opt ? opt : 'Choose…';
+      o.textContent = opt || 'Choose…';
       sel.append(o);
     });
-    sel.onchange = ()=>{ caller = sel.value; };
-    callerLabel.lastChild.append(sel);
+    sel.onchange = () => { caller = sel.value; };
+    whoV.append(sel);
+    whoRow.append(whoV);
 
-    // Notes
+    // notes
     const notesBox = div('notesCard');
-    const title = h2('Notes from this call', 'notesTitle');
-    title.style.marginTop = '6px';
-    title.style.fontWeight = '700';
-
+    const notesTitle = h2('Notes from this call', 'notesTitle');
+    notesTitle.style.marginTop = '6px';
+    notesTitle.style.fontWeight = '700';
     const ta = document.createElement('textarea');
     ta.rows = 4;
     ta.placeholder = 'Type any important notes here...';
@@ -159,37 +164,75 @@ export async function Call(root) {
     ta.style.borderRadius = '8px';
     ta.style.fontFamily = 'inherit';
     ta.style.fontSize = '14px';
-    ta.addEventListener('input', () => { notes = ta.value; });
+    ta.oninput = () => { notes = ta.value; };
+    notesBox.append(notesTitle, ta);
 
-    notesBox.append(title, ta);
-
+    // save
     const saveRow = div('actions',
-      button('Save Call','btn btn-primary', onSave)
+      button('Save Call', 'btn btn-primary', onSave)
     );
-
-    const detailsCard = details(stu); // optional: show all fields like execution screen
 
     callPane.append(
       nameEl,
       phoneWrap,
       detailsCard,
-      callerLabel,
+      whoRow,
       notesBox,
       saveRow
     );
   }
 
-  // initial structure
-  wrap.append(
-    header,
-    div('', searchInput),
-    resultsBox,
-    callPane
-  );
+  async function onSave() {
+    if (!selected) return;
+    if (!caller) {
+      toast.show('Please select your name before saving.');
+      return;
+    }
+    try {
+      await recordSingleCall({
+        studentId: selected.id,
+        full_name: selected.full_name,
+        caller,
+        notes,
+        at: Date.now()
+      });
+      toast.show('Call saved.');
+    } catch (e) {
+      toast.show('Save failed: ' + (e?.message || e));
+    }
+  }
 
-  root.append(wrap);
+  // ---------- helpers ----------
+  function filterByName(arr, q) {
+    const t = normalize(q);
+    if (!t) return [];
+    return arr.filter(x => normalize(x.full_name).includes(t));
+  }
 
-  /* ------------ tiny helpers (mostly mirrored from execution) ------------ */
+  function normalize(s) {
+    return String(s || '').toLowerCase().trim();
+  }
+
+  function highlight(text, term) {
+    const t = normalize(term);
+    const s = String(text || '');
+    if (!t) return s;
+    const i = s.toLowerCase().indexOf(t);
+    if (i < 0) return s;
+    const before = s.slice(0, i);
+    const mid = s.slice(i, i + t.length);
+    const after = s.slice(i + t.length);
+    const span = document.createElement('span');
+    span.innerHTML = `${escapeHtml(before)}<strong>${escapeHtml(mid)}</strong>${escapeHtml(after)}`;
+    return span;
+  }
+
+  function escapeHtml(x) {
+    return String(x).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
   function deriveFullName(stu) {
     const cands = [
       String(stu?.full_name || '').trim(),
@@ -239,7 +282,6 @@ export async function Call(root) {
     });
     return a;
   }
-
   function phoneLinkOrText(val) {
     const href = toTelHref(val);
     if (!href) return document.createTextNode(String(val ?? ''));
@@ -254,7 +296,6 @@ export async function Call(root) {
     });
     return a;
   }
-
   function details(stu){
     const card = div('detailsCard');
     const keys = Object.keys(stu || {});
@@ -277,7 +318,7 @@ export async function Call(root) {
     return card;
   }
 
-  // dom utils
+  // DOM utils
   function div(cls, ...args) {
     const n = document.createElement('div');
     if (cls) n.className = cls;
@@ -291,18 +332,10 @@ export async function Call(root) {
     }
     return n;
   }
-  function input(cls, placeholder){
-    const n = document.createElement('input');
-    n.type = 'text';
-    n.className = cls || '';
-    n.placeholder = placeholder || '';
-    n.autocomplete = 'off';
-    n.spellcheck = false;
-    return n;
-  }
   function h1(t){ const n=document.createElement('div'); n.className='title'; n.textContent=t; return n; }
   function h2(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
   function ptext(t,cls){ const n=document.createElement('div'); n.className=cls||''; n.textContent=t; return n; }
+  function input(props = {}) { const n = document.createElement('input'); Object.assign(n, props); return n; }
   function button(text, cls, on){
     const b=document.createElement('button');
     b.className=cls;
@@ -310,6 +343,23 @@ export async function Call(root) {
     b.onclick=on;
     return b;
   }
+
+  // Toast (same style as dashboard’s makeToast)
+  function makeToast() {
+    const node = div('toast');
+    node.style.display = 'none';
+    let t = null;
+    return {
+      node,
+      show(msg) {
+        node.textContent = msg;
+        node.style.display = 'block';
+        clearTimeout(t);
+        t = setTimeout(() => { node.style.display = 'none'; }, 2400);
+      }
+    };
+  }
+
   function errorBox(err){
     const pre = document.createElement('pre');
     pre.style.whiteSpace='pre-wrap';
