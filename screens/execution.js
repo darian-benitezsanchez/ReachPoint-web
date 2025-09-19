@@ -6,8 +6,8 @@ import {
   getSummary,
   recordSurveyResponse,
   getSurveyResponse,
-  recordNote,            // <= NEW
-  getNote                // <= NEW
+  recordNote,            // notes support
+  getNote                // notes support
 } from '../data/campaignProgress.js';
 
 export async function Execute(root, campaign) {
@@ -26,9 +26,9 @@ export async function Execute(root, campaign) {
   let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
-  let currentNotes = '';            // <= NEW: local cache of notes text
+  let currentNotes = '';            // local cache of notes text
 
-  // NEW: simple undo stack of the last user-facing steps
+  // simple undo stack of the last user-facing steps
   // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
   const undoStack = [];
 
@@ -106,7 +106,7 @@ export async function Execute(root, campaign) {
     await advance(passStrategy, skip);
   }
 
-  // NEW: central undo handler
+  // central undo handler
   async function onBack() {
     if (!undoStack.length) return;
 
@@ -117,7 +117,6 @@ export async function Execute(root, campaign) {
       currentId = last.studentId;
       selectedSurveyAnswer = last.prev ?? null;
       if (mode!=='running' && mode!=='missed') mode = 'running';
-      // Reload notes for this contact, too
       currentNotes = await getNote(last.campaignId, last.studentId);
       render();
       return;
@@ -139,7 +138,7 @@ export async function Execute(root, campaign) {
     const k = (e.key || '').toLowerCase();
     if (k==='arrowleft' || k==='n') onOutcome('no_answer');
     if (k==='arrowright' || k==='a') onOutcome('answered');
-    if (k==='escape' || k==='backspace') onBack(); // NEW: quick undo
+    if (k==='escape' || k==='backspace') onBack(); // quick undo
   };
   window.addEventListener('keydown', keyHandler);
 
@@ -151,7 +150,7 @@ export async function Execute(root, campaign) {
   function attachSwipe(el){
     let startX = null, dx = 0;
     el.onpointerdown = (ev)=>{
-      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
+      if (isNoSwipeTarget(ev)) return;
       startX = ev.clientX; dx = 0;
       try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
     };
@@ -185,21 +184,11 @@ export async function Execute(root, campaign) {
   function header() {
     const t = totals();
     const pctNum = Math.round(pct()*100);
-
-    // NEW: Back button in header (kept if you use it)
-    const backBtn = button('← Back', 'btn backBtn', onBack);
-    backBtn.disabled = undoStack.length === 0;
-    if (backBtn.disabled) backBtn.style.opacity = '.6';
-
-    const left = div('headerLeft', backBtn);
-
+    // Back button REMOVED from header to keep it next to the outcome buttons as requested.
     return div('',
-      div('topHeader',
-        left,
-        div('progressWrap',
-          div('progressBar', div('progressFill'), { width: pctNum + '%' }),
-          ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
-        )
+      div('progressWrap',
+        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
+        ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
       )
     );
   }
@@ -222,24 +211,51 @@ export async function Execute(root, campaign) {
       if ((mode==='running' || mode==='missed') && currentId){
         ensureSurveyAndNotesLoaded();
         const stu = idToStudent[currentId] || {};
-        const phone = stu['Mobile Phone*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
+        const phone = stu['Mobile Phone*'] ?? stu['Mobile Number*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
 
         const card = div('', { padding: '16px', paddingBottom:'36px' });
         const swipe = div('');
         attachSwipe(swipe);
 
+        // ===== Top: Full name centered & bold =====
+        const fullName =
+          String(
+            stu.full_name ??
+            stu.fullName ??
+            stu['Full Name*'] ??
+            `${stu.first_name ?? ''} ${stu.last_name ?? ''}`
+          ).trim() || 'Current contact';
+
+        const nameEl = h1(fullName);
+        nameEl.style.textAlign = 'center';
+        nameEl.style.fontWeight = '800';
+
+        // ===== Top: Mobile Number* centered & green =====
+        const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
+        phoneEl.style.display = 'inline-block';
+        phoneEl.style.fontWeight = '800';
+        phoneEl.style.color = '#16a34a';
+        phoneEl.style.textAlign = 'center';
+        const phoneWrap = div('', { textAlign: 'center', marginTop: '6px', marginBottom:'6px' });
+        phoneWrap.append(phoneEl);
+
+        // ===== Buttons (No Answer • Answered • Back) on the same row =====
+        const noBtn  = button('No Answer','btn no', ()=>onOutcome('no_answer'));
+        const yesBtn = button('Answered','btn yes', ()=>onOutcome('answered'));
+        const backBtn = button('← Back','btn backBtn', onBack);
+        backBtn.disabled = undoStack.length === 0;
+        if (backBtn.disabled) backBtn.style.opacity = '.6';
+
         swipe.append(
-          h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
+          nameEl,
+          phoneWrap,
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phone ? callButton(phone) : disabledBtn('No phone number'),
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          notesBlock(currentNotes, onChangeNotes),    // <= NEW: Notes UI
-          actionRow(
-            button('No Answer','btn no', ()=>onOutcome('no_answer')),
-            button('Answered','btn yes', ()=>onOutcome('answered'))
-          )
+          notesBlock(currentNotes, onChangeNotes),
+          actionRow(noBtn, yesBtn, backBtn) // << Back is next to the outcome buttons
         );
+
         card.append(swipe);
         wrap.append(card);
       }
@@ -322,7 +338,7 @@ export async function Execute(root, campaign) {
       const valNode = div('v');
 
       // Heuristic: make phone-like fields clickable
-      const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
+      const looksPhoneKey = /phone|mobile/i.test(k);
       const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
 
       if (looksPhoneKey || looksPhoneVal) valNode.append(phoneLinkOrText(vRaw));
@@ -424,7 +440,6 @@ export async function Execute(root, campaign) {
     for (const a of args) {
       if (a == null) continue;
       if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
-        // treat plain objects as style objects
         Object.assign(n.style, a);
       } else {
         n.append(a instanceof Node ? a : document.createTextNode(String(a)));
