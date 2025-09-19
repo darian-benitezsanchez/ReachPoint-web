@@ -1,15 +1,18 @@
 // screens/dashboard.js
-// Dashboard with exactly two export buttons per campaign.
+// Dashboard with exactly two export buttons per campaign + delete control in header.
 
 import {
   listCampaigns,
   applyFilters,
   getStudentId,
-  getAllStudents
+  getAllStudents,
+  deleteCampaign, // <= added back for deletion
 } from '../data/campaignsData.js';
 
 import {
-  exportNotCalledCSV
+  exportNotCalledCSV,
+  // progress is read directly for full CSV rows; also need to clear progress on delete:
+  removeProgress,
 } from '../data/campaignProgress.js';
 
 import { exportCsvSmart } from '../utils/exportReport.js';
@@ -46,12 +49,29 @@ export function Dashboard(root) {
     for (const c of campaigns) {
       const card = el('section','card');
 
+      // Small delete icon in header (NOT an action button)
+      const del = button('icon danger', async (e) => {
+        e?.stopPropagation?.();
+        if (!confirm(`Delete campaign "${c.name}"? This also clears its progress.`)) return;
+        try {
+          await deleteCampaign(c.id);
+          await removeProgress(c.id);
+          Dashboard(root); // rerender
+        } catch (err) {
+          toast.show('Delete failed: ' + (err?.message || err));
+        }
+      }, '🗑️');
+      del.title = 'Delete campaign';
+
       const head = button('card-head', () => location.hash = `#/execute/${c.id}`,
         div('card-head-text',
           div('card-title', c.name),
           div('card-sub', `Created ${new Date(c.createdAt).toLocaleDateString()} • ${c.studentIds.length} students`),
           div('card-reminders', remindersLabel(c)),
-        )
+        ),
+        // place delete icon to the right
+        div('spacer'),
+        del
       );
 
       // Build queueIds and idToStudent for exports
@@ -65,7 +85,16 @@ export function Dashboard(root) {
         btn('Export Full CSV','btn btn-small', async () => {
           try {
             const rows = await buildSummaryCSVRows(c, students);
-            const headers = ['Full Name','Outcome','Response','Timestamp','Student ID','Campaign ID','Campaign Name'];
+            const headers = [
+              'Full Name',
+              'Outcome',
+              'Response',
+              'Notes',        // <= added to export notes
+              'Timestamp',
+              'Student ID',
+              'Campaign ID',
+              'Campaign Name'
+            ];
             const csv = csvString(headers, rows);
             await exportCsvSmart(`campaign-${c.id}-full.csv`, csv);
             toast.show('Saved full CSV');
@@ -75,7 +104,6 @@ export function Dashboard(root) {
         }),
         btn('Export Not Called','btn btn-small', async () => {
           try {
-            // Use helper that builds the CSV from progress + resolver for names
             const csv = await exportNotCalledCSV(c.id, queueIds, idToStudent);
             await exportCsvSmart(`campaign-${c.id}-not-called.csv`, csv);
             toast.show('Saved Not Called CSV');
@@ -110,7 +138,7 @@ async function buildSummaryCSVRows(campaign, allStudents) {
   const idToStudent = {};
   filtered.forEach((s,i)=>{ idToStudent[getStudentId(s,i)] = s; });
 
-  // Pull from progress store for outcomes/responses/timestamps
+  // Pull from progress store for outcomes/responses/timestamps/notes
   const raw = JSON.parse(localStorage.getItem('reachpoint.progress.'+campaign.id) || '{}');
   const contacts = raw.contacts || {};
 
@@ -123,6 +151,7 @@ async function buildSummaryCSVRows(campaign, allStudents) {
     const cp = contacts[sid] || {};
     const outcome = cp.outcome || '';
     const response = cp.surveyAnswer || '';
+    const notes = cp.notes || ''; // <= include notes
     const tCall = cp.lastCalledAt || 0;
     let tResp = 0;
     if (Array.isArray(cp.surveyLogs)) {
@@ -136,6 +165,7 @@ async function buildSummaryCSVRows(campaign, allStudents) {
       'Full Name': fullName,
       'Outcome': outcome,
       'Response': response,
+      'Notes': notes,                // <= added to rows
       'Timestamp': iso,
       'Student ID': sid,
       'Campaign ID': campaign.id,
@@ -163,7 +193,7 @@ function deriveFullName(stu) {
 /* DOM utils */
 function el(tag, className, ...children) {
   const n = document.createElement(tag);
-  if (typeof className === 'string') n.className = className, children = children;
+  if (typeof className === 'string') { n.className = className; }
   else { children = [className, ...children]; }
   for (const c of children) if (c!=null) n.append(c.nodeType ? c : document.createTextNode(c));
   return n;
