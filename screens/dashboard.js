@@ -21,9 +21,13 @@ export function Dashboard(root) {
   root.innerHTML = '';
   const page = el('div');
 
+  // Header: adds "Call Anyone" while keeping "+ New"
   const header = el('div', 'row space',
     el('h1', 'title', 'Your Campaigns'),
-    btn('+ New', 'btn btn-ghost', () => location.hash = '#/create'),
+    div('row gap-8',
+      btn('Call Anyone', 'btn btn-ghost', () => location.hash = '#/call'),
+      btn('+ New', 'btn btn-ghost', () => location.hash = '#/create'),
+    )
   );
   page.appendChild(header);
 
@@ -89,7 +93,7 @@ export function Dashboard(root) {
               'Full Name',
               'Outcome',
               'Response',
-              'Notes',        // <= added to export notes
+              'Notes',        // includes notes collected on execution screen
               'Timestamp',
               'Student ID',
               'Campaign ID',
@@ -151,7 +155,7 @@ async function buildSummaryCSVRows(campaign, allStudents) {
     const cp = contacts[sid] || {};
     const outcome = cp.outcome || '';
     const response = cp.surveyAnswer || '';
-    const notes = cp.notes || ''; // <= include notes
+    const notes = cp.notes || ''; // include notes
     const tCall = cp.lastCalledAt || 0;
     let tResp = 0;
     if (Array.isArray(cp.surveyLogs)) {
@@ -165,7 +169,7 @@ async function buildSummaryCSVRows(campaign, allStudents) {
       'Full Name': fullName,
       'Outcome': outcome,
       'Response': response,
-      'Notes': notes,                // <= added to rows
+      'Notes': notes,
       'Timestamp': iso,
       'Student ID': sid,
       'Campaign ID': campaign.id,
