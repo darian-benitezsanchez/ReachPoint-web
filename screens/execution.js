@@ -245,7 +245,7 @@ export async function Execute(root, campaign) {
         });
 
         const nameNode = h1(
-          `${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'
+          `${String(stu.full_name ?? '')}`.trim() || 'Current contact'
         );
         nameNode.style.textAlign = 'center';
         nameNode.style.fontWeight = '800';
