@@ -235,10 +235,31 @@ export async function Execute(root, campaign) {
         const swipe = div('');
         attachSwipe(swipe);
 
+        // === Centered contact header (name + hint + call button) ===
+        const headerBox = div('', {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: '4px',
+          marginBottom: '12px'
+        });
+
+        const nameNode = h1(
+          `${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'
+        );
+        nameNode.style.textAlign = 'center';
+        nameNode.style.fontWeight = '800';
+
+        const hintNode = ptext('Swipe right = Answered, Swipe left = No answer', 'hint');
+        hintNode.style.textAlign = 'center';
+
+        const callBtnNode = phone ? callButton(phone) : disabledBtn('No phone number');
+        callBtnNode.style.marginTop = '6px';
+
+        headerBox.append(nameNode, hintNode, callBtnNode);
+
         swipe.append(
-          h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
-          ptext('Swipe right = Answered, Swipe left = No answer','hint'),
-          phone ? callButton(phone) : disabledBtn('No phone number'),
+          headerBox,
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
           notesBlock(currentNotes, onChangeNotes),    // <= NEW: Notes UI
@@ -441,7 +462,7 @@ export async function Execute(root, campaign) {
     a.addEventListener('pointerdown', e => e.stopPropagation());
     if (href) {
       a.addEventListener('click', (e) => {
-        const ok = confirm(`Place a call to ${label} with your device?`);
+        const ok = confirm(`Place a call to ${label}`);
         if (!ok) { e.preventDefault(); return; }
         e.preventDefault();
         window.location.href = href; // Safari-friendly
