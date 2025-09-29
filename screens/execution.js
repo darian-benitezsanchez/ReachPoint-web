@@ -198,15 +198,29 @@ export async function Execute(root, campaign) {
       wrap.innerHTML = '';
       wrap.append(header());
 
-      if (mode==='idle') {
-        wrap.append(
-          center(
-            h1(campaign.name || 'Campaign'),
-            ptext(`${queueIds.length} contact${queueIds.length===1?'':'s'} in this campaign`, 'muted'),
-            button('Begin Calls','btn btn-primary', beginCalls)
-          )
+      if (mode === 'idle') {
+        // Main idle section with title, count, and Begin button
+        const idleBox = center(
+          h1(campaign.name || 'Campaign'),
+          ptext(`${queueIds.length} contact${queueIds.length===1?'':'s'} in this campaign`, 'muted'),
+          button('Begin Calls', 'btn btn-primary', beginCalls)
         );
+        wrap.append(idleBox);
+      
+        // Mount the summary *below* the Begin Calls button
+        const summaryMount = div('', { marginTop: '12px' });
+        wrap.append(summaryMount);
+      
+        // Build and insert the summary (async)
+        summaryBlock(
+          campaign.id,
+          async () => { await beginMissed(); },
+          () => { location.hash = '#/dashboard'; }
+        )
+          .then(node => summaryMount.append(node))
+          .catch(err => summaryMount.append(errorBox(err)));
       }
+
 
       if ((mode==='running' || mode==='missed') && currentId){
         ensureSurveyAndNotesLoaded();
