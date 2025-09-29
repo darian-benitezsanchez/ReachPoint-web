@@ -6,8 +6,8 @@ import {
   getSummary,
   recordSurveyResponse,
   getSurveyResponse,
-  recordNote,            // notes support
-  getNote                // notes support
+  recordNote,            // <= NEW
+  getNote                // <= NEW
 } from '../data/campaignProgress.js';
 
 export async function Execute(root, campaign) {
@@ -26,9 +26,9 @@ export async function Execute(root, campaign) {
   let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
-  let currentNotes = '';            // local cache of notes text
+  let currentNotes = '';            // <= NEW: local cache of notes text
 
-  // simple undo stack of the last user-facing steps
+  // NEW: simple undo stack of the last user-facing steps
   // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
   const undoStack = [];
 
@@ -106,7 +106,7 @@ export async function Execute(root, campaign) {
     await advance(passStrategy, skip);
   }
 
-  // central undo handler
+  // NEW: central undo handler
   async function onBack() {
     if (!undoStack.length) return;
 
@@ -117,6 +117,7 @@ export async function Execute(root, campaign) {
       currentId = last.studentId;
       selectedSurveyAnswer = last.prev ?? null;
       if (mode!=='running' && mode!=='missed') mode = 'running';
+      // Reload notes for this contact, too
       currentNotes = await getNote(last.campaignId, last.studentId);
       render();
       return;
@@ -132,15 +133,8 @@ export async function Execute(root, campaign) {
     }
   }
 
-  // ======= Keyboard shortcuts (temporarily disabled for now) =======
-  //const keyHandler = (e)=>{
-    //if (mode!=='running' && mode!=='missed') return;
-    //const k = (e.key || '').toLowerCase();
-    //if (k==='arrowleft' || k==='n') onOutcome('no_answer');
-    //if (k==='arrowright' || k==='a') onOutcome('answered');
-    //if (k==='escape' || k==='backspace') onBack(); // quick undo
-  //};
-  //window.addEventListener('keydown', keyHandler);
+  // ======= Keyboard shortcuts (cleanup on re-entry) =======
+  // (Intentionally disabled; keep safe teardown below.)
 
   // ======= Swipe (pointer) with guard so buttons still work =======
   function isNoSwipeTarget(ev){
@@ -150,7 +144,7 @@ export async function Execute(root, campaign) {
   function attachSwipe(el){
     let startX = null, dx = 0;
     el.onpointerdown = (ev)=>{
-      if (isNoSwipeTarget(ev)) return;
+      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
       startX = ev.clientX; dx = 0;
       try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
     };
@@ -184,11 +178,21 @@ export async function Execute(root, campaign) {
   function header() {
     const t = totals();
     const pctNum = Math.round(pct()*100);
-    // Back button REMOVED from header to keep it next to the outcome buttons as requested.
+
+    // NEW: Back button in header (kept if you use it)
+    const backBtn = button('← Back', 'btn backBtn', onBack);
+    backBtn.disabled = undoStack.length === 0;
+    if (backBtn.disabled) backBtn.style.opacity = '.6';
+
+    const left = div('headerLeft', backBtn);
+
     return div('',
-      div('progressWrap',
-        div('progressBar', div('progressFill'), { width: pctNum + '%' }),
-        ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+      div('topHeader',
+        left,
+        div('progressWrap',
+          div('progressBar', div('progressFill'), { width: pctNum + '%' }),
+          ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
+        )
       )
     );
   }
@@ -206,76 +210,54 @@ export async function Execute(root, campaign) {
           button('Begin Calls', 'btn btn-primary', beginCalls)
         );
         wrap.append(idleBox);
-      
-        // Mount the summary *below* the Begin Calls button
-        const summaryMount = div('', { marginTop: '12px' });
+
+        // Compact summary directly under the Begin button with tight spacing
+        const summaryMount = div('', { margin: '6px auto 0', maxWidth: '800px' });
         wrap.append(summaryMount);
-      
-        // Build and insert the summary (async)
+
+        // Build and insert the summary (async) — hide actions on idle, compact spacing
         summaryBlock(
           campaign.id,
           async () => { await beginMissed(); },
-          () => { location.hash = '#/dashboard'; }
+          () => { location.hash = '#/dashboard'; },
+          { hideActions: true, compact: true }
         )
           .then(node => summaryMount.append(node))
           .catch(err => summaryMount.append(errorBox(err)));
       }
 
-
       if ((mode==='running' || mode==='missed') && currentId){
         ensureSurveyAndNotesLoaded();
         const stu = idToStudent[currentId] || {};
-        const phone = stu['Mobile Phone*'] ?? stu['Mobile Number*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
+        const phone = stu['Mobile Phone*'] ?? stu.phone ?? stu.phone_number ?? stu.mobile ?? '';
 
         const card = div('', { padding: '16px', paddingBottom:'36px' });
         const swipe = div('');
         attachSwipe(swipe);
 
-        // ===== Top: Full name centered & bold =====
-        const fullName =
-          String(
-            stu.full_name ??
-            stu.fullName ??
-            stu['Full Name*'] ??
-            `${stu.first_name ?? ''} ${stu.last_name ?? ''}`
-          ).trim() || 'Current contact';
-
-        const nameEl = h1(fullName);
-        nameEl.style.textAlign = 'center';
-        nameEl.style.fontWeight = '800';
-
-        // ===== Top: Mobile Number* centered & green =====
-        const phoneEl = phone ? callButton(phone) : disabledBtn('No phone number');
-        phoneEl.style.display = 'inline-block';
-        phoneEl.style.fontWeight = '800';
-        phoneEl.style.color = '#16a34a';
-        phoneEl.style.textAlign = 'center';
-        const phoneWrap = div('', { textAlign: 'center', marginTop: '6px', marginBottom:'6px' });
-        phoneWrap.append(phoneEl);
-
-        // ===== Buttons (No Answer • Answered • Back) on the same row =====
-        const noBtn  = button('No Answer','btn no', ()=>onOutcome('no_answer'));
-        const yesBtn = button('Answered','btn yes', ()=>onOutcome('answered'));
-        const backBtn = button('← Back','btn backBtn', onBack);
-        backBtn.disabled = undoStack.length === 0;
-        if (backBtn.disabled) backBtn.style.opacity = '.6';
-
         swipe.append(
-          nameEl,
-          phoneWrap,
+          h1(`${String(stu.first_name ?? '')} ${String(stu.last_name ?? '')}`.trim() || 'Current contact'),
           ptext('Swipe right = Answered, Swipe left = No answer','hint'),
+          phone ? callButton(phone) : disabledBtn('No phone number'),
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          notesBlock(currentNotes, onChangeNotes),
-          actionRow(noBtn, yesBtn, backBtn) // << Back is next to the outcome buttons
+          notesBlock(currentNotes, onChangeNotes),    // <= NEW: Notes UI
+          actionRow(
+            button('No Answer','btn no', ()=>onOutcome('no_answer')),
+            button('Answered','btn yes', ()=>onOutcome('answered'))
+          )
         );
-
         card.append(swipe);
         wrap.append(card);
       }
 
       if (mode==='summary') {
-        summaryBlock(campaign.id, async ()=>{ await beginMissed(); }, ()=>{ location.hash='#/dashboard'; })
+        // Full summary with actions (unchanged)
+        summaryBlock(
+          campaign.id,
+          async ()=>{ await beginMissed(); },
+          ()=>{ location.hash='#/dashboard'; }
+        )
           .then(b=>wrap.append(b))
           .catch(err=>wrap.append(errorBox(err)));
       }
@@ -290,7 +272,10 @@ export async function Execute(root, campaign) {
 
   // ======= teardown on route change (optional) =======
   window.addEventListener('hashchange', () => {
-    window.removeEventListener('keydown', keyHandler);
+    // Safe guard even if keyHandler was never defined/attached
+    if (typeof keyHandler === 'function') {
+      window.removeEventListener('keydown', keyHandler);
+    }
   });
 
   /* ---------------- Notes UI & Handlers ---------------- */
@@ -352,7 +337,7 @@ export async function Execute(root, campaign) {
       const valNode = div('v');
 
       // Heuristic: make phone-like fields clickable
-      const looksPhoneKey = /phone|mobile/i.test(k);
+      const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
       const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
 
       if (looksPhoneKey || looksPhoneVal) valNode.append(phoneLinkOrText(vRaw));
@@ -379,14 +364,48 @@ export async function Execute(root, campaign) {
     return box;
   }
 
-  async function summaryBlock(campaignId, onMissed, onFinish){
+  // Updated: supports options { hideActions, compact }
+  async function summaryBlock(campaignId, onMissed, onFinish, opts = {}) {
+    const { hideActions = false, compact = false } = opts;
     const t = await getSummary(campaignId);
     const allDone = t.missed===0 && t.made===t.total && t.total>0;
-    const box = center(
+
+    const statsCard = cardKV([
+      ['Total contacts', t.total],
+      ['Calls made', t.made],
+      ['Answered', t.answered],
+      ['Missed', t.missed]
+    ]);
+
+    let box;
+    if (compact) {
+      // tighter layout; smaller top margin; centered but without big center wrapper
+      box = div('', { margin: '6px auto 0', maxWidth: '800px' });
+      const title = h2('Campaign Summary', 'summaryTitle');
+      title.style.fontWeight = '800';
+      title.style.textAlign = 'center';
+      title.style.margin = '8px 0';
+      statsCard.style.width = '100%';
+      statsCard.style.margin = '0 auto';
+      box.append(title, statsCard);
+      if (!hideActions) {
+        const actions = actionRow(
+          (!allDone && t.missed>0) ? button('Proceed to Missed Contacts','btn', onMissed) : null,
+          button(allDone ? 'Done' : 'Finish for now','btn btn-primary', onFinish)
+        );
+        actions.style.marginTop = '10px';
+        box.append(actions);
+      }
+      return box;
+    }
+
+    // Original full-size centered summary
+    box = center(
       h1('Campaign Summary'),
-      cardKV([['Total contacts',t.total],['Calls made',t.made],['Answered',t.answered],['Missed',t.missed]]),
-      (!allDone && t.missed>0) ? button('Proceed to Missed Contacts','btn', onMissed) : null,
-      button(allDone ? 'Done' : 'Finish for now','btn btn-primary', onFinish)
+      statsCard,
+      hideActions ? null :
+        ((!allDone && t.missed>0) ? button('Proceed to Missed Contacts','btn', onMissed) : null),
+      hideActions ? null : button(allDone ? 'Done' : 'Finish for now','btn btn-primary', onFinish)
     );
     return box;
   }
@@ -454,6 +473,7 @@ export async function Execute(root, campaign) {
     for (const a of args) {
       if (a == null) continue;
       if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
+        // treat plain objects as style objects
         Object.assign(n.style, a);
       } else {
         n.append(a instanceof Node ? a : document.createTextNode(String(a)));
