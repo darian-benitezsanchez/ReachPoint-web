@@ -26,10 +26,9 @@ export async function Execute(root, campaign) {
   let passStrategy = 'unattempted'; // 'unattempted' | 'missed'
   let currentId = undefined;
   let selectedSurveyAnswer = null;
-  let currentNotes = '';            // <= NEW: local cache of notes text
+  let currentNotes = '';            // <= NEW
 
-  // NEW: simple undo stack of the last user-facing steps
-  // Each entry is { type: 'survey'|'nav'|'outcome', campaignId, studentId, prev, next, prevMode, prevStrategy }
+  // Simple undo stack
   const undoStack = [];
 
   // ======= BOOT (with error splash) =======
@@ -70,7 +69,7 @@ export async function Execute(root, campaign) {
     progress = await loadOrInitProgress(campaign.id, queueIds);
     currentId = pickNextId(progress, strategy, skipId);
     selectedSurveyAnswer = null;
-    currentNotes = ''; // reset; will be loaded lazily
+    currentNotes = '';
     if (!currentId) mode = 'summary';
     render();
   }
@@ -80,7 +79,6 @@ export async function Execute(root, campaign) {
 
   async function onSelectSurvey(ans){
     if (!currentId) return;
-    // push undo BEFORE changing it
     const prev = await getSurveyResponse(campaign.id, currentId);
     undoStack.push({ type:'survey', campaignId: campaign.id, studentId: currentId, prev, next: ans });
 
@@ -91,8 +89,6 @@ export async function Execute(root, campaign) {
 
   async function onOutcome(kind){
     if (!currentId) return;
-
-    // Capture a nav-style undo so we can jump back to this contact if needed.
     undoStack.push({
       type: 'outcome',
       campaignId: campaign.id,
@@ -106,7 +102,6 @@ export async function Execute(root, campaign) {
     await advance(passStrategy, skip);
   }
 
-  // NEW: central undo handler
   async function onBack() {
     if (!undoStack.length) return;
 
@@ -117,7 +112,6 @@ export async function Execute(root, campaign) {
       currentId = last.studentId;
       selectedSurveyAnswer = last.prev ?? null;
       if (mode!=='running' && mode!=='missed') mode = 'running';
-      // Reload notes for this contact, too
       currentNotes = await getNote(last.campaignId, last.studentId);
       render();
       return;
@@ -133,8 +127,8 @@ export async function Execute(root, campaign) {
     }
   }
 
-  // ======= Keyboard shortcuts (cleanup on re-entry) =======
-  // (Intentionally disabled; keep safe teardown below.)
+  // ======= Keyboard shortcuts (disabled) =======
+  // (Keep teardown guard below in case you add it back later.)
 
   // ======= Swipe (pointer) with guard so buttons still work =======
   function isNoSwipeTarget(ev){
@@ -144,7 +138,7 @@ export async function Execute(root, campaign) {
   function attachSwipe(el){
     let startX = null, dx = 0;
     el.onpointerdown = (ev)=>{
-      if (isNoSwipeTarget(ev)) return; // don't initiate swipe from interactive controls
+      if (isNoSwipeTarget(ev)) return;
       startX = ev.clientX; dx = 0;
       try { el.setPointerCapture && el.setPointerCapture(ev.pointerId); } catch{}
     };
@@ -179,16 +173,10 @@ export async function Execute(root, campaign) {
     const t = totals();
     const pctNum = Math.round(pct()*100);
 
-    // NEW: Back button in header (kept if you use it)
-    const backBtn = button('← Back', 'btn backBtn', onBack);
-    backBtn.disabled = undoStack.length === 0;
-    if (backBtn.disabled) backBtn.style.opacity = '.6';
-
-    const left = div('headerLeft', backBtn);
-
+    // Top bar WITHOUT a back button now (we move it to the bottom action row)
     return div('',
       div('topHeader',
-        left,
+        div('headerLeft'), // empty spacer
         div('progressWrap',
           div('progressBar', div('progressFill'), { width: pctNum + '%' }),
           ptext(`${t.made}/${t.total} complete • ${t.answered} answered • ${t.missed} missed`,'progressText')
@@ -258,15 +246,23 @@ export async function Execute(root, campaign) {
 
         headerBox.append(nameNode, hintNode, callBtnNode);
 
+        // Bottom action row WITH Back button
+        const backBtn = button('← Back', 'btn backBtn', onBack);
+        backBtn.disabled = undoStack.length === 0;
+        if (backBtn.disabled) backBtn.style.opacity = '.6';
+
+        const actions = actionRow(
+          backBtn,
+          button('No Answer','btn no', ()=>onOutcome('no_answer')),
+          button('Answered','btn yes', ()=>onOutcome('answered'))
+        );
+
         swipe.append(
           headerBox,
           details(stu),
           surveyBlock(campaign.survey, selectedSurveyAnswer, onSelectSurvey),
-          notesBlock(currentNotes, onChangeNotes),    // <= NEW: Notes UI
-          actionRow(
-            button('No Answer','btn no', ()=>onOutcome('no_answer')),
-            button('Answered','btn yes', ()=>onOutcome('answered'))
-          )
+          notesBlock(currentNotes, onChangeNotes),
+          actions
         );
         card.append(swipe);
         wrap.append(card);
@@ -293,7 +289,7 @@ export async function Execute(root, campaign) {
 
   // ======= teardown on route change (optional) =======
   window.addEventListener('hashchange', () => {
-    // Safe guard even if keyHandler was never defined/attached
+    // Safe even if keyHandler was never defined/attached
     if (typeof keyHandler === 'function') {
       window.removeEventListener('keydown', keyHandler);
     }
@@ -301,7 +297,6 @@ export async function Execute(root, campaign) {
 
   /* ---------------- Notes UI & Handlers ---------------- */
 
-  // Debounce utility so we don't hammer localStorage
   function debounce(fn, delay=400) {
     let t = 0;
     return (...args) => {
@@ -340,7 +335,7 @@ export async function Execute(root, campaign) {
     ta.addEventListener('pointerdown', e => e.stopPropagation());
 
     ta.addEventListener('input', () => onChange(ta.value));
-    ta.addEventListener('blur', () => onChange(ta.value)); // ensure save on blur
+    ta.addEventListener('blur', () => onChange(ta.value));
 
     container.append(title, ta);
     return container;
@@ -357,7 +352,6 @@ export async function Execute(root, campaign) {
       const keyNode = div('k', k);
       const valNode = div('v');
 
-      // Heuristic: make phone-like fields clickable
       const looksPhoneKey = /phone/i.test(k) || /\bmobile\b/i.test(k);
       const looksPhoneVal = typeof vRaw === 'string' && cleanDigits(vRaw).length >= 10;
 
@@ -385,7 +379,7 @@ export async function Execute(root, campaign) {
     return box;
   }
 
-  // Updated: supports options { hideActions, compact }
+  // Supports options { hideActions, compact }
   async function summaryBlock(campaignId, onMissed, onFinish, opts = {}) {
     const { hideActions = false, compact = false } = opts;
     const t = await getSummary(campaignId);
@@ -400,7 +394,6 @@ export async function Execute(root, campaign) {
 
     let box;
     if (compact) {
-      // tighter layout; smaller top margin; centered but without big center wrapper
       box = div('', { margin: '6px auto 0', maxWidth: '800px' });
       const title = h2('Campaign Summary', 'summaryTitle');
       title.style.fontWeight = '800';
@@ -420,7 +413,6 @@ export async function Execute(root, campaign) {
       return box;
     }
 
-    // Original full-size centered summary
     box = center(
       h1('Campaign Summary'),
       statsCard,
@@ -445,7 +437,7 @@ export async function Execute(root, campaign) {
     return 'tel:' + n;
   }
   function humanPhone(raw) {
-    const d = cleanDigits(raw).replace(/^\+?1/, ''); // trim +1 for display
+    const d = cleanDigits(raw).replace(/^\+?1/, '');
     if (d.length === 10) return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
     return String(raw);
   }
@@ -462,7 +454,7 @@ export async function Execute(root, campaign) {
     a.addEventListener('pointerdown', e => e.stopPropagation());
     if (href) {
       a.addEventListener('click', (e) => {
-        const ok = confirm(`Place a call to ${label}`);
+        const ok = confirm(`Place a call to ${label}?`);
         if (!ok) { e.preventDefault(); return; }
         e.preventDefault();
         window.location.href = href; // Safari-friendly
@@ -494,7 +486,6 @@ export async function Execute(root, campaign) {
     for (const a of args) {
       if (a == null) continue;
       if (typeof a === 'object' && !(a instanceof Node) && !Array.isArray(a)) {
-        // treat plain objects as style objects
         Object.assign(n.style, a);
       } else {
         n.append(a instanceof Node ? a : document.createTextNode(String(a)));
@@ -515,7 +506,14 @@ export async function Execute(root, campaign) {
     b.addEventListener('pointerdown', e => e.stopPropagation());
     return b;
   }
-  function actionRow(...kids){ const r=div('actions'); kids.forEach(k=>k&&r.append(k)); return r; }
+  function actionRow(...kids){
+    const r=div('actions');
+    r.style.display = 'flex';
+    r.style.gap = '8px';
+    r.style.marginTop = '12px';
+    kids.forEach(k=>k&&r.append(k));
+    return r;
+  }
   function disabledBtn(text){ const b=document.createElement('button'); b.className='callBtn'; b.textContent=text; b.disabled=true; b.style.opacity=.6; b.setAttribute('data-noswipe','1'); b.addEventListener('pointerdown', e => e.stopPropagation()); return b; }
   function chip(label, cls, on){
     const c=document.createElement('button');
