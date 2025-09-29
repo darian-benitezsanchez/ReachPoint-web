@@ -132,15 +132,15 @@ export async function Execute(root, campaign) {
     }
   }
 
-  // ======= Keyboard shortcuts (cleanup on re-entry) =======
-  const keyHandler = (e)=>{
-    if (mode!=='running' && mode!=='missed') return;
-    const k = (e.key || '').toLowerCase();
-    if (k==='arrowleft' || k==='n') onOutcome('no_answer');
-    if (k==='arrowright' || k==='a') onOutcome('answered');
-    if (k==='escape' || k==='backspace') onBack(); // quick undo
-  };
-  window.addEventListener('keydown', keyHandler);
+  // ======= Keyboard shortcuts (temporarily disabled for now) =======
+  //const keyHandler = (e)=>{
+    //if (mode!=='running' && mode!=='missed') return;
+    //const k = (e.key || '').toLowerCase();
+    //if (k==='arrowleft' || k==='n') onOutcome('no_answer');
+    //if (k==='arrowright' || k==='a') onOutcome('answered');
+    //if (k==='escape' || k==='backspace') onBack(); // quick undo
+  //};
+  //window.addEventListener('keydown', keyHandler);
 
   // ======= Swipe (pointer) with guard so buttons still work =======
   function isNoSwipeTarget(ev){
